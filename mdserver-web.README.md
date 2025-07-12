@@ -18,11 +18,10 @@
 
 
 [![Wiki](https://img.shields.io/badge/MW-Wiki-red?style=for-the-badge&logo=wiki)](https://github.com/midoks/mdserver-web/wiki)
-[![](https://data.jsdelivr.com/v1/package/gh/midoks/mdserver-web/badge?style=for-the-badge)](https://www.jsdelivr.com/package/gh/midoks/mdserver-web)
+[![jsdelivr](https://data.jsdelivr.com/v1/package/gh/midoks/mdserver-web/badge)](https://www.jsdelivr.com/package/gh/midoks/mdserver-web)
 
 * SSH终端工具
 * 面板收藏功能
-* 网站子目录绑定
 * 网站备份功能
 * 插件方式管理
 
@@ -37,16 +36,21 @@ Talk is cheap, show me the code.  -- linus
 ```
 
 - [兼容性测试报告](/compatibility.md)
-- [常用命令说明](/cmd.md) [ mw default ]
+- [常用命令说明](/cmd.md) [ mw default ] [ mw update_dev ]
+
+### 特别赞助
+
+- [虚位以待](https://bbs.midoks.icu)
 
 ### 主要插件介绍
 
 * OpenResty - 轻量级，占有内存少，并发能力强。
-* PHP[53-83] - PHP是世界上最好的编程语言。
+* PHP[53-84] - PHP是世界上最好的编程语言。
 * MySQL - 一种关系数据库管理系统。
 * MariaDB - 是MySQL的一个重要分支。
-* MySQL[APT/YUM] - 一种关系数据库管理系统。
+* MySQL[community] - 一种关系数据库管理系统。
 * MongoDB - 一种非关系NOSQL数据库管理系统。
+* PostgreSQL - 功能强大的开源数据库。
 * phpMyAdmin - 著名Web端MySQL管理工具。
 * Memcached - 一个高性能的分布式内存对象缓存系统。
 * Redis - 一个高性能的KV数据库。
@@ -75,10 +79,10 @@ Talk is cheap, show me the code.  -- linus
 
 ```
 phpMyAdmin[4.4.15]支持MySQL[5.5-5.7]
-phpMyAdmin[5.2.0]支持MySQL[8.0]
+phpMyAdmin[5.2.1]支持MySQL[8.0+]
 
 PHP[53-72]支持phpMyAdmin[4.4.15]
-PHP[72-82]支持phpMyAdmin[5.2.0]
+PHP[72-84]支持phpMyAdmin[5.2.1]
 ```
 
 # 郑重声明
@@ -88,13 +92,7 @@ PHP[72-82]支持phpMyAdmin[5.2.0]
 - https://www.youtube.com/watch?v=2taa5K-Jmmw
 
 
-# 特别赞助
-
-- [找资源 - 阿里云盘资源搜索引擎](https://zhaoziyuan.pw/)
-
 # AD - VPS推荐 - 🙏
-
-- [ZZZ评测](https://www.zzzvps.com/)
 
 | 服务商			| 	LOGO   |  推广地址  | 优惠码 |
 | ------------- |----------|-----------|-------|
@@ -102,26 +100,23 @@ PHP[72-82]支持phpMyAdmin[5.2.0]
 
 # Docker
 
-- 由[DDSRem](https://github.com/DDSRem)开发维护。
-- https://hub.docker.com/r/ddsderek/mw
+- 由[DDS-Derek](https://github.com/DDS-Derek)开发维护。
+- https://github.com/DDS-Derek/mdserver-web-Docker
 
 ```
 docker run -itd --name mw-server --privileged=true -p 7200:7200 -p 80:80 -p 443:443 -p 888:888 ddsderek/mw-server:latest
 ```
 
 
-### 版本更新 0.16.2
+### 版本更新 0.18.0
 
-* keepalived插件改造,集成mysql高可用配置。
-* redis(主从/集群)配置识别。
-* MySQL主从同步1236错误,添加修复功能。
-* MySQL二进制日志查看。
-* 源码安装成功后删除解压包,节省体积。
-* 网站统计-增加查询条件。
-* php增加yaml扩展。
-* php扩展ioncube修复。
-* php-fpm增加【按需】配置。
-* gitea/gogs同步功能改造。
+- 重新架构面板。
+- PHP84正式版。
+- 加入alist插件。
+- 数据管理-常用命令。
+- 插件读取优化(加入缓存+定时检查状态)。
+- 恢复面板书签。
+- 常规更新。
 
 ### JSDelivr安装地址
 
@@ -190,6 +185,23 @@ curl --insecure -fsSL https://code.midoks.icu/midoks/mdserver-web/raw/branch/dev
 curl --insecure -fsSL https://code.midoks.icu/midoks/mdserver-web/raw/branch/dev/scripts/update_dev.sh | bash
 ```
 
+### 旧版安装/更新
+```
+curl --insecure -fsSL  https://raw.githubusercontent.com/midoks/mdserver-web/dev/scripts/old/install.sh | bash
+curl --insecure -fsSL  https://raw.githubusercontent.com/midoks/mdserver-web/dev/scripts/old/update.sh | bash
+```
+
+### 偶然问题
+- 在安装/更新时，突然出现python插件pip,psutil,可尝试如下解决方案
+```
+cd /www/server/mdserver-web rm -rf lib
+cd /www/server/mdserver-web && rm -rf lib64
+cd /www/server/mdserver-web && rm -rf bin
+cd /www/server/mdserver-web && rm -rf include
+
+mw update/mw update_dev
+```
+
 ### 捐赠地址 USDT（TRC20）
 
 TVbNgrpeGBGZVm5gTLa21ADP7RpnPFhjya
@@ -197,9 +209,9 @@ TVbNgrpeGBGZVm5gTLa21ADP7RpnPFhjya
 日行一善，以后必定大富大贵
 
 
-### 微信赞助
+### 支付宝赞助
 
-[![截图](https://cdn.jsdelivr.net/gh/midoks/mdserver-web@latest/route/static/img/weixin_zz.jpg)](https://cdn.jsdelivr.net/gh/midoks/mdserver-web@latest/route/static/img/weixin_zz.jpg)
+[![截图](https://cdn.jsdelivr.net/gh/midoks/mdserver-web@latest/route/static/img/alipay_zz.png)](https://cdn.jsdelivr.net/gh/midoks/mdserver-web@latest/route/static/img/alipay_zz.png)
 
 
 ### 无图不真相
