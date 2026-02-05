@@ -282,6 +282,9 @@ function getFpmConfig(version, pool = 'www'){
         var rdata = $.parseJSON(data.data);
         // console.log(rdata);
         var limitList = "<option value='0'>自定义</option>" +
+            "<option value='1' " + (rdata.max_children == 2 ? 'selected' : '') + ">10并发</option>" +
+            "<option value='1' " + (rdata.max_children == 5 ? 'selected' : '') + ">10并发</option>" +
+            "<option value='1' " + (rdata.max_children == 10 ? 'selected' : '') + ">10并发</option>" +
             "<option value='1' " + (rdata.max_children == 30 ? 'selected' : '') + ">30并发</option>" +
             "<option value='2' " + (rdata.max_children == 50 ? 'selected' : '') + ">50并发</option>" +
             "<option value='3' " + (rdata.max_children == 100 ? 'selected' : '') + ">100并发</option>" +
@@ -318,48 +321,60 @@ function getFpmConfig(version, pool = 'www'){
             var max_spare_servers = rdata.max_spare_servers;
             switch (type) {
                 case '0':
+                    max_children = 2;
+                    start_servers = 1;
+                    min_spare_servers = 1;
+                    max_spare_servers = 2;
+                    break;
+                case '1':
                     max_children = 5;
                     start_servers = 2;
                     min_spare_servers = 1;
                     max_spare_servers = 5;
                     break;
-                case '1':
+                case '2':
+                    max_children = 10;
+                    start_servers = 2;
+                    min_spare_servers = 1;
+                    max_spare_servers = 10;
+                    break;
+                case '3':
                     max_children = 30;
                     start_servers = 5;
                     min_spare_servers = 5;
                     max_spare_servers = 20;
                     break;
-                case '2':
+                case '4':
                     max_children = 50;
                     start_servers = 15;
                     min_spare_servers = 15;
                     max_spare_servers = 35;
                     break;
-                case '3':
+                case '5':
                     max_children = 100;
                     start_servers = 20;
                     min_spare_servers = 20;
                     max_spare_servers = 70;
                     break;
-                case '4':
+                case '6':
                     max_children = 200;
                     start_servers = 25;
                     min_spare_servers = 25;
                     max_spare_servers = 150;
                     break;
-                case '5':
+                case '7':
                     max_children = 300;
                     start_servers = 30;
                     min_spare_servers = 30;
                     max_spare_servers = 180;
                     break;
-                case '6':
+                case '8':
                     max_children = 500;
                     start_servers = 35;
                     min_spare_servers = 35;
                     max_spare_servers = 250;
                     break;
-                case '7':
+                case '9':
                     max_children = 2000;
                     start_servers = 40;
                     min_spare_servers = 40;
