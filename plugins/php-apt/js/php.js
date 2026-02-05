@@ -190,26 +190,33 @@ function phpFpmRoot(version){
     });
 }
 
-
-function getFpmConfig(version){
-    phpPost('get_fpm_conf', version, {}, function(data){
+function getFpmConfig(version, pool = 'www'){
+    phpPost('get_fpm_conf', version, {'pool':pool}, function(data){
         // console.log(data);
         var rdata = $.parseJSON(data.data);
         // console.log(rdata);
         var limitList = "<option value='0'>自定义</option>" +
-            "<option value='1' " + (rdata.max_children == 30 ? 'selected' : '') + ">30并发</option>" +
-            "<option value='2' " + (rdata.max_children == 50 ? 'selected' : '') + ">50并发</option>" +
-            "<option value='3' " + (rdata.max_children == 100 ? 'selected' : '') + ">100并发</option>" +
-            "<option value='4' " + (rdata.max_children == 200 ? 'selected' : '') + ">200并发</option>" +
-            "<option value='5' " + (rdata.max_children == 300 ? 'selected' : '') + ">300并发</option>" +
-            "<option value='6' " + (rdata.max_children == 500 ? 'selected' : '') + ">500并发</option>" +
-            "<option value='7' " + (rdata.max_children == 2000 ? 'selected' : '') + ">2000并发</option>";
+            "<option value='0' " + (rdata.max_children == 2 ? 'selected' : '') + ">2并发</option>" +
+            "<option value='1' " + (rdata.max_children == 5 ? 'selected' : '') + ">5并发</option>" +
+            "<option value='2' " + (rdata.max_children == 10 ? 'selected' : '') + ">10并发</option>" +
+            "<option value='3' " + (rdata.max_children == 30 ? 'selected' : '') + ">30并发</option>" +
+            "<option value='4' " + (rdata.max_children == 50 ? 'selected' : '') + ">50并发</option>" +
+            "<option value='5' " + (rdata.max_children == 100 ? 'selected' : '') + ">100并发</option>" +
+            "<option value='6' " + (rdata.max_children == 200 ? 'selected' : '') + ">200并发</option>" +
+            "<option value='7' " + (rdata.max_children == 300 ? 'selected' : '') + ">300并发</option>" +
+            "<option value='8' " + (rdata.max_children == 500 ? 'selected' : '') + ">500并发</option>" +
+            "<option value='9' " + (rdata.max_children == 2000 ? 'selected' : '') + ">2000并发</option>";
         var pms = [{ 'name': 'static', 'title': '静态' }, { 'name': 'dynamic', 'title': '动态' },{ 'name': 'ondemand', 'title': '按需' }];
         var pmList = '';
         for (var i = 0; i < pms.length; i++) {
             pmList += '<option value="' + pms[i].name + '" ' + ((pms[i].name == rdata.pm) ? 'selected' : '') + '>' + pms[i].title + '</option>';
         }
+
+        var poolHtml = "<option value='www' " + (pool == 'www' ? 'selected' : '') + ">www</option>" +
+            "<option value='backup' " + (pool == 'backup' ? 'selected' : '') + ">backup</option>";
+
         var body = "<div class='bingfa'>" +
+            "<p class='line'><span class='span_tit'>应用池[pool]：</span><select class='bt-input-text' name='pool' style='width:100px;'>" + poolHtml + "</select></p>" +
             "<p class='line'><span class='span_tit'>并发方案：</span><select class='bt-input-text' name='limit' style='width:100px;'>" + limitList + "</select></p>" +
             "<p class='line'><span class='span_tit'>运行模式：</span><select class='bt-input-text' name='pm' style='width:100px;'>" + pmList + "</select><span class='c9'>*PHP-FPM运行模式</span></p>" +
             "<p class='line'><span class='span_tit'>max_children：</span><input class='bt-input-text' type='number' name='max_children' value='" + rdata.max_children + "' /><span class='c9'>*允许创建的最大子进程数</span></p>" +
@@ -227,37 +234,61 @@ function getFpmConfig(version){
             var min_spare_servers = rdata.min_spare_servers;
             var max_spare_servers = rdata.max_spare_servers;
             switch (type) {
+                case '0':
+                    max_children = 2;
+                    start_servers = 1;
+                    min_spare_servers = 1;
+                    max_spare_servers = 2;
+                    break;
                 case '1':
+                    max_children = 5;
+                    start_servers = 2;
+                    min_spare_servers = 1;
+                    max_spare_servers = 5;
+                    break;
+                case '2':
+                    max_children = 10;
+                    start_servers = 2;
+                    min_spare_servers = 1;
+                    max_spare_servers = 10;
+                    break;
+                case '3':
                     max_children = 30;
                     start_servers = 5;
                     min_spare_servers = 5;
                     max_spare_servers = 20;
                     break;
-                case '2':
+                case '4':
                     max_children = 50;
                     start_servers = 15;
                     min_spare_servers = 15;
                     max_spare_servers = 35;
                     break;
-                case '3':
+                case '5':
                     max_children = 100;
                     start_servers = 20;
                     min_spare_servers = 20;
                     max_spare_servers = 70;
                     break;
-                case '4':
+                case '6':
                     max_children = 200;
                     start_servers = 25;
                     min_spare_servers = 25;
                     max_spare_servers = 150;
                     break;
-                case '5':
+                case '7':
                     max_children = 300;
                     start_servers = 30;
                     min_spare_servers = 30;
                     max_spare_servers = 180;
                     break;
-                case '7':
+                case '8':
+                    max_children = 500;
+                    start_servers = 35;
+                    min_spare_servers = 35;
+                    max_spare_servers = 250;
+                    break;
+                case '9':
                     max_children = 2000;
                     start_servers = 40;
                     min_spare_servers = 40;
@@ -269,6 +300,11 @@ function getFpmConfig(version){
             $("input[name='start_servers']").val(start_servers);
             $("input[name='min_spare_servers']").val(min_spare_servers);
             $("input[name='max_spare_servers']").val(max_spare_servers);
+        });
+
+        $('select[name="pool"]').change(function(){
+            var pool = $(this).val();
+            getFpmConfig(version, pool);
         });
     });
 }
