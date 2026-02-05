@@ -282,8 +282,8 @@ function getFpmConfig(version, pool = 'www'){
         var rdata = $.parseJSON(data.data);
         // console.log(rdata);
         var limitList = "<option value='0'>自定义</option>" +
-            "<option value='0' " + (rdata.max_children == 2 ? 'selected' : '') + ">10并发</option>" +
-            "<option value='1' " + (rdata.max_children == 5 ? 'selected' : '') + ">10并发</option>" +
+            "<option value='0' " + (rdata.max_children == 2 ? 'selected' : '') + ">2并发</option>" +
+            "<option value='1' " + (rdata.max_children == 5 ? 'selected' : '') + ">5并发</option>" +
             "<option value='2' " + (rdata.max_children == 10 ? 'selected' : '') + ">10并发</option>" +
             "<option value='3' " + (rdata.max_children == 30 ? 'selected' : '') + ">30并发</option>" +
             "<option value='4' " + (rdata.max_children == 50 ? 'selected' : '') + ">50并发</option>" +
