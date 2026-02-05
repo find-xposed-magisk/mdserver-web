@@ -317,6 +317,12 @@ function getFpmConfig(version, pool = 'www'){
             var min_spare_servers = rdata.min_spare_servers;
             var max_spare_servers = rdata.max_spare_servers;
             switch (type) {
+                case '0':
+                    max_children = 5;
+                    start_servers = 2;
+                    min_spare_servers = 1;
+                    max_spare_servers = 5;
+                    break;
                 case '1':
                     max_children = 30;
                     start_servers = 5;
