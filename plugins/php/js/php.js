@@ -282,16 +282,16 @@ function getFpmConfig(version, pool = 'www'){
         var rdata = $.parseJSON(data.data);
         // console.log(rdata);
         var limitList = "<option value='0'>自定义</option>" +
-            "<option value='1' " + (rdata.max_children == 2 ? 'selected' : '') + ">10并发</option>" +
+            "<option value='0' " + (rdata.max_children == 2 ? 'selected' : '') + ">10并发</option>" +
             "<option value='1' " + (rdata.max_children == 5 ? 'selected' : '') + ">10并发</option>" +
-            "<option value='1' " + (rdata.max_children == 10 ? 'selected' : '') + ">10并发</option>" +
-            "<option value='1' " + (rdata.max_children == 30 ? 'selected' : '') + ">30并发</option>" +
-            "<option value='2' " + (rdata.max_children == 50 ? 'selected' : '') + ">50并发</option>" +
-            "<option value='3' " + (rdata.max_children == 100 ? 'selected' : '') + ">100并发</option>" +
-            "<option value='4' " + (rdata.max_children == 200 ? 'selected' : '') + ">200并发</option>" +
-            "<option value='5' " + (rdata.max_children == 300 ? 'selected' : '') + ">300并发</option>" +
-            "<option value='6' " + (rdata.max_children == 500 ? 'selected' : '') + ">500并发</option>" +
-            "<option value='7' " + (rdata.max_children == 2000 ? 'selected' : '') + ">2000并发</option>";
+            "<option value='2' " + (rdata.max_children == 10 ? 'selected' : '') + ">10并发</option>" +
+            "<option value='3' " + (rdata.max_children == 30 ? 'selected' : '') + ">30并发</option>" +
+            "<option value='4' " + (rdata.max_children == 50 ? 'selected' : '') + ">50并发</option>" +
+            "<option value='5' " + (rdata.max_children == 100 ? 'selected' : '') + ">100并发</option>" +
+            "<option value='6' " + (rdata.max_children == 200 ? 'selected' : '') + ">200并发</option>" +
+            "<option value='7' " + (rdata.max_children == 300 ? 'selected' : '') + ">300并发</option>" +
+            "<option value='8' " + (rdata.max_children == 500 ? 'selected' : '') + ">500并发</option>" +
+            "<option value='9' " + (rdata.max_children == 2000 ? 'selected' : '') + ">2000并发</option>";
         var pms = [{ 'name': 'static', 'title': '静态' }, { 'name': 'dynamic', 'title': '动态' },{ 'name': 'ondemand', 'title': '按需' }];
         var pmList = '';
         for (var i = 0; i < pms.length; i++) {
