@@ -17,7 +17,7 @@ if [ ! -d ${SERVER_ROOT}/freetype ];then
     cd $SOURCE_ROOT
 
     if [ ! -f $SOURCE_ROOT/freetype-2.12.1.tar.gz ];then
-	   wget -O freetype-2.12.1.tar.gz --no-check-certificate https://download.savannah.gnu.org/releases/freetype/freetype-2.12.1.tar.gz  -T 5
+	   wget -O freetype-2.12.1.tar.gz --no-check-certificate https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.12.1.tar.gz  -T 5
     fi
 
     if [ ! -d $SOURCE_ROOT/freetype-2.12.1 ];then
