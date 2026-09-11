@@ -18,7 +18,7 @@ Install_LVS(){
 	mkdir -p $serverPath/source
 
 	which ipvsadm
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		echo '已安装LVS!!'
 		exit 0
 	fi
@@ -27,17 +27,17 @@ Install_LVS(){
 
 	# 检测平台命令
 	which apt
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		apt install -y ipvsadm
 	fi
 
 	which yum
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		yum install -y ipvsadm
 	fi
 
 	which ipvsadm
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		echo '正在安装LVS成功!'
 		mkdir -p $serverPath/lvs
 
@@ -59,12 +59,12 @@ Uninstall_LVS()
 {
 	# 检测平台命令
 	which apt
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		apt remove -y ipvsadm
 	fi
 
 	which yum
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		yum uninstall -y ipvsadm
 	fi
 	echo "卸载LVS完成"
@@ -75,7 +75,7 @@ Uninstall_LVS()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_LVS
 else
 	Uninstall_LVS

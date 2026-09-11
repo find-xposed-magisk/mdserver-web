@@ -19,23 +19,23 @@ LIBV=5.1.6
 
 if [ "$version" -lt "70" ];then
 	LIBV=1.10.1
-elif [ "$version" == "70" ];then
+elif [ "$version" = "70" ];then
 	LIBV=4.3.0
-elif [ "$version" == "71" ];then
+elif [ "$version" = "71" ];then
 	LIBV=4.5.2
 elif [ "$version" -le "74" ];then
 	LIBV=4.8.10
 elif [ "$version" -lt "80" ];then
 	LIBV=6.0.2
-elif [ "$version" == "81" ];then
+elif [ "$version" = "81" ];then
 	LIBV=6.1.7
-elif [ "$version" == "82" ];then
+elif [ "$version" = "82" ];then
 	LIBV=6.2.0
-elif [ "$version" == "83" ];then
+elif [ "$version" = "83" ];then
 	LIBV=6.2.0
-elif [ "$version" == "84" ];then
+elif [ "$version" = "84" ];then
 	LIBV=6.2.0
-elif [ "$version" == "85" ];then
+elif [ "$version" = "85" ];then
 	LIBV=6.2.0
 else
 	echo 'other?'
@@ -51,7 +51,7 @@ NON_ZTS_FILENAME=`ls $serverPath/php/${version}/${LIB_PATH_NAME}/extensions | gr
 extFile=$serverPath/php/${version}/${LIB_PATH_NAME}/extensions/${NON_ZTS_FILENAME}/${LIBNAME}.so
 
 sysName=`uname`
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	BAK='_bak'
 else
 	BAK=''
@@ -81,7 +81,7 @@ Install_lib()
 		cd $php_lib/${LIBNAME}-${LIBV}
 
 		OPTIONS=""
-		if [ "${SYS_ARCH}" == "aarch64" ] && [ "$version" -lt "56" ];then
+		if [ "${SYS_ARCH}" = "aarch64" ] && [ "$version" -lt "56" ];then
 			OPTIONS="$OPTIONS --build=aarch64-unknown-linux-gnu --host=aarch64-unknown-linux-gnu"
 		fi
 		
@@ -144,8 +144,8 @@ Uninstall_lib()
 
 
 
-if [ "$actionType" == 'install' ];then
+if [ "$actionType" = 'install' ];then
 	Install_lib
-elif [ "$actionType" == 'uninstall' ];then
+elif [ "$actionType" = 'uninstall' ];then
 	Uninstall_lib
 fi

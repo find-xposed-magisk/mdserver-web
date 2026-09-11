@@ -57,7 +57,7 @@ Install_mysql()
 
 	COMMUNITY_INSTALL
 
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		mkdir -p $serverPath/mysql-community
 		echo '8.0' > $serverPath/mysql-community/version.pl
 		echo '安装完成'
@@ -76,7 +76,7 @@ Uninstall_mysql()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_mysql
 else
 	Uninstall_mysql

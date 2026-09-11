@@ -58,7 +58,7 @@ Install_openresty()
 	fi
 
 	DOWNLOAD_SIZE=`wc -c ${openrestyDir}/openresty-${VERSION}.tar.gz | awk '{print $1}'`
-	if [ "$DOWNLOAD_SIZE" == "0" ];then
+	if [ "$DOWNLOAD_SIZE" = "0" ];then
 		echo 'download failed, download again'
 		rm -rf ${openrestyDir}/openresty-${VERSION}.tar.gz
 	fi
@@ -75,7 +75,7 @@ Install_openresty()
 	opensslVersion="3.4.4"
 	libresslVersion="3.9.1"
 	pcreVersion='8.45'
-	if [ "$sysName" == "Darwin" ];then
+	if [ "$sysName" = "Darwin" ];then
 
 		if [ ! -f ${openrestyDir}/pcre-${pcreVersion}.tar.gz ];then
 			wget --no-check-certificate -O ${openrestyDir}/pcre-${pcreVersion}.tar.gz https://netix.dl.sourceforge.net/project/pcre/pcre/${pcreVersion}/pcre-${pcreVersion}.tar.gz
@@ -169,7 +169,7 @@ Install_openresty()
 	# 用于调式
 
 	CMD_MAKE=`which gmake`
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		gmake -j${cpuCore} && gmake install && gmake clean
 	else
 		make -j${cpuCore} && make install && make clean
@@ -205,7 +205,7 @@ Uninstall_openresty()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_openresty
 else
 	Uninstall_openresty

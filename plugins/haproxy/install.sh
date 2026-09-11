@@ -22,7 +22,7 @@ else
 	useradd -g haproxy haproxy
 fi
 
-if [ "${2}" == "" ];then
+if [ "${2}" = "" ];then
 	echo '缺少安装脚本...'
 	exit 0
 fi 
@@ -32,7 +32,7 @@ if [ ! -d $curPath/versions/$2 ];then
 	exit 0
 fi
 
-if [ "${action}" == "uninstall" ];then
+if [ "${action}" = "uninstall" ];then
 	
 	if [ -f /usr/lib/systemd/system/haproxy.service ] || [ -f /lib/systemd/system/haproxy.service ];then
 		systemctl stop haproxy
@@ -45,7 +45,7 @@ fi
 
 sh -x $curPath/versions/$2/install.sh $1
 
-if [ "${action}" == "install" ] && [ -d $serverPath/haproxy ];then
+if [ "${action}" = "install" ] && [ -d $serverPath/haproxy ];then
 	#初始化 
 	cd ${rootPath} && python3 ${rootPath}/plugins/haproxy/index.py start ${type}
 	cd ${rootPath} && python3 ${rootPath}/plugins/haproxy/index.py initd_install ${type}

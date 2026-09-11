@@ -32,7 +32,7 @@ LOG_FILE=/var/log/mw-update.log
 HTTP_PREFIX="https://"
 LOCAL_ADDR=common
 cn=$(curl -fsSL -m 10 -s http://ipinfo.io/json | grep "\"country\": \"CN\"")
-if [ ! -z "$cn" ] || [ "$?" == "0" ] ;then
+if [ ! -z "$cn" ] || [ "$?" = "0" ] ;then
     LOCAL_ADDR=cn
 fi
 
@@ -106,7 +106,7 @@ function ChooseProxyURL(){
 
     read -p "${CHOICE_A}" INPUT
     # echo $INPUT
-    if [ "$INPUT" == "" ];then
+    if [ "$INPUT" = "" ];then
         INPUT=1
         TMP_INPUT=`expr $INPUT - 1`
         INPUT_KEY=${SOURCE_LIST_KEY[$TMP_INPUT]}
@@ -149,7 +149,7 @@ if [ "$LOCAL_ADDR" != "common" ];then
     fi
 fi
 
-if [ ${_os} == "Darwin" ]; then
+if [ ${_os} = "Darwin" ]; then
     OSNAME='macos'
 elif grep -Eqi "openSUSE" /etc/*-release; then
     OSNAME='opensuse'

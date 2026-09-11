@@ -27,7 +27,7 @@ else
 fi
 
 NGINX_IDS=`ps -ef|grep caddy | grep -v grep| awk '{print $2}'`
-if [ "$NGINX_IDS" == "" ];then
+if [ "$NGINX_IDS" = "" ];then
     ps -ef|grep caddy| grep -v grep| awk '{print $2}' | xargs kill -9
     systemctl start "$service_name"
     echo "caddy未运行，正在启动服务..."

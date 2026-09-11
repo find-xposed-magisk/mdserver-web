@@ -36,7 +36,7 @@ Install_App()
 	cd $VALKEY_DIR && tar -zxvf ${FILE_TGZ}
 
 	CMD_MAKE=`which gmake`
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		cd valkey-${VERSION} && gmake PREFIX=$serverPath/valkey install
 	else
 		cd valkey-${VERSION} && make PREFIX=$serverPath/valkey install
@@ -89,7 +89,7 @@ Uninstall_App()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_App
 else
 	Uninstall_App

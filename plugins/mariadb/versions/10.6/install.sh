@@ -65,13 +65,13 @@ Install_app()
 	fi
 	
 	OPTIONS=''
-	if [ "$sysName" == "Darwin" ];then
+	if [ "$sysName" = "Darwin" ];then
 		OPTIONS='-DPLUGIN_TOKUDB=NO'
 	fi
 
 	INSTALL_CMD=cmake
 	CMAKE3=`which cmake3`
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		INSTALL_CMD=cmake3
 	fi
 
@@ -116,7 +116,7 @@ Uninstall_app()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_app
 else
 	Uninstall_app

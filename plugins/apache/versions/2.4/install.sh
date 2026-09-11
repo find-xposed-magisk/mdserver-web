@@ -19,7 +19,7 @@ apacheDir=${serverPath}/source/apache
 
 Install_App()
 {
-	if [ "${action}" == "install" ];then
+	if [ "${action}" = "install" ];then
 		if [ -d $serverPath/apache ];then
 			exit 0
 		fi
@@ -71,7 +71,7 @@ Install_App()
 		cd ${apacheDir} && tar -jxf apr-${APR_VERSION}.tar.bz2
 		cd ${apacheDir}/apr-${APR_VERSION} && ./configure --prefix=${serverPath}/apache/apr
 		make -j${cpuCore} && make install
-		if [ "$?" == "0" ];then
+		if [ "$?" = "0" ];then
 					# 检查 APR 配置文件
 					APR_CONFIG=$(find ${serverPath}/apache/apr -name "apr-*config" | head -1)
 					if [ -z "$APR_CONFIG" ];then
@@ -90,7 +90,7 @@ Install_App()
 		cd ${apacheDir} && tar -jxf apr-util-${APR_UTIL_VERSION}.tar.bz2
 		cd ${apacheDir}/apr-util-${APR_UTIL_VERSION} && ./configure --prefix=${serverPath}/apache/apr-util --with-apr=${serverPath}/apache/apr
 		make -j${cpuCore} && make install
-		if [ "$?" == "0" ];then
+		if [ "$?" = "0" ];then
 					# 检查 APR-util 配置文件
 					APU_CONFIG=$(find ${serverPath}/apache/apr-util -name "apu-*config" | head -1)
 					if [ -z "$APU_CONFIG" ];then
@@ -163,9 +163,9 @@ Uninstall_App()
 }
 
 action=$1
-if [ "${1}" == "install" ];then
+if [ "${1}" = "install" ];then
 	Install_App
-elif [ "${1}" == "upgrade" ];then
+elif [ "${1}" = "upgrade" ];then
 	Install_App
 else
 	Uninstall_App

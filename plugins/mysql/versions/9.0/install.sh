@@ -17,7 +17,7 @@ mysqlDir=${serverPath}/source/mysql
 
 _os=`uname`
 echo "use system: ${_os}"
-if [ ${_os} == "Darwin" ]; then
+if [ ${_os} = "Darwin" ]; then
 	OSNAME='macos'
 elif grep -Eq "openSUSE" /etc/*-release; then
 	OSNAME='opensuse'
@@ -108,7 +108,7 @@ Install_mysql()
 	md5_mysql_ok=90dc27a8b64eee938a0bb045c580b80c
 	if [ -f ${mysqlDir}/mysql-${VERSION}.tar.gz ];then
 		md5_mysql=`md5sum ${mysqlDir}/mysql-${VERSION}.tar.gz  | awk '{print $1}'`
-		if [ "${md5_mysql_ok}" == "${md5_mysql}" ]; then
+		if [ "${md5_mysql_ok}" = "${md5_mysql}" ]; then
 			echo "mysql9.0 file check ok"
 		else
 			# 重新下载
@@ -133,7 +133,7 @@ Install_mysql()
 
 	WHERE_DIR_GCC=/usr/bin/gcc
 	WHERE_DIR_GPP=/usr/bin/g++
-	if [ "$OSNAME" == "centos" ] && [ "$VERSION_ID" == "7" ];then
+	if [ "$OSNAME" = "centos" ] && [ "$VERSION_ID" = "7" ];then
 		yum install -y libudev-devel
 		yum install -y centos-release-scl
         yum install -y devtoolset-11-gcc devtoolset-11-gcc-c++ devtoolset-11-binutils
@@ -145,7 +145,7 @@ Install_mysql()
 		echo $WHERE_DIR_GPP
 	fi
 
-	if [ "$OSNAME" == "ubuntu" ];then
+	if [ "$OSNAME" = "ubuntu" ];then
 		apt install -y libudev-dev
 		apt install -y libtirpc-dev
 		apt install -y libssl-dev
@@ -171,7 +171,7 @@ Install_mysql()
 	fi
 
 
-	if [ "$OSNAME" == "opensuse" ];then
+	if [ "$OSNAME" = "opensuse" ];then
 		zypper install -y gcc11
 		zypper install -y gcc11-c++
 
@@ -224,7 +224,7 @@ Uninstall_mysql()
 }
 
 action=$1
-if [ "${1}" == "install" ];then
+if [ "${1}" = "install" ];then
 	Install_mysql
 else
 	Uninstall_mysql

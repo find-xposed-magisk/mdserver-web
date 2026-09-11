@@ -8,11 +8,11 @@ rootPath=$(dirname "$rootPath")
 serverPath=$(dirname "$rootPath")
 
 # cd /www/server/mdserver-web/plugins/mariadb && bash install.sh install 8.2
-# cd /www/server/mdserver-web && source bin/activate && python3 plugins/mariadb/index.py try_slave_sync_bugfix {}
-# cd /www/server/mdserver-web && source bin/activate && python3 plugins/mariadb/index.py do_full_sync  {"db":"xxx","sign":"","begin":1}
-# cd /www/server/mdserver-web && source bin/activate && python3 plugins/mariadb/index.py sync_database_repair  {"db":"xxx","sign":""}
-# cd /www/server/mdserver-web && source bin/activate && python3 plugins/mariadb/index.py init_slave_status
-# cd /www/server/mdserver-web && source bin/activate && python3 plugins/mariadb/index.py install_pre_inspection
+# cd /www/server/mdserver-web && . bin/activate && python3 plugins/mariadb/index.py try_slave_sync_bugfix {}
+# cd /www/server/mdserver-web && . bin/activate && python3 plugins/mariadb/index.py do_full_sync  {"db":"xxx","sign":"","begin":1}
+# cd /www/server/mdserver-web && . bin/activate && python3 plugins/mariadb/index.py sync_database_repair  {"db":"xxx","sign":""}
+# cd /www/server/mdserver-web && . bin/activate && python3 plugins/mariadb/index.py init_slave_status
+# cd /www/server/mdserver-web && . bin/activate && python3 plugins/mariadb/index.py install_pre_inspection
 
 
 action=$1
@@ -26,7 +26,7 @@ else
 	useradd -g mysql -s /usr/sbin/nologin mysql
 fi
 
-if [ "${2}" == "" ];then
+if [ "${2}" = "" ];then
 	echo '缺少安装脚本...'
 	exit 0
 fi 
@@ -36,7 +36,7 @@ if [ ! -d $curPath/versions/$2 ];then
 	exit 0
 fi
 
-if [ "${action}" == "uninstall" ];then
+if [ "${action}" = "uninstall" ];then
 	
 	if [ -f /usr/lib/systemd/system/mariadb.service ] || [ -f /lib/systemd/system/mariadb.service ];then
 		systemctl stop mariadb
@@ -49,7 +49,7 @@ fi
 
 sh -x $curPath/versions/$2/install.sh $1
 
-if [ "${action}" == "install" ] && [ -d $serverPath/mariadb ];then
+if [ "${action}" = "install" ] && [ -d $serverPath/mariadb ];then
 	#初始化 
 	cd ${rootPath} && python3 ${rootPath}/plugins/mariadb/index.py start ${type}
 	cd ${rootPath} && python3 ${rootPath}/plugins/mariadb/index.py initd_install ${type}

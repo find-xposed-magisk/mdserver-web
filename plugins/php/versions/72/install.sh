@@ -11,7 +11,7 @@ sysName=`uname`
 SYS_ARCH=`arch`
 
 echo "use system: ${sysName}"
-if [ ${sysName} == "Darwin" ]; then
+if [ ${sysName} = "Darwin" ]; then
 	OSNAME='macos'
 elif grep -Eq "openSUSE" /etc/*-release; then
 	OSNAME='opensuse'
@@ -69,11 +69,11 @@ if [ ! -d $sourcePath/php/php${PHP_VER} ];then
 	# 中国优化安装
 	cn=$(curl -fsSL -m 10 -s http://ipinfo.io/json | grep "\"country\": \"CN\"")
 	LOCAL_ADDR=common
-	if [ ! -z "$cn" ] || [ "$?" == "0" ] ;then
+	if [ ! -z "$cn" ] || [ "$?" = "0" ] ;then
 		LOCAL_ADDR=cn
 	fi
 
-	if [ "$LOCAL_ADDR" == "cn" ];then
+	if [ "$LOCAL_ADDR" = "cn" ];then
 		if [ ! -f $sourcePath/php/php-${version}.tar.xz ];then
 			wget --no-check-certificate -O $sourcePath/php/php-${version}.tar.xz https://mirrors.nju.edu.cn/php/php-${version}.tar.xz
 		fi
@@ -98,14 +98,14 @@ if [ ! -d $sourcePath/php/php${PHP_VER} ];then
 fi
 
 OPTIONS='--without-iconv'
-if [ $sysName == 'Darwin' ]; then	
+if [ $sysName = 'Darwin' ]; then	
 	OPTIONS="${OPTIONS} --with-curl=$(brew --prefix curl)"
 	OPTIONS="${OPTIONS} --with-pcre-dir=$(brew --prefix pcre2)"
 else
 	OPTIONS="${OPTIONS} --with-readline"
 fi
 IS_64BIT=`getconf LONG_BIT`
-if [ "$IS_64BIT" == "64" ];then
+if [ "$IS_64BIT" = "64" ];then
 	OPTIONS="${OPTIONS} --with-libdir=lib64"
 fi
 
@@ -140,16 +140,16 @@ RELOAD_CODE(){
 	echo "cat ${curPath}/versions/${PHP_VER}/src/reentrancy.c > $sourcePath/php/php${PHP_VER}/main/reentrancy.c"
 }
 
-if [ "${SYS_ARCH}" == "arm64" ];then
+if [ "${SYS_ARCH}" = "arm64" ];then
 	# 修复arm64架构下安装
 	RELOAD_CODE
 fi
 
-if [ "${OSNAME}" == "debian" ] && [ "${VERSION_ID}" == "13" ];then
+if [ "${OSNAME}" = "debian" ] && [ "${VERSION_ID}" = "13" ];then
 	RELOAD_CODE
 fi
 
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	BREW_DIR=`which brew`
 	BREW_DIR=${BREW_DIR/\/bin\/brew/}
 
@@ -202,7 +202,7 @@ Uninstall_php()
 }
 
 action=${1}
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_php
 else
 	Uninstall_php

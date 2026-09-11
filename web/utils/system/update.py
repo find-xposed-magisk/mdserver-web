@@ -115,9 +115,9 @@ P_VER=`python3 -V | awk '{print $2}'`
 
 if [ ! -f /www/server/mdserver-web/bin/activate ];then
 cd /www/server/mdserver-web && python3 -m venv .
-cd /www/server/mdserver-web && source /www/server/mdserver-web/bin/activate
+cd /www/server/mdserver-web && . /www/server/mdserver-web/bin/activate
 else
-cd /www/server/mdserver-web && source /www/server/mdserver-web/bin/activate
+cd /www/server/mdserver-web && . /www/server/mdserver-web/bin/activate
 fi
 
 cn=$(curl -fsSL -m 10 http://ipinfo.io/json | grep "\"country\": \"CN\"")

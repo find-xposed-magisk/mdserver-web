@@ -40,7 +40,7 @@ Uninstall_xh()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_xh $2
 else
 	Uninstall_xh $2

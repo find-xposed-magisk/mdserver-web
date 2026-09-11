@@ -2,9 +2,9 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin:/opt/homebrew/bin
 
 function version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
-function version_le() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" == "$1"; }
+function version_le() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" = "$1"; }
 function version_lt() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" != "$1"; }
-function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" == "$1"; }
+function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" = "$1"; }
 
 P_VER=`python3 -V | awk '{print $2}'`
 echo "python:$P_VER"
@@ -26,30 +26,30 @@ OSNAME=`cat ${rootPath}/data/osname.pl`
 VERSION_ID=`cat /etc/*-release | grep VERSION_ID | awk -F = '{print $2}' | awk -F "\"" '{print $2}'`
 
 # system judge
-if [ "$OSNAME" == "macos" ]; then
+if [ "$OSNAME" = "macos" ]; then
     brew install libmemcached
     brew install curl
     brew install zlib
     brew install freetype
     brew install openssl
     brew install libzip
-elif [ "$OSNAME" == "opensuse" ];then
+elif [ "$OSNAME" = "opensuse" ];then
     echo "opensuse lib"
-elif [ "$OSNAME" == "arch" ];then
+elif [ "$OSNAME" = "arch" ];then
     echo "arch lib"
-elif [ "$OSNAME" == "freebsd" ];then
+elif [ "$OSNAME" = "freebsd" ];then
     echo "freebsd lib"
-elif [ "$OSNAME" == "centos" ];then
+elif [ "$OSNAME" = "centos" ];then
     echo "centos lib"
-elif [ "$OSNAME" == "rocky" ]; then
+elif [ "$OSNAME" = "rocky" ]; then
     echo "rocky lib"
-elif [ "$OSNAME" == "fedora" ];then
+elif [ "$OSNAME" = "fedora" ];then
     echo "fedora lib"
-elif [ "$OSNAME" == "alma" ];then
+elif [ "$OSNAME" = "alma" ];then
     echo "alma lib"
-elif [ "$OSNAME" == "ubuntu" ];then
+elif [ "$OSNAME" = "ubuntu" ];then
     echo "ubuntu lib"
-elif [ "$OSNAME" == "debian" ]; then
+elif [ "$OSNAME" = "debian" ]; then
     echo "debian lib"
 else
     echo "OK"
@@ -60,7 +60,7 @@ echo "system:${OSNAME}:${VERSION_ID}"
 HTTP_PREFIX="https://"
 LOCAL_ADDR=common
 cn=$(curl -fsSL -m 10 -s http://ipinfo.io/json | grep "\"country\": \"CN\"")
-if [ ! -z "$cn" ] || [ "$?" == "0" ] ;then
+if [ ! -z "$cn" ] || [ "$?" = "0" ] ;then
     LOCAL_ADDR=cn
 fi
 

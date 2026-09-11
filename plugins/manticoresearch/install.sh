@@ -16,18 +16,18 @@ sysArch=`arch`
 # systemctl restart manticore
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 ACTION=$1
 VERSION=$2
 
 which apt
-if [ "$?" == "0" ];then
+if [ "$?" = "0" ];then
 	sh -x $curPath/versions/apt/install.sh $1 $2
 fi
 
 which yum
-if [ "$?" == "0" ];then
+if [ "$?" = "0" ];then
 	sh -x $curPath/versions/yum/install.sh $1 $2
 fi

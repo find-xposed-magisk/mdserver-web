@@ -19,7 +19,7 @@ else
 fi
 
 _os=`uname`
-if [ ${_os} == "Darwin" ]; then
+if [ ${_os} = "Darwin" ]; then
     OSNAME='macos'
 elif grep -Eqi "Debian" /etc/issue || grep -Eq "Debian" /etc/*-release; then
     OSNAME='debian'
@@ -33,7 +33,7 @@ action=$1
 type=$2
 apt_ver=${type:0:1}.${type:1:2}
 
-if [ "${2}" == "" ];then
+if [ "${2}" = "" ];then
 	echo '缺少安装脚本...'
 	exit 0
 fi 
@@ -44,16 +44,16 @@ if [ ! -d $curPath/versions/$2 ];then
 fi
 
 
-if [ "$OSNAME" == "ubuntu" ];then
+if [ "$OSNAME" = "ubuntu" ];then
 	find_source=`ls /etc/apt/sources.list.d | grep ondrej-ubuntu-php`
-	if [ "$find_source" == "" ];then
+	if [ "$find_source" = "" ];then
 		echo "y" | LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php && apt update -y
 	fi
 fi
 # apt install $(grep-aptavail -S PHP-defaults -s Package -n)
 
 
-if [ ! -f /etc/apt/sources.list.d/php.list ] && [ "$OSNAME" == "debian" ];then
+if [ ! -f /etc/apt/sources.list.d/php.list ] && [ "$OSNAME" = "debian" ];then
 	# install php source
 	apt install -y apt-transport-https lsb-release ca-certificates curl
 	cn=$(curl -fsSL -m 10 http://ipinfo.io/json | grep "\"country\": \"CN\"")
@@ -68,7 +68,7 @@ if [ ! -f /etc/apt/sources.list.d/php.list ] && [ "$OSNAME" == "debian" ];then
 fi 
 
 
-if [ "${action}" == "uninstall" ] && [ -d ${serverPath}/php-apt/${type} ];then
+if [ "${action}" = "uninstall" ] && [ -d ${serverPath}/php-apt/${type} ];then
 	#初始化 
 	cd ${rootPath} && python3 ${rootPath}/plugins/php-apt/index.py stop ${type}
 	cd ${rootPath} && python3 ${rootPath}/plugins/php-apt/index.py initd_uninstall ${type}
@@ -86,7 +86,7 @@ fi
 
 cd ${curPath} && sh -x $curPath/versions/$2/install.sh $1
 
-if [ "${action}" == "install" ] && [ -d ${serverPath}/php-apt/${type} ];then
+if [ "${action}" = "install" ] && [ -d ${serverPath}/php-apt/${type} ];then
 	apt update -y
 	
 	#初始化 

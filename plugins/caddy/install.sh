@@ -33,7 +33,7 @@ else
 	useradd -g www -s /bin/bash www
 fi
 
-if [ "${action}" == "upgrade" ];then
+if [ "${action}" = "upgrade" ];then
 	sh -x $curPath/versions/$2/install.sh $1
 	
 	echo "${VERSION}" > $serverPath/caddy/version.pl
@@ -45,12 +45,12 @@ if [ "${action}" == "upgrade" ];then
 fi
 
 
-if [ "${2}" == "" ];then
+if [ "${2}" = "" ];then
 	echo '缺少安装脚本版本...'
 	exit 0
 fi 
 
-if [ "${action}" == "uninstall" ];then
+if [ "${action}" = "uninstall" ];then
 	if [ -f /usr/lib/systemd/system/caddy.service ] || [ -f /lib/systemd/system/caddy.service ];then
 		systemctl stop caddy
 		rm -rf /usr/systemd/system/caddy.service
@@ -67,7 +67,7 @@ fi
 
 sh -x $curPath/versions/$2/install.sh $1
 
-if [ "${action}" == "install" ] && [ -d $serverPath/caddy ];then
+if [ "${action}" = "install" ] && [ -d $serverPath/caddy ];then
 	echo "${VERSION}" > $serverPath/caddy/version.pl
 
 	#初始化 

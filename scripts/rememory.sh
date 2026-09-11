@@ -14,7 +14,7 @@ log="释放内存!"
 echo "★[$endDate] $log"
 echo '----------------------------------------------------------------------------'
 
-if [ $sysName == 'Darwin' ]; then
+if [ $sysName = 'Darwin' ]; then
 	echo '苹果内存释放!'
 else
 	echo 'do start!'
@@ -32,7 +32,7 @@ fi
 echo "OpenResty -- END"
 
 
-PHP_VER_LIST=(53 54 55 56 70 71 72 73 74 80 81 82 83 84)
+PHP_VER_LIST=(53 54 55 56 70 71 72 73 74 80 81 82 83 84 85)
 for PHP_VER in ${PHP_VER_LIST[@]}; do
 echo "PHP${PHP_VER} -- START"
 if [ -f /usr/lib/systemd/system/php${PHP_VER}.service ];then
@@ -72,7 +72,7 @@ sync
 sleep 2
 sync
 
-if [ $sysName == 'Darwin' ]; then
+if [ $sysName = 'Darwin' ]; then
 	echo 'done!'
 else
 	echo 3 > /proc/sys/vm/drop_caches

@@ -24,7 +24,7 @@ extSoFile=$extFile/modules/${LIBNAME}.so
 cfgDir=/etc/opt/remi/php${version}/php.d
 extIni=${cfgDir}/10-${LIBNAME}.ini
 
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	BAK='_bak'
 else
 	BAK=''
@@ -82,8 +82,8 @@ Uninstall_lib()
 }
 
 
-if [ "$actionType" == 'install' ];then
+if [ "$actionType" = 'install' ];then
 	Install_lib
-elif [ "$actionType" == 'uninstall' ];then
+elif [ "$actionType" = 'uninstall' ];then
 	Uninstall_lib
 fi

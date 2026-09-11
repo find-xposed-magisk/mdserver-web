@@ -6,7 +6,7 @@ curPath=`pwd`
 # bash plugins/cryptocurrency_trade/ccxt/public_data/data.sh
 
 if [ -f ${curPath}/bin/activate ];then
-	source ${curPath}/bin/activate
+	. ${curPath}/bin/activate
 fi
 
 python3 plugins/cryptocurrency_trade/ccxt/public_data/data.py long

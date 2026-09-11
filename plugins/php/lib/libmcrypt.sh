@@ -22,7 +22,7 @@ for S_DIR in ${SYS_DIR[@]}; do
     fi
 done
 
-if [ $ISFIND == "0" ];then
+if [ $ISFIND = "0" ];then
     cd $SOURCE_ROOT
     if [ ! -f ${SOURCE_ROOT}/libmcrypt-2.5.8.tar.gz ];then
         wget --no-check-certificate -O libmcrypt-2.5.8.tar.gz  https://sourceforge.net/projects/mcrypt/files/Libmcrypt/2.5.8/libmcrypt-2.5.8.tar.gz -T 20

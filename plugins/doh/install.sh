@@ -8,7 +8,7 @@ rootPath=$(dirname "$rootPath")
 serverPath=$(dirname "$rootPath")
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 
@@ -43,7 +43,7 @@ Install_App()
 	echo '正在安装脚本文件...'
 	version=$1
 
-	if [ "macos" == "$OSNAME" ];then
+	if [ "macos" = "$OSNAME" ];then
 		echo "not support!"
 		exit
 	else
@@ -95,7 +95,7 @@ Uninstall_App()
 
 action=$1
 version=$2
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_App $version
 else
 	Uninstall_App $version

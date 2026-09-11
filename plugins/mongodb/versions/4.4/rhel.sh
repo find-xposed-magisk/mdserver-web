@@ -15,7 +15,7 @@ SYS_VERSION_ID=`cat /etc/*-release | grep VERSION_ID | awk -F = '{print $2}' | a
 SYS_NAME=${SYS_VERSION_ID/./}
 SYS_NAME_LEN=`echo "$SYS_NAME" | wc -L`
 
-if [ "$SYS_NAME_LEN" == "1" ];then
+if [ "$SYS_NAME_LEN" = "1" ];then
 	SYS_NAME=${SYS_NAME}0	
 fi
 
@@ -46,7 +46,7 @@ cd ${MG_DIR} && rm -rf ${MG_DIR}/${FILE_NAME}
 #--------------- mongosh tool install ------------------ #
 TOOL_VERSION=2.2.5
 TOOL_FILE_NAME=mongosh-${TOOL_VERSION}-linux-x64
-if [ "aarch64" == ${SYS_ARCH} ];then
+if [ "aarch64" = ${SYS_ARCH} ];then
 	TOOL_FILE_NAME=mongosh-${TOOL_VERSION}-linux-arm64
 fi
 TOOL_FILE_NAME_TGZ=${TOOL_FILE_NAME}.tgz

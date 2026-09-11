@@ -9,7 +9,7 @@ serverPath=$(dirname "$rootPath")
 
 # pip install pyinotify
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 pip install pyinotify
 
@@ -51,7 +51,7 @@ Uninstall_App()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_App
 else
 	Uninstall_App

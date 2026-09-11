@@ -17,7 +17,7 @@ OSNAME=`cat ${rootPath}/data/osname.pl`
 
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 if id www &> /dev/null ;then 
@@ -35,13 +35,13 @@ Install_rsyncd()
 	echo '正在安装脚本文件...'
 	
 
-	if [ "$OSNAME" == "debian" ] || [ "$OSNAME" == "ubuntu" ];then
+	if [ "$OSNAME" = "debian" ] || [ "$OSNAME" = "ubuntu" ];then
 		apt install -y rsync
 		apt install -y lsyncd
-	elif [[ "$OSNAME" == "arch" ]]; then
+	elif [[ "$OSNAME" = "arch" ]]; then
 		echo y | pacman -Sy rsync
 		echo y | pacman -Sy lsyncd
-	elif [[ "$OSNAME" == "macos" ]]; then
+	elif [[ "$OSNAME" = "macos" ]]; then
 		# brew install rsync
 		# brew install lsyncd
 		echo "ok"
@@ -87,7 +87,7 @@ Uninstall_rsyncd()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_rsyncd
 else
 	Uninstall_rsyncd

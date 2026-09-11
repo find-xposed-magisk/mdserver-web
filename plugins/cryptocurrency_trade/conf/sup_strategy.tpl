@@ -1,5 +1,5 @@
 [program:{$NAME}]
-command=bash -c "cd {$RUN_ROOT} && source bin/activate && python3 {$ABS_FILE} long"
+command=bash -c "cd {$RUN_ROOT} && . bin/activate && python3 {$ABS_FILE} long"
 directory={$RUN_ROOT}
 autorestart=true
 startsecs=3

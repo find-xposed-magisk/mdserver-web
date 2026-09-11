@@ -22,7 +22,7 @@ if [ "$version" -lt "70" ];then
 fi
 
 
-if [ "$version" == "85" ];then
+if [ "$version" = "85" ];then
 	LIBV=3.4.0
 fi
 
@@ -35,7 +35,7 @@ NON_ZTS_FILENAME=`ls $serverPath/php/${version}/${LIB_PATH_NAME}/extensions | gr
 extFile=$serverPath/php/${version}/${LIB_PATH_NAME}/extensions/${NON_ZTS_FILENAME}/${LIBNAME}.so
 
 
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	BAK='_bak'
 else
 	BAK=''
@@ -63,12 +63,12 @@ Install_lib()
 		fi
 		
 		OPTIONS=""
-		if [ "${SYS_ARCH}" == "aarch64" ] && [ "$version" -lt "56" ];then
+		if [ "${SYS_ARCH}" = "aarch64" ] && [ "$version" -lt "56" ];then
 			OPTIONS="$OPTIONS --build=aarch64-unknown-linux-gnu --host=aarch64-unknown-linux-gnu"
 		fi
 
 
-		if [ "$sysName" == "Darwin" ];then
+		if [ "$sysName" = "Darwin" ];then
 			OPTIONS="$OPTIONS --with-zlib-dir=$(brew --prefix zlib)"
 			OPTIONS="$OPTIONS --with-libmemcached-dir=$(brew --prefix libmemcached)"
 		else
@@ -130,8 +130,8 @@ Uninstall_lib()
 }
 
 
-if [ "$actionType" == 'install' ];then
+if [ "$actionType" = 'install' ];then
 	Install_lib
-elif [ "$actionType" == 'uninstall' ];then
+elif [ "$actionType" = 'uninstall' ];then
 	Uninstall_lib
 fi

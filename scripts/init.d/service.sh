@@ -4,5 +4,5 @@ export PATH
 
 cd /www/server/mdserver-web
 if [ -f bin/activate ];then
-	source bin/activate
+	. bin/activate
 fi

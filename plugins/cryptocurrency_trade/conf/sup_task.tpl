@@ -1,5 +1,5 @@
 [program:{$NAME}]
-command=bash -c "cd {$RUN_ROOT} && source bin/activate && python3 plugins/cryptocurrency_trade/ccxt/public_data/data.py long"
+command=bash -c "cd {$RUN_ROOT} && . bin/activate && python3 plugins/cryptocurrency_trade/ccxt/public_data/data.py long"
 directory={$RUN_ROOT}
 autorestart=true
 startsecs=3

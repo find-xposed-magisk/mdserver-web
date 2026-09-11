@@ -5,9 +5,9 @@ export LANG=en_US.UTF-8
 export DEBIAN_FRONTEND=noninteractive
 
 function version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
-function version_le() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" == "$1"; }
+function version_le() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" = "$1"; }
 function version_lt() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" != "$1"; }
-function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" == "$1"; }
+function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" = "$1"; }
 
 VERSION_ID=`cat /etc/*-release | grep VERSION_ID | awk -F = '{print $2}' | awk -F "\"" '{print $2}'`
 
@@ -16,13 +16,13 @@ cn=$(curl -fsSL -m 10 http://ipinfo.io/json | grep "\"country\": \"CN\"")
 ln -sf /bin/bash /bin/sh
 
 __GET_BIT=`getconf LONG_BIT`
-if [ "$__GET_BIT" == "32" ];then
+if [ "$__GET_BIT" = "32" ];then
 	# install rust | 32bit need
 	# curl https://sh.rustup.rs -sSf | sh
 	apt install -y rustc
 fi
 
-if [ "$VERSION_ID" == "10" ];then
+if [ "$VERSION_ID" = "10" ];then
 	apt install -y rustc
 fi
 
@@ -42,7 +42,7 @@ apt install ntpdate -y
 apt install -y net-tools
 
 SSH_PORT=`netstat -ntpl|grep sshd|grep -v grep | sed -n "1,1p" | awk '{print $4}' | awk -F : '{print $2}'`
-if [ "$SSH_PORT" == "" ];then
+if [ "$SSH_PORT" = "" ];then
 	SSH_PORT_LINE=`cat /etc/ssh/sshd_config | grep "Port \d*" | tail -1`
 	SSH_PORT=${SSH_PORT_LINE/"Port "/""}
 fi

@@ -17,7 +17,7 @@ version=$2
 LIBNAME=fileinfo
 LIBV=0
 
-if [ "$version" == "53" ];then
+if [ "$version" = "53" ];then
 	echo "i wont support it"
 	exit
 fi
@@ -31,7 +31,7 @@ NON_ZTS_FILENAME=`ls $serverPath/php/${version}/${LIB_PATH_NAME}/extensions | gr
 extFile=$serverPath/php/${version}/${LIB_PATH_NAME}/extensions/${NON_ZTS_FILENAME}/${LIBNAME}.so
 
 sysName=`uname`
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	BAK='_bak'
 else
 	BAK=''
@@ -57,7 +57,7 @@ Install_lib()
 		cd $sourcePath/php${version}/ext/${LIBNAME}
 		
 		OPTIONS=''
-		if [ "${SYS_ARCH}" == "aarch64" ] && [ "$version" -lt "56" ];then
+		if [ "${SYS_ARCH}" = "aarch64" ] && [ "$version" -lt "56" ];then
 			OPTIONS="$OPTIONS --build=aarch64-unknown-linux-gnu --host=aarch64-unknown-linux-gnu"
 		fi
 
@@ -67,23 +67,23 @@ Install_lib()
 
 
 		# It is considered as a temporary bug
-		if [ "$version" == "81" ] || [ "$version" == "82" ];then
+		if [ "$version" = "81" ] || [ "$version" = "82" ];then
 			bash ${rootPath}/scripts/getos.sh
-			if [ "$OSNAME" == 'centos' ];then
+			if [ "$OSNAME" = 'centos' ];then
 				FILE_softmagic=$sourcePath/php${version}/ext/${LIBNAME}/libmagic/softmagic.c
 				FIND_UNDEF_STRNDUP=`cat $FILE_softmagic|grep '#undef strndup'`
-				if [ "$version" -gt "74" ] && [ "$FIND_UNDEF_STRNDUP" == "" ];then
+				if [ "$version" -gt "74" ] && [ "$FIND_UNDEF_STRNDUP" = "" ];then
 					sed -i $BAK "s/char \*strndup/#undef strndup\nchar \*strndup/g" $FILE_softmagic
 				fi
 			fi
 		fi
 
 		FIND_C99=`cat Makefile|grep c99`
-		if [ "$version" -gt "74" ] && [ "$FIND_C99" == "" ];then
+		if [ "$version" -gt "74" ] && [ "$FIND_C99" = "" ];then
 			sed -i $BAK 's/CFLAGS \=/CFLAGS \= -std=gnu99/g' Makefile
 		fi
 
-		if [ "$version" -gt "80" ] && [ "$OSNAME" == 'centos' ];then
+		if [ "$version" -gt "80" ] && [ "$OSNAME" = 'centos' ];then
 			sed -i $BAK "s#CFLAGS = -g -O2#CFLAGS = -std=c99 -g#g" $sourcePath/php${version}/ext/${LIBNAME}/Makefile
 		fi
 
@@ -135,8 +135,8 @@ Uninstall_lib()
 
 
 
-if [ "$actionType" == 'install' ];then
+if [ "$actionType" = 'install' ];then
 	Install_lib
-elif [ "$actionType" == 'uninstall' ];then
+elif [ "$actionType" = 'uninstall' ];then
 	Uninstall_lib
 fi

@@ -19,7 +19,7 @@ startTime=`date +%s`
 _os=`uname`
 echo "use system: ${_os}"
 
-if [ ${_os} == "Darwin" ]; then
+if [ ${_os} = "Darwin" ]; then
 	OSNAME='macos'
 elif grep -Eqi "openSUSE" /etc/*-release; then
 	OSNAME='opensuse'
@@ -75,7 +75,7 @@ fi
 HTTP_PREFIX="https://"
 LOCAL_ADDR=common
 cn=$(curl -fsSL -m 10 -s http://ipinfo.io/json | grep "\"country\": \"CN\"")
-if [ ! -z "$cn" ] || [ "$?" == "0" ] ;then
+if [ ! -z "$cn" ] || [ "$?" = "0" ] ;then
 	LOCAL_ADDR=cn
     HTTP_PREFIX="https://mirror.ghproxy.com/"
 fi
@@ -98,7 +98,7 @@ if [ $OSNAME != "macos" ];then
 
 	# https://cdn.jsdelivr.net/gh/midoks/mdserver-web@latest/scripts/install.sh
 	if [ ! -d /www/server/mdserver-web ];then
-		if [ "$LOCAL_ADDR" == "common" ];then
+		if [ "$LOCAL_ADDR" = "common" ];then
 			curl --insecure -sSLo /tmp/master.zip ${HTTP_PREFIX}github.com/midoks/mdserver-web/archive/refs/tags/${VERSION}.zip
 			cd /tmp && unzip /tmp/master.zip
 			mv -f /tmp/mdserver-web-${VERSION} /www/server/mdserver-web
@@ -132,13 +132,13 @@ if [ $OSNAME != "macos" ];then
 fi
 
 echo "use system version: ${OSNAME}"
-if [ "${OSNAME}" == "macos" ];then
+if [ "${OSNAME}" = "macos" ];then
 	curl --insecure -fsSL https://code.midoks.icu/midoks/mdserver-web/raw/branch/master/scripts/install/macos.sh | bash
 else
 	cd /www/server/mdserver-web && bash scripts/install/${OSNAME}.sh
 fi
 
-if [ "${OSNAME}" == "macos" ];then
+if [ "${OSNAME}" = "macos" ];then
 	echo "macos end"
 	exit 0
 fi

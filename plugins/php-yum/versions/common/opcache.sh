@@ -27,7 +27,7 @@ ext_file=${ext_dir}/10-opcache.ini
 
 echo $ext_file
 
-if [ "$actionType" == 'install' ];then
+if [ "$actionType" = 'install' ];then
 	yum install -y php${version}-php-${LIBNAME}
 	echo "ls ${cfgDir}/php${version}/php.d | grep "${LIBNAME}.ini"| cut -d \  -f 1"
 	find_opcache=`ls ${cfgDir}/php${version}/php.d | grep "${LIBNAME}.ini"| cut -d \  -f 1`
@@ -48,7 +48,7 @@ if [ "$actionType" == 'install' ];then
 	echo "opcache.jit_buffer_size=64M" >> $ext_file
 	echo "opcache.save_comments=0" >> $ext_file
 	echo "opcache.blacklist_filename=${OP_BL}" >> $ext_file
-elif [ "$actionType" == 'uninstall' ];then
+elif [ "$actionType" = 'uninstall' ];then
 	if [ -f ${ext_dir}/10-opcache.ini.rpmsave ];then
 		ext_file=${ext_dir}/10-opcache.ini.rpmsave
 	fi

@@ -3,9 +3,9 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin:/opt/hom
 export PATH
 
 function version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
-function version_le() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" == "$1"; }
+function version_le() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" = "$1"; }
 function version_lt() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" != "$1"; }
-function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" == "$1"; }
+function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" = "$1"; }
 
 curPath=`pwd`
 rootPath=$(dirname "$curPath")
@@ -13,7 +13,7 @@ rootPath=$(dirname "$rootPath")
 serverPath=$(dirname "$rootPath")
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 
@@ -25,13 +25,12 @@ echo "python:$P_VER"
 # cd /Users/midoks/Desktop/mwdev/server/mdserver-web/plugins/pgadmin && bash install.sh install 4
 # cd /www/server/mdserver-web/plugins/pgadmin && bash install.sh install 4
 
-# source /www/server/pgadmin/run/bin/activate
 # python /www/server/pgadmin/run/lib/python3.10/site-packages/pgadmin4/setup.py --help
 # python /www/server/pgadmin/run/lib/python3.10/site-packages/pgadmin4/setup.py add-user mdserver-web@gmail.com 123123
 # cd /www/server/mdserver-web && python3 plugins/pgadmin/index.py start
 # cd /www/server/mdserver-web && python3 plugins/pgadmin/index.py stop
 
-if [ "$sys_os" == "Darwin" ];then
+if [ "$sys_os" = "Darwin" ];then
 	BAK='_bak'
 else
 	BAK=''
@@ -40,7 +39,7 @@ fi
 sysName=`uname`
 echo "use system: ${sysName}"
 
-if [ "${sysName}" == "Darwin" ]; then
+if [ "${sysName}" = "Darwin" ]; then
 	OSNAME='macos'
 elif grep -Eqi "CentOS" /etc/issue || grep -Eq "CentOS" /etc/*-release; then
 	OSNAME='centos'
@@ -83,7 +82,7 @@ Install_pgadmin()
 	fi
 
 	if [ -f ${PG_DIR}/bin/activate ];then
-		source ${PG_DIR}/bin/activate
+		. ${PG_DIR}/bin/activate
 	fi
 	pip install gunicorn
 	pip install pgadmin4
@@ -120,7 +119,7 @@ Uninstall_pgadmin()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_pgadmin $2
 else
 	Uninstall_pgadmin $2

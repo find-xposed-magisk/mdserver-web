@@ -27,7 +27,7 @@ Uninstall_pg()
 
 action=$1
 host=$2
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_pg
 else
 	Uninstall_pg

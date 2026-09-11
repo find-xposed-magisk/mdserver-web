@@ -24,7 +24,7 @@ cd ${rootPath}/plugins/php/lib && /bin/bash zlib.sh
 
 # redat ge 8
 which yum
-if [ "$?" == "0" ];then
+if [ "$?" = "0" ];then
 	cd ${rootPath}/plugins/php/lib && /bin/bash oniguruma.sh
 fi
 
@@ -34,11 +34,11 @@ if [ ! -d $sourcePath/php/php${PHP_VER} ];then
 	# 中国优化安装
 	cn=$(curl -fsSL -m 10 -s http://ipinfo.io/json | grep "\"country\": \"CN\"")
 	LOCAL_ADDR=common
-	if [ ! -z "$cn" ] || [ "$?" == "0" ] ;then
+	if [ ! -z "$cn" ] || [ "$?" = "0" ] ;then
 		LOCAL_ADDR=cn
 	fi
 
-	if [ "$LOCAL_ADDR" == "cn" ];then
+	if [ "$LOCAL_ADDR" = "cn" ];then
 		if [ ! -f $sourcePath/php/php-${version}.tar.xz ];then
 			wget --no-check-certificate -O $sourcePath/php/php-${version}.tar.xz https://mirrors.nju.edu.cn/php/php-${version}.tar.xz
 		fi
@@ -65,12 +65,12 @@ fi
 cd $sourcePath/php/php${PHP_VER}
 
 OPTIONS='--without-iconv'
-# if [ $sysName == 'Darwin' ]; then
+# if [ $sysName = 'Darwin' ]; then
 # 	OPTIONS="${OPTIONS} --with-curl"
 # fi
 
 argon_version=`pkg-config libargon2 --modversion`
-if [ "$?" == "0" ];then
+if [ "$?" = "0" ];then
 	OPTIONS="${OPTIONS} --with-password-argon2"
 fi
 
@@ -101,7 +101,7 @@ fi
 
 echo "$sourcePath/php/php${PHP_VER}"
 
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	BREW_DIR=`which brew`
 	BREW_DIR=${BREW_DIR/\/bin\/brew/}
 
@@ -154,7 +154,7 @@ Uninstall_php()
 }
 
 action=${1}
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_php
 else
 	Uninstall_php

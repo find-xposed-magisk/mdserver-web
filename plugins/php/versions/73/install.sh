@@ -11,7 +11,7 @@ sysName=`uname`
 SYS_ARCH=`arch`
 
 echo "use system: ${sysName}"
-if [ ${sysName} == "Darwin" ]; then
+if [ ${sysName} = "Darwin" ]; then
 	OSNAME='macos'
 elif grep -Eq "openSUSE" /etc/*-release; then
 	OSNAME='opensuse'
@@ -72,7 +72,7 @@ if [ ! -d $sourcePath/php/php${PHP_VER} ];then
 		LOCAL_ADDR=cn
 	fi
 
-	if [ "$LOCAL_ADDR" == "cn" ];then
+	if [ "$LOCAL_ADDR" = "cn" ];then
 		if [ ! -f $sourcePath/php/php-${version}.tar.xz ];then
 			wget --no-check-certificate -O $sourcePath/php/php-${version}.tar.xz https://mirrors.nju.edu.cn/php/php-${version}.tar.xz
 		fi
@@ -105,7 +105,7 @@ fi
 # fi
 
 OPTIONS='--without-iconv'
-if [ $sysName == 'Darwin' ]; then	
+if [ $sysName = 'Darwin' ]; then	
 	OPTIONS="${OPTIONS} --with-curl=$(brew --prefix curl)"
 	OPTIONS="${OPTIONS} --with-pcre-dir=$(brew --prefix pcre2)"
 else
@@ -113,7 +113,7 @@ else
 fi
 
 IS_64BIT=`getconf LONG_BIT`
-if [ "$IS_64BIT" == "64" ];then
+if [ "$IS_64BIT" = "64" ];then
 	OPTIONS="${OPTIONS} --with-libdir=lib64"
 fi
 
@@ -145,13 +145,13 @@ fi
 # ----- cpu end ------
 
 
-if [ "${OSNAME}" == "debian" ] && [ "${VERSION_ID}" == "13" ];then
+if [ "${OSNAME}" = "debian" ] && [ "${VERSION_ID}" = "13" ];then
 	# 修复arm64架构下安装
 	cat ${curPath}/versions/${PHP_VER}/src/reentrancy.c > $sourcePath/php/php${PHP_VER}/main/reentrancy.c
 	echo "cat ${curPath}/versions/${PHP_VER}/src/reentrancy.c > $sourcePath/php/php${PHP_VER}/main/reentrancy.c"
 fi
 
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	BREW_DIR=`which brew`
 	BREW_DIR=${BREW_DIR/\/bin\/brew/}
 
@@ -206,7 +206,7 @@ Uninstall_php()
 }
 
 action=${1}
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_php
 else
 	Uninstall_php

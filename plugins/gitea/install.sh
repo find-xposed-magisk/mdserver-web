@@ -8,7 +8,7 @@ rootPath=$(dirname "$rootPath")
 serverPath=$(dirname "$rootPath")
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 
@@ -25,11 +25,11 @@ getBit(){
 }
 
 Install_Rsync(){
-	if [ "$OSNAME" == "debian" ] || [ "$OSNAME" == "ubuntu" ];then
+	if [ "$OSNAME" = "debian" ] || [ "$OSNAME" = "ubuntu" ];then
 		apt install -y rsync
-	elif [[ "$OSNAME" == "arch" ]]; then
+	elif [[ "$OSNAME" = "arch" ]]; then
 		echo y | pacman -Sy rsync
-	elif [[ "$OSNAME" == "macos" ]]; then
+	elif [[ "$OSNAME" = "macos" ]]; then
 		# brew install rsync
 		# brew install lsyncd
 		echo "ok"
@@ -66,7 +66,7 @@ Install_App()
 
 	git config --global push.default simple
 
-	if [ "macos" == "$OSNAME" ];then
+	if [ "macos" = "$OSNAME" ];then
 		file=gitea-${version}-darwin-10.12-amd64
 	else
 		file=gitea-${version}-linux-amd64
@@ -119,7 +119,7 @@ Uninstall_App()
 
 action=$1
 version=$2
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_App $version
 else
 	Uninstall_App $version

@@ -20,7 +20,7 @@ openrestyDir=${serverPath}/source/openresty
 
 Install_openresty()
 {
-	if [ "${action}" == "install" ];then
+	if [ "${action}" = "install" ];then
 		if [ -d $serverPath/openresty ];then
 			exit 0
 		fi
@@ -60,7 +60,7 @@ Install_openresty()
 	fi
 
 	DOWNLOAD_SIZE=`wc -c ${openrestyDir}/openresty-${VERSION}.tar.gz | awk '{print $1}'`
-	if [ "$DOWNLOAD_SIZE" == "0" ];then
+	if [ "$DOWNLOAD_SIZE" = "0" ];then
 		echo 'download failed, download again'
 		rm -rf ${openrestyDir}/openresty-${VERSION}.tar.gz
 	fi
@@ -77,7 +77,7 @@ Install_openresty()
 	opensslVersion="1.1.1p"
 	libresslVersion="3.9.1"
 	pcreVersion='8.38'
-	if [ "$sysName" == "Darwin" ];then
+	if [ "$sysName" = "Darwin" ];then
 
 		if [ ! -f ${openrestyDir}/pcre-${pcreVersion}.tar.gz ];then
 			wget --no-check-certificate -O ${openrestyDir}/pcre-${pcreVersion}.tar.gz https://netix.dl.sourceforge.net/project/pcre/pcre/${pcreVersion}/pcre-${pcreVersion}.tar.gz
@@ -144,13 +144,13 @@ Install_openresty()
 		cd ${openrestyDir} && wget -O $openrestyDir/zstd-nginx-module.tar.gz https://github.com/tokers/zstd-nginx-module/archive/refs/heads/master.tar.gz
 		cd ${openrestyDir} && tar -zxvf zstd-nginx-module.tar.gz
 
-		if [ "$sysName" == "Darwin" ];then
+		if [ "$sysName" = "Darwin" ];then
 			export ZSTD_INC=/opt/homebrew/include
 			export ZSTD_LIB=/opt/homebrew/lib
 		fi
 
 		pkg-config --exists --print-errors libzstd
-		if [ "$?" == "0" ];then
+		if [ "$?" = "0" ];then
 			OPTIONS="${OPTIONS} --add-module=${openrestyDir}/zstd-nginx-module-master"
 		fi
 	fi
@@ -171,7 +171,7 @@ Install_openresty()
 	# 用于调式
 
 	CMD_MAKE=`which gmake`
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		gmake -j${cpuCore} && gmake install && gmake clean
 	else
 		make -j${cpuCore} && make install && make clean
@@ -202,9 +202,9 @@ Uninstall_openresty()
 }
 
 action=$1
-if [ "${1}" == "install" ];then
+if [ "${1}" = "install" ];then
 	Install_openresty
-elif [ "${1}" == "upgrade" ];then
+elif [ "${1}" = "upgrade" ];then
 	Install_openresty
 else
 	Uninstall_openresty

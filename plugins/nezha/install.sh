@@ -8,8 +8,8 @@ export PATH
 # cd /www/server/mdserver-web/plugins/nezha && bash install.sh install 2.2.6
 # sqlite3 /www/server/nezha/dashboard/data/sqlite.db "DELETE FROM users;"
 
-# cd /www/server/mdserver-web && source bin/activate && python3 plugins/nezha/index.py start
-# cd /www/server/mdserver-web && source bin/activate && python3 plugins/nezha/index.py status
+# cd /www/server/mdserver-web && . bin/activate && python3 plugins/nezha/index.py start
+# cd /www/server/mdserver-web && . bin/activate && python3 plugins/nezha/index.py status
 # python3 plugins/nezha/index.py cron_add_check
 
 curPath=`pwd`
@@ -20,7 +20,7 @@ serverPath=$(dirname "$rootPath")
 action=$1
 type=$2
 
-if [ "${2}" == "" ];then
+if [ "${2}" = "" ];then
 	echo '缺少安装脚本...'
 	exit 0
 fi 
@@ -32,7 +32,7 @@ fi
 
 sh -x $curPath/versions/$2/install.sh $1
 
-if [ "${action}" == "uninstall" ];then
+if [ "${action}" = "uninstall" ];then
 	if [ -f /usr/lib/systemd/system/nezha.service ] || [ -f /lib/systemd/system/nezha.service ] ;then
 		systemctl stop nezha
 		systemctl disable nezha

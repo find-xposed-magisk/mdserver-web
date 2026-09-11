@@ -1,4 +1,4 @@
-# cd /www/server/mdserver-web &&  source bin/activate
+# cd /www/server/mdserver-web &&  . bin/activate
 # python3 plugins/cryptocurrency_trade/ccxt/strategy/vega_trade.py run
 # python3 plugins/cryptocurrency_trade/ccxt/strategy/vega_trade.py long
 

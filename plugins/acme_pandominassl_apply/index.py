@@ -606,7 +606,7 @@ def runHookDstDomain(row):
 
     if mw.isAppleSystem():
         user = getRunUser()
-        cmd += "source /Users/"+user+"/.zshrc\n"
+        cmd += ". /Users/"+user+"/.zshrc\n"
 
     cmd_data = getDnsapiData(row['dnsapi_id'])
     # print(cmd_data)

@@ -5,7 +5,7 @@ export PATH=$PATH:/opt/stap/bin:/opt/stapxx
 # cd /www/server/mdserver-web/plugins/op_waf/t && bash ngx_debug.sh c ok
 
 
-if [ ${_os} == "Darwin" ]; then
+if [ ${_os} = "Darwin" ]; then
     OSNAME='macos'
 elif grep -Eq "openSUSE" /etc/*-release; then
     OSNAME='opensuse'
@@ -73,11 +73,11 @@ name=$2
 # apt install -y kernel-debuginfo-common kernel-debuginfo
 # apt install -y kernel-*
 
-if [ "$OSNAME" == "debian" ];then
+if [ "$OSNAME" = "debian" ];then
     apt install  -y systemtap
     apt-get install -y build-essential 
     apt-get install -y linux-headers-$(uname -r)
-elif [ "$OSNAME" == "centos" ];then
+elif [ "$OSNAME" = "centos" ];then
     yum install -y kernel-devel-$(uname -r)
 fi
 
@@ -106,11 +106,11 @@ fi
  
 for pid in ${pids[@]}; do
     echo "strace:$pid"
-    if [ $1 == "lua" ]; then
+    if [ $1 = "lua" ]; then
         # --without-luajit-gc64 | lua 模式编译时需要使用此参数
         /opt/openresty-systemtap-toolkit/ngx-sample-lua-bt -p $pid --luajit20 -t 30 >temp.bt
         /opt/openresty-systemtap-toolkit/fix-lua-bt temp.bt >${name}_${pid}.bt
-    elif [ $1 == "c" ]; then
+    elif [ $1 = "c" ]; then
         /opt/openresty-systemtap-toolkit/sample-bt -p $pid -t 10 -u > ${name}_${pid}.bt
     else
         echo "type is only lua/c"
@@ -124,12 +124,12 @@ for pid in ${pids[@]}; do
     echo "${name}_${pid}.svg -- make ok"
 done
 
-# if [ $1 == "lua" ]; then
+# if [ $1 = "lua" ]; then
 #     # /opt/openresty-systemtap-toolkit/ngx-sample-lua-bt -p 377452 --luajit20 -t 30 >temp.bt
 #     /opt/openresty-systemtap-toolkit/ngx-sample-lua-bt -p $pid --luajit20 -t 30 >temp.bt
 #     # /opt/openresty-systemtap-toolkit/fix-lua-bt temp.bt >t1.bt
 #     /opt/openresty-systemtap-toolkit/fix-lua-bt temp.bt >${name}.bt
-# elif [ $1 == "c" ]; then
+# elif [ $1 = "c" ]; then
 #     # /opt/openresty-systemtap-toolkit/sample-bt -p 496435 -t 10 -u > t2.bt
 #     /opt/openresty-systemtap-toolkit/sample-bt -p $pid -t 10 -u > ${name}.bt
 # else

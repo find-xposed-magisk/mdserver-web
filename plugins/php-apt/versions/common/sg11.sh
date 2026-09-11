@@ -24,7 +24,7 @@ SG_VER=${version}
 extVer=`bash $curPath/lib.sh $version`
 extFile=/usr/lib/php/${extVer}/${LIBNAME}.so
 
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	BAK='_bak'
 else
 	BAK=''
@@ -41,7 +41,7 @@ Install_lib()
 
 	DEFAULT_OSNAME=linux-x86_64
 	SUFFIX_NAME=lin
-	if [ "$OSNAME" == 'macos' ];then
+	if [ "$OSNAME" = 'macos' ];then
 		DEFAULT_OSNAME=macosx
 		SUFFIX_NAME=dar
 	fi
@@ -77,7 +77,7 @@ Install_lib()
 			exit
 		fi
 
-		if [ "$OSNAME" == 'macos' ];then
+		if [ "$OSNAME" = 'macos' ];then
 			xattr -c * $extFile
 		fi
 	fi
@@ -116,8 +116,8 @@ Uninstall_lib()
 }
 
 
-if [ "$actionType" == 'install' ];then
+if [ "$actionType" = 'install' ];then
 	Install_lib
-elif [ "$actionType" == 'uninstall' ];then
+elif [ "$actionType" = 'uninstall' ];then
 	Uninstall_lib
 fi

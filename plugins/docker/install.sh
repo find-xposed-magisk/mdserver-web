@@ -13,7 +13,7 @@ serverPath=$(dirname "$rootPath")
 VERSION=$2
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 # {
@@ -40,7 +40,7 @@ fi
 Install_Docker()
 {
 	# which docker
-	# if [ "$?" == "0" ];then
+	# if [ "$?" = "0" ];then
 	# 	echo '安装已经完成docker'
 	# 	exit 0
 	# fi
@@ -69,7 +69,7 @@ Uninstall_Docker()
 {
 	CMD=yum
 	which apt
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		CMD=apt
 	fi
 
@@ -97,7 +97,7 @@ Uninstall_Docker()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_Docker
 else
 	Uninstall_Docker

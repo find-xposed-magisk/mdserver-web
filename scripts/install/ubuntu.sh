@@ -5,9 +5,9 @@ export LANG=en_US.UTF-8
 export DEBIAN_FRONTEND=noninteractive
 
 function version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
-function version_le() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" == "$1"; }
+function version_le() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" = "$1"; }
 function version_lt() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" != "$1"; }
-function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" == "$1"; }
+function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" = "$1"; }
 
 
 if grep -Eq "Ubuntu" /etc/*-release; then
@@ -86,7 +86,7 @@ else
 fi
 
 SSH_PORT=`netstat -ntpl|grep sshd|grep -v grep | sed -n "1,1p" | awk '{print $4}' | awk -F : '{print $2}'`
-if [ "$SSH_PORT" == "" ];then
+if [ "$SSH_PORT" = "" ];then
 	SSH_PORT_LINE=`cat /etc/ssh/sshd_config | grep "Port \d*" | tail -1`
 	SSH_PORT=${SSH_PORT_LINE/"Port "/""}
 fi
@@ -223,7 +223,7 @@ apt install -y libmariadb-dev-compat
 apt install -y patchelf
 
 VERSION_ID=`cat /etc/*-release | grep VERSION_ID | awk -F = '{print $2}' | awk -F "\"" '{print $2}'`
-if [ "${VERSION_ID}" == "22.04" ];then
+if [ "${VERSION_ID}" = "22.04" ];then
 	apt install -y python3-cffi
     pip3 install -U --force-reinstall --no-binary :all: gevent
 fi
@@ -239,7 +239,7 @@ cd /www/server/mdserver-web/scripts && bash lib.sh
 chmod 755 /www/server/mdserver-web/data
 
 
-if [ "${VERSION_ID}" == "22.04" ];then
+if [ "${VERSION_ID}" = "22.04" ];then
 	apt install -y python3-cffi
     pip3 install -U --force-reinstall --no-binary :all: gevent
 fi

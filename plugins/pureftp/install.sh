@@ -10,13 +10,13 @@ serverPath=$(dirname "$rootPath")
 # cd /www/server/mdserver-web/plugins/pureftp && bash install.sh install 1.0.49
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 sysName=`uname`
 echo "use system: ${sysName}"
 
-if [ ${sysName} == "Darwin" ]; then
+if [ ${sysName} = "Darwin" ]; then
 	OSNAME='macos'
 elif grep -Eqi "CentOS" /etc/issue || grep -Eq "CentOS" /etc/*-release; then
 	OSNAME='centos'
@@ -66,7 +66,7 @@ Install_pureftp()
 	md5_ok=451879495ba61c1d7dcfca8dd231119f
 	if [ -f $serverPath/source/pureftp/pure-ftpd-${VER}.tar.gz ];then
 		md5_check=`md5sum $serverPath/source/pureftp/pure-ftpd-${VER}.tar.gz  | awk '{print $1}'`
-		if [ "${md5_ok}" == "${md5_check}" ]; then
+		if [ "${md5_ok}" = "${md5_check}" ]; then
 			echo "pure-ftpd file  check ok"
 		fi
 	fi
@@ -131,7 +131,7 @@ Uninstall_pureftp()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_pureftp $2
 else
 	Uninstall_pureftp $2

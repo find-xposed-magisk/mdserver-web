@@ -13,13 +13,13 @@ serverPath=$(dirname "$rootPath")
 VERSION=$2
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 
 OSNAME=`bash ${rootPath}/scripts/getos.sh`
 
-if [ "" == "$OSNAME" ];then
+if [ "" = "$OSNAME" ];then
 	OSNAME=`cat ${rootPath}/data/osname.pl`
 fi
 
@@ -83,7 +83,7 @@ Uninstall_App()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_App
 else
 	Uninstall_App

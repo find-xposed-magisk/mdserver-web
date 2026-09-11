@@ -16,12 +16,12 @@ VERSION=(${type//./ })
 
 pip install psycopg2-binary
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 	pip install psycopg2-binary
 fi
 
 
-if [ "${2}" == "" ];then
+if [ "${2}" = "" ];then
 	echo '缺少安装脚本...'
 	exit 0
 fi 
@@ -31,7 +31,7 @@ if [ ! -d $curPath/versions/$VERSION ];then
 	exit 0
 fi
 
-if [ "${action}" == "uninstall" ];then
+if [ "${action}" = "uninstall" ];then
 	if [ -f /usr/lib/systemd/system/postgresql.service ] || [ -f /lib/systemd/system/postgresql.service ];then
 		systemctl stop postgresql
 		systemctl disable postgresql
@@ -43,7 +43,7 @@ fi
 
 sh -x $curPath/versions/$VERSION/install.sh $1
 
-if [ "${action}" == "install" ] && [ -d $serverPath/postgresql ];then
+if [ "${action}" = "install" ] && [ -d $serverPath/postgresql ];then
 	#初始化 
 	cd ${rootPath} && python3 ${rootPath}/plugins/postgresql/index.py start ${type}
 	cd ${rootPath} && python3 ${rootPath}/plugins/postgresql/index.py initd_install ${type}

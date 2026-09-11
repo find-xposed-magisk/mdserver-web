@@ -18,7 +18,7 @@ SOURCE_ROOT=$rootPath/source/lib
 HTTP_PREFIX="https://"
 LOCAL_ADDR=common
 cn=$(curl -fsSL -m 10 http://ipinfo.io/json | grep "\"country\": \"CN\"")
-if [ ! -z "$cn" ] || [ "$?" == "0" ] ;then
+if [ ! -z "$cn" ] || [ "$?" = "0" ] ;then
     LOCAL_ADDR=cn
     HTTP_PREFIX="https://mirror.ghproxy.com/"
 fi
@@ -26,7 +26,7 @@ fi
 if [ ! -d ${SERVER_ROOT}/libiconv ];then
     cd $SOURCE_ROOT
 
-    if [ "$LOCAL_ADDR" == 'cn' ];then
+    if [ "$LOCAL_ADDR" = 'cn' ];then
         if [ ! -f ${SOURCE_ROOT}/libiconv-1.15.tar.gz  ];then
             wget --no-check-certificate -O ${SOURCE_ROOT}/libiconv-1.15.tar.gz  https://dl.midoks.icu/lib/libiconv-1.15.tar.gz -T 20
         fi 

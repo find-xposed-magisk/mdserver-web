@@ -39,7 +39,7 @@ caddyDir=${serverPath}/source/caddy
 
 Install_App()
 {
-	if [ "${action}" == "install" ];then
+	if [ "${action}" = "install" ];then
 		if [ -d $serverPath/caddy ];then
 			exit 0
 		fi
@@ -60,7 +60,7 @@ Install_App()
 
 	mkdir -p cd $serverPath/source/caddy/caddy
 	cd $serverPath/source/caddy/caddy && tar -zxvf ${caddyDir}/$FILE_NAME
-	if [ "$OSNAME" == "mac" ];then
+	if [ "$OSNAME" = "mac" ];then
 		xattr -cr caddy
 	fi
 
@@ -79,9 +79,9 @@ Uninstall_App()
 }
 
 action=$1
-if [ "${1}" == "install" ];then
+if [ "${1}" = "install" ];then
 	Install_App
-elif [ "${1}" == "upgrade" ];then
+elif [ "${1}" = "upgrade" ];then
 	Install_App
 else
 	Uninstall_App

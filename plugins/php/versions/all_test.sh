@@ -19,7 +19,7 @@ ROOT_DIR=$(cd "$(dirname "$0")"; pwd)
 # cd $DIR && /bin/bash install.sh install $PHP_VER
 # for ii in $cmd_ext
 # do
-# 	if [ "install.sh" == "$ii" ];then
+# 	if [ "install.sh" = "$ii" ];then
 # 		echo '' > /tmp/t.log
 # 	else
 # 		cd $DIR/versions/$PHP_VER &&  /bin/bash $ii install $PHP_VER

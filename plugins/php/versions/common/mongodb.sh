@@ -21,19 +21,19 @@ if [ "$version" -ge '74' ];then
 	LIBV=1.20.0
 fi
 
-if [ "$version" == '71' ];then
+if [ "$version" = '71' ];then
 	LIBV=1.11.1
 fi
 
-if [ "$version" == '70' ];then
+if [ "$version" = '70' ];then
 	LIBV=1.7.5
 fi
 
-if [ "$version" == '56' ];then
+if [ "$version" = '56' ];then
 	LIBV=1.7.4
 fi
 
-if [ "$version" == '55' ];then
+if [ "$version" = '55' ];then
 	LIBV=1.5.3
 fi
 
@@ -50,7 +50,7 @@ fi
 NON_ZTS_FILENAME=`ls $serverPath/php/${version}/${LIB_PATH_NAME}/extensions | grep no-debug-non-zts`
 extFile=$serverPath/php/${version}/${LIB_PATH_NAME}/extensions/${NON_ZTS_FILENAME}/${LIBNAME}.so
 
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	BAK='_bak'
 else
 	BAK=''
@@ -122,8 +122,8 @@ Uninstall_lib()
 }
 
 
-if [ "$actionType" == 'install' ];then
+if [ "$actionType" = 'install' ];then
 	Install_lib
-elif [ "$actionType" == 'uninstall' ];then
+elif [ "$actionType" = 'uninstall' ];then
 	Uninstall_lib
 fi

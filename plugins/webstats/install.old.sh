@@ -18,7 +18,7 @@ sys_os=`uname`
 HTTP_PREFIX="https://"
 LOCAL_ADDR=common
 cn=$(curl -fsSL -m 10 -s http://ipinfo.io/json | grep "\"country\": \"CN\"")
-if [ ! -z "$cn" ] || [ "$?" == "0" ] ;then
+if [ ! -z "$cn" ] || [ "$?" = "0" ] ;then
     LOCAL_ADDR=cn
     HTTP_PREFIX="https://"
 fi
@@ -29,14 +29,14 @@ if [ "$LOCAL_ADDR" != "common" ];then
 fi
 
 
-if [ "$sys_os" == "Darwin" ];then
+if [ "$sys_os" = "Darwin" ];then
 	BAK='_bak'
 else
 	BAK=''
 fi
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 get_latest_release() {
@@ -86,14 +86,14 @@ Install_App()
 	export PATH=$PATH:$serverPath/webstats/luarocks/bin
 
 	if [ ! -f $serverPath/webstats/lua/lsqlite3.so ];then
-		if [ "${sys_os}" == "Darwin" ];then
+		if [ "${sys_os}" = "Darwin" ];then
 			cd $serverPath/source/webstats/lsqlite3_fsl09y 
 			# SQLITE_DIR=/usr/local/Cellar/sqlite/3.36.0
 			BREW_DIR=`which brew`
 			BREW_DIR=${BREW_DIR/\/bin\/brew/}
 			echo "BREW_DIR:"${BREW_DIR}
 			find_cfg=`cat Makefile | grep 'SQLITE_DIR'`
-			if [ "$find_cfg" == "" ];then
+			if [ "$find_cfg" = "" ];then
 				LIB_SQLITE_DIR=`brew info sqlite | grep ${BREW_DIR}/Cellar/sqlite | cut -d \  -f 1 | awk 'END {print}'`
 				echo "LIB_SQLITE_DIR:"${LIB_SQLITE_DIR}
 				sed -i $BAK "s#\$(ROCKSPEC)#\$(ROCKSPEC) SQLITE_DIR=${LIB_SQLITE_DIR}#g"  Makefile
@@ -120,7 +120,7 @@ Install_App()
 	# 缓存数据
 	GEO_VERSION=$(get_latest_release "P3TERX/GeoLite.mmdb")
 	if [ ! -f $serverPath/source/webstats/GeoLite2-City.mmdb ];then
-		if [ "$LOCAL_ADDR" == "cn" ];then
+		if [ "$LOCAL_ADDR" = "cn" ];then
 			wget --no-check-certificate -O $serverPath/source/webstats/GeoLite2-City.mmdb https://dl.midoks.icu/soft/webstats/GeoLite2-City.mmdb
 		else
 			wget --no-check-certificate -O $serverPath/source/webstats/GeoLite2-City.mmdb https://github.com/P3TERX/GeoLite.mmdb/releases/download/${GEO_VERSION}/GeoLite2-City.mmdb
@@ -153,7 +153,7 @@ Uninstall_App()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_App
 else
 	Uninstall_App

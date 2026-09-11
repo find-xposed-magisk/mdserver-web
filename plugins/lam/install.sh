@@ -11,10 +11,10 @@ serverPath=$(dirname "$rootPath")
 # cd /www/server/mdserver-web && python3 plugins/lam/index.py start
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
-if [ "$sys_os" == "Darwin" ];then
+if [ "$sys_os" = "Darwin" ];then
 	BAK='_bak'
 else
 	BAK=''
@@ -23,7 +23,7 @@ fi
 sysName=`uname`
 echo "use system: ${sysName}"
 
-if [ "${sysName}" == "Darwin" ]; then
+if [ "${sysName}" = "Darwin" ]; then
 	OSNAME='macos'
 elif grep -Eqi "CentOS" /etc/issue || grep -Eq "CentOS" /etc/*-release; then
 	OSNAME='centos'
@@ -83,7 +83,7 @@ Uninstall_App()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_App $2
 else
 	Uninstall_App $2

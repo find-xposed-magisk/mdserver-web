@@ -1,4 +1,4 @@
-# cd /www/server/mdserver-web &&  source bin/activate
+# cd /www/server/mdserver-web &&  . bin/activate
 # python3 plugins/cryptocurrency_trade/ccxt/strategy/gate_100.py run
 # python3 plugins/cryptocurrency_trade/ccxt/strategy/gate_100.py long
 

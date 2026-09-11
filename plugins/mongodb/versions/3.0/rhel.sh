@@ -15,7 +15,7 @@ SYS_VERSION_ID=`cat /etc/*-release | grep VERSION_ID | awk -F = '{print $2}' | a
 SYS_NAME=${SYS_VERSION_ID/./}
 SYS_NAME_LEN=`echo "$SYS_NAME" | wc -L`
 
-if [ "$SYS_NAME_LEN" == "1" ];then
+if [ "$SYS_NAME_LEN" = "1" ];then
 	SYS_NAME=${SYS_NAME}0	
 fi
 

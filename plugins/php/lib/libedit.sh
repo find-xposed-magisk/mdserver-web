@@ -18,7 +18,7 @@ SOURCE_ROOT=$rootPath/source/lib
 
 # LOCAL_ADDR=common
 # cn=$(curl -fsSL -m 10 http://ipinfo.io/json | grep "\"country\": \"CN\"")
-# if [ ! -z "$cn" ] || [ "$?" == "0" ] ;then
+# if [ ! -z "$cn" ] || [ "$?" = "0" ] ;then
 #     LOCAL_ADDR=cn
 # fi
 

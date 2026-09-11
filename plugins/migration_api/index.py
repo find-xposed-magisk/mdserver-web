@@ -98,7 +98,7 @@ class classApi:
             os.remove(log_file)
 
         plugins_dir = mw.getServerDir() + '/mdserver-web'
-        exe = "cd {0} && source bin/activate && python3 plugins/migration_api/index.py bg_process &>{1} &".format(
+        exe = "cd {0} && . bin/activate && python3 plugins/migration_api/index.py bg_process &>{1} &".format(
             plugins_dir, log_file_error)
         # mw.execShell(exe)
         # os.system(exe)

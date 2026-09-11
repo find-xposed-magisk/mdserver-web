@@ -3,9 +3,9 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
 function version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
-function version_le() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" == "$1"; }
+function version_le() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" = "$1"; }
 function version_lt() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" != "$1"; }
-function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" == "$1"; }
+function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" = "$1"; }
 
 # cd /www/server/mdserver-web/plugins/gdrive && /bin/bash install.sh install 2.0
 
@@ -22,7 +22,7 @@ PATH=$PATH:${rootPath}/bin
 export PATH
 
 # if [ -f ${rootPath}/bin/activate ];then
-#     source ${rootPath}/bin/activate
+#     . ${rootPath}/bin/activate
 # fi
 
 VERSION=$2
@@ -43,9 +43,9 @@ Install_App()
                 echo "python3 < 3.10"
                 cd ${GDDIR} && python3 -m venv .
             fi
-            cd ${GDDIR} && source ${GDDIR}/bin/activate
+            cd ${GDDIR} && . ${GDDIR}/bin/activate
         else
-            cd ${GDDIR} && source ${GDDIR}/bin/activate
+            cd ${GDDIR} && . ${GDDIR}/bin/activate
         fi
 
         tmp=`python3 -V 2>&1|awk '{print $2}'`
@@ -101,7 +101,7 @@ action=$1
 type=$2
 
 echo $action $type
-if [ "${action}" == 'install' ];then
+if [ "${action}" = 'install' ];then
 	Install_App
 else
 	Uninstall_App

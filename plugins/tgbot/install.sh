@@ -11,7 +11,7 @@ VERSION=$2
 
 # pip3 install ccxt
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate	
+	. ${rootPath}/bin/activate	
 fi
 
 pip3 install pyTelegramBotAPI
@@ -49,7 +49,7 @@ Uninstall_App()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_App
 else
 	Uninstall_App

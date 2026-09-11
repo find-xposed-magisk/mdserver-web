@@ -39,7 +39,7 @@ else
 	useradd -g www -s /bin/bash www
 fi
 
-if [ "${action}" == "upgrade" ];then
+if [ "${action}" = "upgrade" ];then
 	sh -x $curPath/versions/$2/install.sh $1
 	
 	echo "${VERSION}" > $serverPath/openresty/version.pl
@@ -54,12 +54,12 @@ if [ "${action}" == "upgrade" ];then
 fi
 
 
-if [ "${2}" == "" ];then
+if [ "${2}" = "" ];then
 	echo '缺少安装脚本版本...'
 	exit 0
 fi 
 
-if [ "${action}" == "uninstall" ];then
+if [ "${action}" = "uninstall" ];then
 	if [ -f /usr/lib/systemd/system/openresty.service ] || [ -f /lib/systemd/system/openresty.service ];then
 		systemctl stop openresty
 		rm -rf /usr/systemd/system/openresty.service
@@ -76,7 +76,7 @@ fi
 
 sh -x $curPath/versions/$2/install.sh $1
 
-if [ "${action}" == "install" ] && [ -d $serverPath/openresty ];then
+if [ "${action}" = "install" ] && [ -d $serverPath/openresty ];then
 	echo "${VERSION}" > $serverPath/openresty/version.pl
 
 	mkdir -p $serverPath/web_conf/php/conf

@@ -23,7 +23,7 @@ Install_php()
 {
 #------------------------ install start ------------------------------------#
 apt -y install php${version} php${version}-fpm php${version}-dev
-if [ "$?" == "0" ];then
+if [ "$?" = "0" ];then
 	mkdir -p $serverPath/php-apt/${PHP_VER}
 fi
 
@@ -40,7 +40,7 @@ echo "卸载php-${version}..."
 }
 
 action=${1}
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_php
 else
 	Uninstall_php

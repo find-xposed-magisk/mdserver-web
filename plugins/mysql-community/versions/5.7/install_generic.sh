@@ -19,7 +19,7 @@ OS_ARCH=`arch`
 MYSQL_VER=5.7.44
 SUFFIX_NAME=${MYSQL_VER}-linux-glibc2.12-${OS_ARCH}
 
-if [ "$OS_ARCH" == "x86_64" ] || [ "$OS_ARCH" == "i686" ];then
+if [ "$OS_ARCH" = "x86_64" ] || [ "$OS_ARCH" = "i686" ];then
 	echo "ok"
 else
 	echo "暂时不支持该${OS_ARCH}"
@@ -62,7 +62,7 @@ Install_mysql()
 {
 	echo '正在安装脚本文件...'
 	COMMUNITY_INSTALL
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		mkdir -p $serverPath/mysql-community
 		echo '5.7' > $serverPath/mysql-community/version.pl
 		echo '安装完成'
@@ -80,7 +80,7 @@ Uninstall_mysql()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_mysql
 else
 	Uninstall_mysql

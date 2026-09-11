@@ -24,7 +24,7 @@ Install_mem(){
 	cd $serverPath/source/memcached && tar -zxvf memcached.tar.gz
 
 	OPTIONS=''
-	if [ ${sys_os} == "Darwin" ]; then
+	if [ ${sys_os} = "Darwin" ]; then
 		LIB_DEPEND_DIR=`brew info libevent | grep /opt/homebrew/Cellar/libevent | cut -d \  -f 1 | awk 'END {print}'`
 		OPTIONS="${OPTIONS} --with-libevent=${LIB_DEPEND_DIR}"
 	fi
@@ -68,7 +68,7 @@ Uninstall_mem()
 # /www/server/memcached/bin/memcached -d -p 11211 -u root  -m 100 -c 100
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_mem
 else
 	Uninstall_mem

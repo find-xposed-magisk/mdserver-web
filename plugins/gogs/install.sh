@@ -8,7 +8,7 @@ rootPath=$(dirname "$rootPath")
 serverPath=$(dirname "$rootPath")
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 
@@ -16,7 +16,7 @@ GOGS_DOWNLOAD='https://dl.gogs.io'
 
 getOs(){
 	os=`uname`
-	if [ "Darwin" == "$os" ];then
+	if [ "Darwin" = "$os" ];then
 		echo 'darwin'
 	else
 		echo 'linux'
@@ -48,7 +48,7 @@ Install_gogs()
 
 	git config --global push.default simple
 
-	if [ "darwin" == "$os" ];then
+	if [ "darwin" = "$os" ];then
 		file=gogs_${version}_darwin_amd64.zip
 	else
 		file=gogs_${version}_linux_amd64.zip
@@ -100,7 +100,7 @@ Uninstall_gogs()
 
 action=$1
 version=$2
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_gogs $version
 else
 	Uninstall_gogs $version

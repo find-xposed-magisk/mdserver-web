@@ -8,7 +8,7 @@ rootPath=$(dirname "$rootPath")
 serverPath=$(dirname "$rootPath")
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 
@@ -21,7 +21,7 @@ fi
 
 # /www/server/mysql-community/bin/mysqld --basedir=/www/server/mysql-community --datadir=/www/server/mysql-community/data --initialize-insecure --explicit_defaults_for_timestamp
 
-# source bin/activate
+# . bin/activate
 # cd /www/server/mdserver-web/plugins/mysql-community && bash install.sh install 5.7
 # cd /www/server/mdserver-web/plugins/mysql-community && bash install.sh install 9.3
 # cd /www/server/mdserver-web/plugins/mysql-community && bash install.sh uninstall 9.0
@@ -43,7 +43,7 @@ fi
 
 _os=`uname`
 echo "use system: ${_os}"
-if [ ${_os} == "Darwin" ]; then
+if [ ${_os} = "Darwin" ]; then
 	OSNAME='macos'
 elif grep -Eq "openSUSE" /etc/*-release; then
 	OSNAME='opensuse'
@@ -70,7 +70,7 @@ fi
 VERSION_ID=`cat /etc/*-release | grep 'VERSION_ID' | awk -F = '{print $2}' | awk -F "\"" '{print $2}'`
 
 # 针对ubuntu24,26进行优化
-if [[ "$OSNAME" == "ubuntu" ]] && [[ "$VERSION_ID" =~ ^(24|26)$ ]]; then
+if [[ "$OSNAME" = "ubuntu" ]] && [[ "$VERSION_ID" =~ ^(24|26)$ ]]; then
 	cur_dir=`pwd`
 	if [ -d /usr/lib/x86_64-linux-gnu ];then
 		cd /usr/lib/x86_64-linux-gnu
@@ -93,7 +93,7 @@ if [[ "$OSNAME" == "ubuntu" ]] && [[ "$VERSION_ID" =~ ^(24|26)$ ]]; then
 	cd $cur_dir
 fi
 
-if [[ "$OSNAME" == "debian" ]] && [[ "$VERSION_ID" =~ "13" ]]; then
+if [[ "$OSNAME" = "debian" ]] && [[ "$VERSION_ID" =~ "13" ]]; then
 	cur_dir=`pwd`
 	if [ -d /usr/lib/x86_64-linux-gnu ];then
 		cd /usr/lib/x86_64-linux-gnu
@@ -111,7 +111,7 @@ if [[ "$OSNAME" == "debian" ]] && [[ "$VERSION_ID" =~ "13" ]]; then
 	cd $cur_dir
 fi
 
-if [ "${2}" == "" ];then
+if [ "${2}" = "" ];then
 	echo '缺少安装脚本...'
 	exit 0
 fi 
@@ -121,7 +121,7 @@ if [ ! -d $curPath/versions/$2 ];then
 	exit 0
 fi
 
-if [ "${action}" == "uninstall" ];then
+if [ "${action}" = "uninstall" ];then
 	
 	cd ${rootPath} && python3 ${rootPath}/plugins/mysql-community/index.py stop ${type}
 	cd ${rootPath} && python3 ${rootPath}/plugins/mysql-community/index.py initd_uninstall ${type}
@@ -139,7 +139,7 @@ fi
 
 sh -x $curPath/versions/$2/install_generic.sh $1
 
-if [ "${action}" == "install" ];then
+if [ "${action}" = "install" ];then
 	#初始化
 
 	if [ "$?" != "0" ];then

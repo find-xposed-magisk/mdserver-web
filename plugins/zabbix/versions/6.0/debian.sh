@@ -10,7 +10,7 @@ sourcePath=${serverPath}/source
 sysName=`uname`
 
 debian_suffix=
-if [ "$SYS_ARCH" == "aarch64" ];then
+if [ "$SYS_ARCH" = "aarch64" ];then
 	debian_suffix="-arm64"
 fi
 
@@ -45,7 +45,7 @@ Uninstall_App()
 }
 
 action=${1}
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_App
 else
 	Uninstall_App

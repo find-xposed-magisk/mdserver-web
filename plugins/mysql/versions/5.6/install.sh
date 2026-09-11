@@ -15,7 +15,7 @@ sysArch=`arch`
 
 _os=`uname`
 echo "use system: ${_os}"
-if [ ${_os} == "Darwin" ]; then
+if [ ${_os} = "Darwin" ]; then
 	OSNAME='macos'
 elif grep -Eq "openSUSE" /etc/*-release; then
 	OSNAME='opensuse'
@@ -110,7 +110,7 @@ Install_mysql()
 		WHERE_DIR_GPP=`which g++`
 	fi
 
-	if [ "$OSNAME" == "ubuntu" ];then
+	if [ "$OSNAME" = "ubuntu" ];then
 		apt install -y libudev-dev
 		apt install -y libtirpc-dev
 		apt install -y libssl-dev
@@ -176,7 +176,7 @@ Uninstall_mysql()
 }
 
 action=$1
-if [ "${1}" == "install" ];then
+if [ "${1}" = "install" ];then
 	Install_mysql
 else
 	Uninstall_mysql

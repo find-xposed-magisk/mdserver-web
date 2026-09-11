@@ -6,6 +6,8 @@ export PATH
 #https://dev.mysql.com/downloads/mysql/5.7.html
 #https://dev.mysql.com/downloads/file/?id=489855
 
+# cd /www/server/mdserver-web/plugins/mysql && bash install.sh install 5.7
+
 curPath=`pwd`
 rootPath=$(dirname "$curPath")
 rootPath=$(dirname "$rootPath")
@@ -18,7 +20,7 @@ VERSION=5.7.44
 
 _os=`uname`
 echo "use system: ${_os}"
-if [ ${_os} == "Darwin" ]; then
+if [[ "${_os}" = "Darwin" ]]; then
 	OSNAME='macos'
 elif grep -Eq "openSUSE" /etc/*-release; then
 	OSNAME='opensuse'
@@ -149,7 +151,7 @@ Install_mysql()
 	md5_mysql_ok=1a637fce4599d9bf5f1c81699f086274
 	if [ -f ${mysqlDir}/mysql-boost-${VERSION}.tar.gz ];then
 		md5_mysql=`md5sum ${mysqlDir}/mysql-boost-${VERSION}.tar.gz  | awk '{print $1}'`
-		if [ "${md5_mysql_ok}" == "${md5_mysql}" ]; then
+		if [ "${md5_mysql_ok}" = "${md5_mysql}" ]; then
 			echo "mysql5.7 file check ok"
 		else
 			# 重新下载
@@ -172,11 +174,11 @@ Install_mysql()
 		WHERE_DIR_GPP=`which g++`
 	fi
 
-	if [ "$OSNAME" == "ubuntu" ];then
+	if [ "$OSNAME" = "ubuntu" ];then
 		Install_dep
 	fi
 
-	if [ "$OSNAME" == "debian" ] && [ "$VERSION_ID" == "13" ];then
+	if [ "$OSNAME" = "debian" ] && [ "$VERSION_ID" = "13" ];then
 		Install_dep_debain13
 	fi
 
@@ -243,7 +245,7 @@ Uninstall_mysql()
 }
 
 action=$1
-if [ "${1}" == "install" ];then
+if [[ "${1}" = "install" ]];then
 	Install_mysql
 else
 	Uninstall_mysql

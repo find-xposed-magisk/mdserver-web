@@ -12,7 +12,7 @@ sysName=`uname`
 sysArch=`arch`
 
 ubuntu_suffix=
-if [ "$sysArch" == "aarch64" ];then
+if [ "$sysArch" = "aarch64" ];then
 	ubuntu_suffix="-arm64"
 fi
 SYS_VERSION_ID=`cat /etc/*-release | grep VERSION_ID | awk -F = '{print $2}' | awk -F "\"" '{print $2}'`
@@ -52,7 +52,7 @@ Uninstall_App()
 }
 
 action=${1}
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_App
 else
 	Uninstall_App

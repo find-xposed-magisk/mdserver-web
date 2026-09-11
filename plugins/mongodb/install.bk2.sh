@@ -79,7 +79,7 @@ Install_app()
 	--ssl=off CPPPATH=$serverPath/lib/openssl/include \
 	LIBPATH=$serverPath/lib/openssl/lib"
 
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		mkdir -p $serverPath/mongodb
 		echo "${VERSION}" > $serverPath/mongodb/version.pl
 		echo '安装完成'
@@ -99,7 +99,7 @@ Uninstall_app()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_app
 else
 	Uninstall_app

@@ -465,7 +465,7 @@ def setConfigAuth():
 
 def runInfo():
     '''
-    cd /www/server/mdserver-web && source bin/activate && python3 /www/server/mdserver-web/plugins/mongodb/index.py run_info
+    cd /www/server/mdserver-web && . bin/activate && python3 /www/server/mdserver-web/plugins/mongodb/index.py run_info
     '''
     client = mongdbClient()
     db = client.admin
@@ -1451,7 +1451,7 @@ def importDbBackup():
 
 def testData():
     '''
-    cd /www/server/mdserver-web && source bin/activate && python3 /www/server/mdserver-web/plugins/mongodb/index.py test_data
+    cd /www/server/mdserver-web && . bin/activate && python3 /www/server/mdserver-web/plugins/mongodb/index.py test_data
     '''
     import pymongo
     from pymongo import ReadPreference
@@ -1470,7 +1470,7 @@ def testData():
 def test():
     '''
     python3 /www/server/mdserver-web/plugins/mongodb/index.py set_config_auth  {}
-    cd /www/server/mdserver-web && source bin/activate && python3 /www/server/mdserver-web/plugins/mongodb/index.py test
+    cd /www/server/mdserver-web && . bin/activate && python3 /www/server/mdserver-web/plugins/mongodb/index.py test
     python3 plugins/mongodb/index.py test
     '''
     # https://pymongo.readthedocs.io/en/stable/examples/high_availability.html

@@ -21,16 +21,16 @@ Install_App()
 	mkdir -p $serverPath/source/gorse
 
 	SYSNAME=linux
-	if [ "$sysName" == "Darwin" ];then
+	if [ "$sysName" = "Darwin" ];then
 		SYSNAME=darwin
 	fi
 
 	ARCH="amd64"
-	if [ "$sysArch" == "x86_64" ];then
+	if [ "$sysArch" = "x86_64" ];then
 		ARCH="amd64"
-	elif [ "$sysArch" == "aarch64" ];then
+	elif [ "$sysArch" = "aarch64" ];then
 		ARCH="arm64"
-	elif [ "$sysArch" == "arm64" ];then
+	elif [ "$sysArch" = "arm64" ];then
 		ARCH="arm64"
 	else
 		ARCH="amd64"
@@ -88,7 +88,7 @@ Uninstall_App()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_App
 else
 	Uninstall_App

@@ -448,7 +448,7 @@ START_MW_SHELL_TIME=`date +%s`
 export LANG=en_US.UTF-8
 MW_PATH=%s/bin/activate
 if [ -f $MW_PATH ];then
-    source $MW_PATH
+    . $MW_PATH
 fi''' % (mw.getPanelDir(),)
 
             head = head + start_head + source_bin_activate + "\n"
