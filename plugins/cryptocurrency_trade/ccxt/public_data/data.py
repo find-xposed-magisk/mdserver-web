@@ -15,7 +15,7 @@ from pprint import pprint
 sys.path.append(os.getcwd() + "/class/core")
 import mw
 
-# cd /www/server/mdserver-web && source bin/activate
+# cd /www/server/mdserver-web && . bin/activate
 # python3 plugins/cryptocurrency_trade/ccxt/public_data/data.py run
 # python3 plugins/cryptocurrency_trade/ccxt/public_data/data.py long
 

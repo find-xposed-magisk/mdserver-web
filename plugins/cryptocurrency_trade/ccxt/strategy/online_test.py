@@ -1,4 +1,4 @@
-# cd /www/server/mdserver-web &&  source bin/activate
+# cd /www/server/mdserver-web &&  . bin/activate
 
 # python3 plugins/cryptocurrency_trade/ccxt/strategy/online_test.py t_buy_open
 # python3 plugins/cryptocurrency_trade/ccxt/strategy/online_test.py t_buy_close

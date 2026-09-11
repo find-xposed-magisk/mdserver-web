@@ -5,7 +5,7 @@ pip install git+https://github.com/catalyst-team/catalyst@master --upgrade
 cd /www/server/mdserver-web && python3 plugins/cryptocurrency_trade/ccxt/test/p1.py
 
 
-cd /Users/midoks/Desktop/mwdev/server/mdserver-web &&  source bin/activate
+cd /Users/midoks/Desktop/mwdev/server/mdserver-web &&  . bin/activate
 
 python3 plugins/cryptocurrency_trade/ccxt/test/p1.py
 '''

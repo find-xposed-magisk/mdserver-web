@@ -9,10 +9,10 @@ from catalyst import run_algorithm
 from catalyst.api import order, record, symbol
 
 '''
-cd /Users/midoks/Desktop/mwdev/server/mdserver-web &&  source bin/activate
+cd /Users/midoks/Desktop/mwdev/server/mdserver-web &&  / bin/activate
 
 
-cd /www/server/mdserver-web &&  source bin/activate && source activate catalys
+cd /www/server/mdserver-web &&  . bin/activate && source activate catalys
 
 cd /Users/midoks/Desktop/mwdev/server/mdserver-web && python3 plugins/cryptocurrency_trade/ccxt/test/p_test.py
 catalyst ingest-exchange -x binance -i btc_usdt -f minute

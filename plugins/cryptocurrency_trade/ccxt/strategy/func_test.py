@@ -11,7 +11,7 @@ from decimal import Decimal
 sys.path.append(os.getcwd() + "/plugins/cryptocurrency_trade/strategy")
 import common
 
-# cd /www/server/mdserver-web &&  source bin/activate
+# cd /www/server/mdserver-web &&  . bin/activate
 # python3 plugins/cryptocurrency_trade/ccxt/strategy/func_test.py run
 
 # common.notifyMsg("任务开始")
