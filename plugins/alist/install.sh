@@ -16,16 +16,16 @@ sysArch=`arch`
 sysName=`uname`
 
 ALIST_ARCH_NAME=amd64
-if [ "$sysArch" == "arm64" ];then
+if [ "$sysArch" = "arm64" ];then
 	ALIST_ARCH_NAME=arm64
-elif [ "$sysArch" == "x86_64" ]; then
+elif [ "$sysArch" = "x86_64" ]; then
 	ALIST_ARCH_NAME=amd64
-elif [ "$sysArch" == "aarch64" ]; then
+elif [ "$sysArch" = "aarch64" ]; then
 	ALIST_ARCH_NAME=arm64
 fi
 
 ALIST_NAME=linux
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	ALIST_NAME=darwin
 fi
 
@@ -86,7 +86,7 @@ Uninstall_App()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_App
 else
 	Uninstall_App
