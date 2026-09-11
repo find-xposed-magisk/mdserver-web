@@ -16,7 +16,7 @@ VERSION=(${type//./ })
 
 pip install psycopg2-binary
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 	pip install psycopg2-binary
 fi
 

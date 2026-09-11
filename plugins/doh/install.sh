@@ -8,7 +8,7 @@ rootPath=$(dirname "$rootPath")
 serverPath=$(dirname "$rootPath")
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 

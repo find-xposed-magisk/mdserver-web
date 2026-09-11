@@ -16,7 +16,7 @@ sysArch=`arch`
 # systemctl restart manticore
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 ACTION=$1

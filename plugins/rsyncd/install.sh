@@ -17,7 +17,7 @@ OSNAME=`cat ${rootPath}/data/osname.pl`
 
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 if id www &> /dev/null ;then 

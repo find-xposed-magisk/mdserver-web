@@ -22,7 +22,7 @@ OSNAME_ID=`cat /etc/*-release | grep VERSION_ID | awk -F = '{print $2}' | awk -F
 
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 Install_app()

@@ -17,7 +17,7 @@ version=$2
 sys_os=`uname`
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 if [ "$sys_os" == "Darwin" ];then

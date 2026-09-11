@@ -11,7 +11,7 @@ VERSION=$2
 
 # pip3 install ccxt
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate	
+	. ${rootPath}/bin/activate	
 fi
 
 pip3 install pyTelegramBotAPI

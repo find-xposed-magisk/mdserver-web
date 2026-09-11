@@ -13,7 +13,7 @@ serverPath=$(dirname "$rootPath")
 VERSION=$2
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 # {

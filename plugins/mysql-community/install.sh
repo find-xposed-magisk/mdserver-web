@@ -8,7 +8,7 @@ rootPath=$(dirname "$rootPath")
 serverPath=$(dirname "$rootPath")
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 
@@ -21,7 +21,7 @@ fi
 
 # /www/server/mysql-community/bin/mysqld --basedir=/www/server/mysql-community --datadir=/www/server/mysql-community/data --initialize-insecure --explicit_defaults_for_timestamp
 
-# source bin/activate
+# . bin/activate
 # cd /www/server/mdserver-web/plugins/mysql-community && bash install.sh install 5.7
 # cd /www/server/mdserver-web/plugins/mysql-community && bash install.sh install 9.3
 # cd /www/server/mdserver-web/plugins/mysql-community && bash install.sh uninstall 9.0

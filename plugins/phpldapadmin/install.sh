@@ -11,7 +11,7 @@ serverPath=$(dirname "$rootPath")
 # cd /www/server/mdserver-web && python3 plugins/phpldapadmin/index.py start
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 if [ "$sys_os" == "Darwin" ];then

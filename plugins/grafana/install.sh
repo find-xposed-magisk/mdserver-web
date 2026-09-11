@@ -28,7 +28,7 @@ if [ "macos" == "$OSNAME" ];then
 fi
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 if id grafana &> /dev/null ;then 

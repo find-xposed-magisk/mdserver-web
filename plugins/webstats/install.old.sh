@@ -36,7 +36,7 @@ else
 fi
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 get_latest_release() {

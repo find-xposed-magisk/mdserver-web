@@ -13,7 +13,7 @@ VERSION=$2
 # acme.sh --uninstall
 
 
-# source /Users/xxx/.zshrc
+# . /Users/xxx/.zshrc
 
 # https://github.com/acmesh-official/acme.sh/wiki/dnsapi
 # https://docs.dnspod.com/api-legacy/domains.html#get-the-domain-list
@@ -24,7 +24,7 @@ VERSION=$2
 
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 # pip install cloudflare

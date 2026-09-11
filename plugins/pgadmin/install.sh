@@ -13,7 +13,7 @@ rootPath=$(dirname "$rootPath")
 serverPath=$(dirname "$rootPath")
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 
@@ -25,7 +25,6 @@ echo "python:$P_VER"
 # cd /Users/midoks/Desktop/mwdev/server/mdserver-web/plugins/pgadmin && bash install.sh install 4
 # cd /www/server/mdserver-web/plugins/pgadmin && bash install.sh install 4
 
-# source /www/server/pgadmin/run/bin/activate
 # python /www/server/pgadmin/run/lib/python3.10/site-packages/pgadmin4/setup.py --help
 # python /www/server/pgadmin/run/lib/python3.10/site-packages/pgadmin4/setup.py add-user mdserver-web@gmail.com 123123
 # cd /www/server/mdserver-web && python3 plugins/pgadmin/index.py start
@@ -83,7 +82,7 @@ Install_pgadmin()
 	fi
 
 	if [ -f ${PG_DIR}/bin/activate ];then
-		source ${PG_DIR}/bin/activate
+		. ${PG_DIR}/bin/activate
 	fi
 	pip install gunicorn
 	pip install pgadmin4

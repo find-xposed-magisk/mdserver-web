@@ -8,8 +8,8 @@ export PATH
 # cd /www/server/mdserver-web/plugins/nezha && bash install.sh install 2.2.6
 # sqlite3 /www/server/nezha/dashboard/data/sqlite.db "DELETE FROM users;"
 
-# cd /www/server/mdserver-web && source bin/activate && python3 plugins/nezha/index.py start
-# cd /www/server/mdserver-web && source bin/activate && python3 plugins/nezha/index.py status
+# cd /www/server/mdserver-web && . bin/activate && python3 plugins/nezha/index.py start
+# cd /www/server/mdserver-web && . bin/activate && python3 plugins/nezha/index.py status
 # python3 plugins/nezha/index.py cron_add_check
 
 curPath=`pwd`

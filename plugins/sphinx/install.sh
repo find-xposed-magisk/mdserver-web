@@ -11,19 +11,19 @@ sysArch=`arch`
 
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
-# cd /www/server/mdserver-web && source bin/activate && python3 plugins/sphinx/index.py rebuild
+# cd /www/server/mdserver-web && . bin/activate && python3 plugins/sphinx/index.py rebuild
 # cd /www/server/mdserver-web/plugins/sphinx && bash install.sh install 3.6.1
-# cd /www/server/mdserver-web && source bin/activate && python3 plugins/sphinx/index.py db_to_sphinx && /www/server/sphinx/bin/bin/indexer -c /www/server/sphinx/sphinx.conf --all --rotate
+# cd /www/server/mdserver-web && . bin/activate && python3 plugins/sphinx/index.py db_to_sphinx && /www/server/sphinx/bin/bin/indexer -c /www/server/sphinx/sphinx.conf --all --rotate
 # /Users/midoks/Desktop/mwdev/server/sphinx/bin/bin/indexer /Users/midoks/Desktop/mwdev/server/sphinx/sphinx.conf --all --rotate
 
-# cd /www/server/mdserver-web && source bin/activate && python3 plugins/sphinx/index.py sphinx_cmd
+# cd /www/server/mdserver-web && . bin/activate && python3 plugins/sphinx/index.py sphinx_cmd
 
 # /Users/midoks/Desktop/mwdev/server/sphinx/bin/bin/indexer /Users/midoks/Desktop/mwdev/server/sphinx/sphinx.conf --all --rotate
 
-# cd /www/server/mdserver-web && source bin/activate && python3 plugins/sphinx/index.py start
+# cd /www/server/mdserver-web && . bin/activate && python3 plugins/sphinx/index.py start
 bash ${rootPath}/scripts/getos.sh
 # echo "bash ${rootPath}/scripts/getos.sh"
 OSNAME="macos"

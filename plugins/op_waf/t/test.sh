@@ -16,7 +16,7 @@ rootPath=$(dirname "$rootPath")
 rootPath=$(dirname "$rootPath")
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 python3 index.py

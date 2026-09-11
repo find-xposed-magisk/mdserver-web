@@ -12,7 +12,7 @@ VERSION=$2
 # cd /www/server/mdserver-web/plugins/msonedrive  && bash install.sh install 1.0
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 Install_App()

@@ -22,7 +22,7 @@ PATH=$PATH:${rootPath}/bin
 export PATH
 
 # if [ -f ${rootPath}/bin/activate ];then
-#     source ${rootPath}/bin/activate
+#     . ${rootPath}/bin/activate
 # fi
 
 VERSION=$2
@@ -43,9 +43,9 @@ Install_App()
                 echo "python3 < 3.10"
                 cd ${GDDIR} && python3 -m venv .
             fi
-            cd ${GDDIR} && source ${GDDIR}/bin/activate
+            cd ${GDDIR} && . ${GDDIR}/bin/activate
         else
-            cd ${GDDIR} && source ${GDDIR}/bin/activate
+            cd ${GDDIR} && . ${GDDIR}/bin/activate
         fi
 
         tmp=`python3 -V 2>&1|awk '{print $2}'`

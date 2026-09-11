@@ -14,7 +14,7 @@ VERSION=$2
 # ps -ef|grep process_network_total| grep -v grep | awk '{print $2}' | xargs kill -9
 
 if [ -f ${rootPath}/bin/activate ];then
-	source ${rootPath}/bin/activate
+	. ${rootPath}/bin/activate
 fi
 
 Install_App()
