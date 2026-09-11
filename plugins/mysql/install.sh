@@ -58,7 +58,7 @@ if [ "${action}" == "uninstall" ];then
 	fi
 fi
 
-sh -x $curPath/versions/$2/install.sh $1
+bash -x $curPath/versions/$2/install.sh $1
 
 if [ "${action}" == "install" ] && [ -d $serverPath/mysql ];then
 	#初始化 
