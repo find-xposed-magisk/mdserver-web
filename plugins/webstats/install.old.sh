@@ -18,7 +18,7 @@ sys_os=`uname`
 HTTP_PREFIX="https://"
 LOCAL_ADDR=common
 cn=$(curl -fsSL -m 10 -s http://ipinfo.io/json | grep "\"country\": \"CN\"")
-if [ ! -z "$cn" ] || [ "$?" == "0" ] ;then
+if [ ! -z "$cn" ] || [ "$?" = "0" ] ;then
     LOCAL_ADDR=cn
     HTTP_PREFIX="https://"
 fi
@@ -29,7 +29,7 @@ if [ "$LOCAL_ADDR" != "common" ];then
 fi
 
 
-if [ "$sys_os" == "Darwin" ];then
+if [ "$sys_os" = "Darwin" ];then
 	BAK='_bak'
 else
 	BAK=''
@@ -120,7 +120,7 @@ Install_App()
 	# 缓存数据
 	GEO_VERSION=$(get_latest_release "P3TERX/GeoLite.mmdb")
 	if [ ! -f $serverPath/source/webstats/GeoLite2-City.mmdb ];then
-		if [ "$LOCAL_ADDR" == "cn" ];then
+		if [ "$LOCAL_ADDR" = "cn" ];then
 			wget --no-check-certificate -O $serverPath/source/webstats/GeoLite2-City.mmdb https://dl.midoks.icu/soft/webstats/GeoLite2-City.mmdb
 		else
 			wget --no-check-certificate -O $serverPath/source/webstats/GeoLite2-City.mmdb https://github.com/P3TERX/GeoLite.mmdb/releases/download/${GEO_VERSION}/GeoLite2-City.mmdb

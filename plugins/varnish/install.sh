@@ -28,7 +28,7 @@ Install_varnish()
 		apt install varnish -y
 	elif [[ "$OSNAME" = "arch" ]]; then
 		echo y | pacman -Sy varnish
-	elif [ "${OSNAME}" == "opensuse" ];then
+	elif [ "${OSNAME}" = "opensuse" ];then
 		zypper install -y varnish
 	else
 		echo "I won't support it"

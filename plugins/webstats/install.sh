@@ -84,7 +84,7 @@ Install_App()
 	export PATH=$PATH:$serverPath/webstats/luarocks/bin
 
 	if [ ! -f $serverPath/webstats/lua/lsqlite3.so ];then
-		if [ "${sys_os}" == "Darwin" ];then
+		if [ "${sys_os}" = "Darwin" ];then
 			cd $serverPath/source/webstats/lsqlite3_v096 
 			# SQLITE_DIR=/usr/local/Cellar/sqlite/3.36.0
 			BREW_DIR=`which brew`
@@ -119,7 +119,7 @@ Install_App()
 	# 缓存数据
 	GEO_VERSION=$(get_latest_release "P3TERX/GeoLite.mmdb")
 	if [ ! -s $serverPath/source/webstats/GeoLite2-City.mmdb ];then
-		if [ "$LOCAL_ADDR" == "cn" ];then
+		if [ "$LOCAL_ADDR" = "cn" ];then
 			wget --no-check-certificate -O $serverPath/source/webstats/GeoLite2-City.mmdb https://dl.midoks.icu/soft/webstats/GeoLite2-City.mmdb
 		else
 			wget --no-check-certificate -O $serverPath/source/webstats/GeoLite2-City.mmdb https://github.com/P3TERX/GeoLite.mmdb/releases/download/${GEO_VERSION}/GeoLite2-City.mmdb

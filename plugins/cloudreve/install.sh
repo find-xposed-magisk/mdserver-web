@@ -25,7 +25,7 @@ elif [ "$sysArch" = "aarch64" ]; then
 fi
 
 ALIST_NAME=linux
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	ALIST_NAME=darwin
 fi
 

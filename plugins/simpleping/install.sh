@@ -21,13 +21,13 @@ Install_App()
 	mkdir -p $serverPath/source/simpleping
 
 	name=linux
-	if [ "$sysName" == "Darwin" ];then
+	if [ "$sysName" = "Darwin" ];then
 		name="darwin"
 	else
 		sysctl -w net.ipv4.ping_group_range="0 2147483647"
 	fi
 
-	if [ "$ARCH" == "x86_64" ];then
+	if [ "$ARCH" = "x86_64" ];then
 		ARCH="amd64"
 	fi
 
@@ -78,7 +78,7 @@ Uninstall_App()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_App
 else
 	Uninstall_App

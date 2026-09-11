@@ -18,11 +18,11 @@ sysName=`uname`
 echo "use system: ${sysName}"
 
 OSNAME=`bash ${rootPath}/scripts/getos.sh`
-if [ "" == "$OSNAME" ];then
+if [ "" = "$OSNAME" ];then
 	OSNAME=`cat ${rootPath}/data/osname.pl`
 fi
 
-if [ "macos" == "$OSNAME" ];then
+if [ "macos" = "$OSNAME" ];then
 	echo "不支持Macox"
 	exit
 fi
@@ -78,7 +78,7 @@ Uninstall_App()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_App
 else
 	Uninstall_App

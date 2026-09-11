@@ -23,7 +23,7 @@ Install_swap()
 	mkdir -p $serverPath/swap
 	echo "${VERSION}" > $serverPath/swap/version.pl
 
-	if [ "$sysName" == "Darwin" ];then
+	if [ "$sysName" = "Darwin" ];then
 		pass
 	else
 		dd if=/dev/zero of=$serverPath/swap/swapfile bs=1M count=1024
@@ -61,7 +61,7 @@ Uninstall_swap()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_swap
 else
 	Uninstall_swap

@@ -31,7 +31,7 @@ cfgDir=/etc/opt/remi/php${version}/php.d
 extIni=${cfgDir}/10-${LIBNAME}.ini
 
 
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	BAK='_bak'
 else
 	BAK=''
@@ -41,7 +41,7 @@ Install_lib()
 {
 	bash ${rootPath}/scripts/getos.sh
 	OSNAME=`cat ${rootPath}/data/osname.pl`
-	if [ "$OSNAME" == 'macos' ];then
+	if [ "$OSNAME" = 'macos' ];then
 		VERSION_ID=none
 	else
 		VERSION_ID=`cat /etc/*-release | grep VERSION_ID | awk -F = '{print $2}' | awk -F "\"" '{print $2}'`
@@ -51,7 +51,7 @@ Install_lib()
 
 	DEFAULT_OSNAME=linux-x86_64
 	SUFFIX_NAME=lin
-	if [ "$OSNAME" == 'macos' ];then
+	if [ "$OSNAME" = 'macos' ];then
 		DEFAULT_OSNAME=macosx
 		SUFFIX_NAME=dar
 	fi
@@ -115,8 +115,8 @@ Uninstall_lib()
 }
 
 
-if [ "$actionType" == 'install' ];then
+if [ "$actionType" = 'install' ];then
 	Install_lib
-elif [ "$actionType" == 'uninstall' ];then
+elif [ "$actionType" = 'uninstall' ];then
 	Uninstall_lib
 fi

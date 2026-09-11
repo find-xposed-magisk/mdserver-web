@@ -34,9 +34,9 @@ Install_app()
 	mkdir -p $serverPath/supervisor/run
 
 	echo 'supervisor install...'
-	if [ "centos" == "$OSNAME" ] || [ "fedora" == "$OSNAME" ];then
+	if [ "centos" = "$OSNAME" ] || [ "fedora" = "$OSNAME" ];then
     	pip install  supervisor
-    elif [ "ubuntu" == "$OSNAME" ] || [ "debian" == "$OSNAME" ] ;then
+    elif [ "ubuntu" = "$OSNAME" ] || [ "debian" = "$OSNAME" ] ;then
     	pip install supervisor
 	else
 		pip install supervisor
@@ -70,7 +70,7 @@ Uninstall_app()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_app
 else
 	Uninstall_app
