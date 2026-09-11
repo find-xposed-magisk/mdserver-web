@@ -34,7 +34,7 @@ PATH=$PATH:${PANEL_DIR}/bin
 
 
 if [ -f ${PANEL_DIR}/bin/activate ];then
-    source ${PANEL_DIR}/bin/activate
+    . ${PANEL_DIR}/bin/activate
     if [ "$?" != "0" ];then
         echo "load local python env fail!"
     fi
@@ -672,7 +672,7 @@ mw_ssh(){
 }
 
 mw_venv(){
-    cd ${PANEL_DIR} && source bin/activate
+    cd ${PANEL_DIR} && . bin/activate
 }
 
 mw_clean_lib(){
