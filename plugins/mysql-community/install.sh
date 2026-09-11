@@ -70,7 +70,7 @@ fi
 VERSION_ID=`cat /etc/*-release | grep 'VERSION_ID' | awk -F = '{print $2}' | awk -F "\"" '{print $2}'`
 
 # 针对ubuntu24,26进行优化
-if [[ "$OSNAME" == "ubuntu" ]] && [[ "$VERSION_ID" =~ ^(24|26)$ ]]; then
+if [[ "$OSNAME" = "ubuntu" ]] && [[ "$VERSION_ID" =~ ^(24|26)$ ]]; then
 	cur_dir=`pwd`
 	if [ -d /usr/lib/x86_64-linux-gnu ];then
 		cd /usr/lib/x86_64-linux-gnu
@@ -93,7 +93,7 @@ if [[ "$OSNAME" == "ubuntu" ]] && [[ "$VERSION_ID" =~ ^(24|26)$ ]]; then
 	cd $cur_dir
 fi
 
-if [[ "$OSNAME" == "debian" ]] && [[ "$VERSION_ID" =~ "13" ]]; then
+if [[ "$OSNAME" = "debian" ]] && [[ "$VERSION_ID" =~ "13" ]]; then
 	cur_dir=`pwd`
 	if [ -d /usr/lib/x86_64-linux-gnu ];then
 		cd /usr/lib/x86_64-linux-gnu

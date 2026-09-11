@@ -57,7 +57,7 @@ Install_lib()
 		cd $sourcePath/php${version}/ext/${LIBNAME}
 		
 		OPTIONS=''
-		if [ "${SYS_ARCH}" == "aarch64" ] && [ "$version" -lt "56" ];then
+		if [ "${SYS_ARCH}" = "aarch64" ] && [ "$version" -lt "56" ];then
 			OPTIONS="$OPTIONS --build=aarch64-unknown-linux-gnu --host=aarch64-unknown-linux-gnu"
 		fi
 
@@ -67,9 +67,9 @@ Install_lib()
 
 
 		# It is considered as a temporary bug
-		if [ "$version" == "81" ] || [ "$version" == "82" ];then
+		if [ "$version" = "81" ] || [ "$version" = "82" ];then
 			bash ${rootPath}/scripts/getos.sh
-			if [ "$OSNAME" == 'centos' ];then
+			if [ "$OSNAME" = 'centos' ];then
 				FILE_softmagic=$sourcePath/php${version}/ext/${LIBNAME}/libmagic/softmagic.c
 				FIND_UNDEF_STRNDUP=`cat $FILE_softmagic|grep '#undef strndup'`
 				if [ "$version" -gt "74" ] && [ "$FIND_UNDEF_STRNDUP" == "" ];then

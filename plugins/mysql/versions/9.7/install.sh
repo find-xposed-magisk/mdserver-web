@@ -107,7 +107,7 @@ Install_mysql()
 	md5_mysql_ok=5d2f4c9568a0e01d20dc5442c772de9f
 	if [ -f ${mysqlDir}/mysql-${VERSION}.tar.gz ];then
 		md5_mysql=`md5sum ${mysqlDir}/mysql-${VERSION}.tar.gz  | awk '{print $1}'`
-		if [ "${md5_mysql_ok}" == "${md5_mysql}" ]; then
+		if [ "${md5_mysql_ok}" = "${md5_mysql}" ]; then
 			echo "mysql9.4 file check ok"
 		else
 			# 重新下载
@@ -132,7 +132,7 @@ Install_mysql()
 
 	WHERE_DIR_GCC=/usr/bin/gcc
 	WHERE_DIR_GPP=/usr/bin/g++
-	if [ "$OSNAME" == "centos" ] && [ "$VERSION_ID" == "7" ];then
+	if [ "$OSNAME" = "centos" ] && [ "$VERSION_ID" = "7" ];then
 		yum install -y libudev-devel
 		yum install -y centos-release-scl
         yum install -y devtoolset-11-gcc devtoolset-11-gcc-c++ devtoolset-11-binutils

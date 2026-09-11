@@ -16,7 +16,7 @@ mkdir -p $MG_DIR
 
 # https://fastdl.mongodb.org/osx/mongodb-macos-arm64-8.0.3.tgz
 FILE_NAME=mongodb-macos-x86_64-${VERSION}
-if [ "arm64" == "${SYS_ARCH}" ];then
+if [ "arm64" = "${SYS_ARCH}" ];then
 	FILE_NAME=mongodb-macos-arm64-${VERSION}
 fi
 FILE_NAME_TGZ=${FILE_NAME}.tgz
@@ -44,7 +44,7 @@ if [ "aarch64" = ${SYS_ARCH} ];then
 	TOOL_FILE_NAME=mongosh-${TOOL_VERSION}-darwin-arm64
 fi
 
-if [ "arm64" == ${SYS_ARCH} ];then
+if [ "arm64" = ${SYS_ARCH} ];then
 	TOOL_FILE_NAME=mongosh-${TOOL_VERSION}-darwin-arm64
 fi
 TOOL_FILE_NAME_TGZ=${TOOL_FILE_NAME}.zip

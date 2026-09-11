@@ -73,11 +73,11 @@ name=$2
 # apt install -y kernel-debuginfo-common kernel-debuginfo
 # apt install -y kernel-*
 
-if [ "$OSNAME" == "debian" ];then
+if [ "$OSNAME" = "debian" ];then
     apt install  -y systemtap
     apt-get install -y build-essential 
     apt-get install -y linux-headers-$(uname -r)
-elif [ "$OSNAME" == "centos" ];then
+elif [ "$OSNAME" = "centos" ];then
     yum install -y kernel-devel-$(uname -r)
 fi
 

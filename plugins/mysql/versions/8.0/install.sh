@@ -105,7 +105,7 @@ Install_mysql()
 	md5_mysql_ok=6707beb0d46a9e08a19aa596329ca79d
 	if [ -f ${mysqlDir}/mysql-boost-${VERSION}.tar.gz ];then
 		md5_mysql=`md5sum ${mysqlDir}/mysql-boost-${VERSION}.tar.gz  | awk '{print $1}'`
-		if [ "${md5_mysql_ok}" == "${md5_mysql}" ]; then
+		if [ "${md5_mysql_ok}" = "${md5_mysql}" ]; then
 			echo "mysql8.0 file  check ok"
 		else
 			# 重新下载
@@ -164,7 +164,7 @@ Install_mysql()
 	fi
 
 
-	if [ "$OSNAME" == "opensuse" ];then
+	if [ "$OSNAME" = "opensuse" ];then
 		zypper install -y gcc11
 		zypper install -y gcc11-c++
 

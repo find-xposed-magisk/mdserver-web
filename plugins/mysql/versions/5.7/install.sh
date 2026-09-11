@@ -151,7 +151,7 @@ Install_mysql()
 	md5_mysql_ok=1a637fce4599d9bf5f1c81699f086274
 	if [ -f ${mysqlDir}/mysql-boost-${VERSION}.tar.gz ];then
 		md5_mysql=`md5sum ${mysqlDir}/mysql-boost-${VERSION}.tar.gz  | awk '{print $1}'`
-		if [ "${md5_mysql_ok}" == "${md5_mysql}" ]; then
+		if [ "${md5_mysql_ok}" = "${md5_mysql}" ]; then
 			echo "mysql5.7 file check ok"
 		else
 			# 重新下载

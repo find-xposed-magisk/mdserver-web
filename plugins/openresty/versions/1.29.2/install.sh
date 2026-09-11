@@ -77,7 +77,7 @@ Install_openresty()
 	opensslVersion="3.5.5"
 	libresslVersion="3.9.1"
 	pcreVersion='8.45'
-	if [ "$sysName" == "Darwin" ];then
+	if [ "$sysName" = "Darwin" ];then
 
 		if [ ! -f ${openrestyDir}/pcre-${pcreVersion}.tar.gz ];then
 			wget --no-check-certificate -O ${openrestyDir}/pcre-${pcreVersion}.tar.gz https://netix.dl.sourceforge.net/project/pcre/pcre/${pcreVersion}/pcre-${pcreVersion}.tar.gz
@@ -152,13 +152,13 @@ Install_openresty()
 		cd ${openrestyDir} && wget -O $openrestyDir/zstd-nginx-module.tar.gz https://github.com/tokers/zstd-nginx-module/archive/refs/heads/master.tar.gz
 		cd ${openrestyDir} && tar -zxvf zstd-nginx-module.tar.gz
 
-		if [ "$sysName" == "Darwin" ];then
+		if [ "$sysName" = "Darwin" ];then
 			export ZSTD_INC=/opt/homebrew/include
 			export ZSTD_LIB=/opt/homebrew/lib
 		fi
 
 		pkg-config --exists --print-errors libzstd
-		if [ "$?" == "0" ];then
+		if [ "$?" = "0" ];then
 			OPTIONS="${OPTIONS} --add-module=${openrestyDir}/zstd-nginx-module-master"
 		fi
 	fi

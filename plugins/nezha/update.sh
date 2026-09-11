@@ -25,7 +25,7 @@ if [ -d /www/server/nezha ];then
     echo "$INSTALL_VERSION" > /www/server/nezha/version.pl
 fi
 
-if [ "$INSTALL_VERSION" == "$NUMBER_LATEST_VERSION" ];then
+if [ "$INSTALL_VERSION" = "$NUMBER_LATEST_VERSION" ];then
 	echo "已经是最新!!!"
 	exit
 fi

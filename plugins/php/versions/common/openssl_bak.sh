@@ -50,7 +50,7 @@ Install_lib()
 		cd ${rootPath}/plugins/php/lib && /bin/bash openssl.sh
 	fi
 
-	if [ "$sysName" == "Darwin" ] ;then 
+	if [ "$sysName" = "Darwin" ] ;then 
 		BREW_DIR=`which brew`
 		BREW_DIR=${BREW_DIR/\/bin\/brew/}
 
@@ -71,7 +71,7 @@ Install_lib()
 		fi
 		
 		OPTIONS=""
-		if [ "${SYS_ARCH}" == "aarch64" ] && [ "$version" -lt "56" ];then
+		if [ "${SYS_ARCH}" = "aarch64" ] && [ "$version" -lt "56" ];then
 			OPTIONS="$OPTIONS --build=aarch64-unknown-linux-gnu --host=aarch64-unknown-linux-gnu"
 		fi
 
@@ -87,7 +87,7 @@ Install_lib()
 		# otool -L /Users/midoks/Desktop/mwdev/server/php/83/lib/php/extensions/no-debug-non-zts-20230831/openssl.so 
 		# ldd /www/server/php/83/bin/php
 
-		if [ "$version" -lt "84" ] && [ "$sysName" == "Darwin" ];then
+		if [ "$version" -lt "84" ] && [ "$sysName" = "Darwin" ];then
 			BREW_DIR=`which brew`
 			BREW_DIR=${BREW_DIR/\/bin\/brew/}
 			LIB_DEPEND_DIR=`brew info openssl@1.0 | grep ${BREW_DIR}/Cellar/openssl@1.0 | cut -d \  -f 1 | awk 'END {print}'`
@@ -99,7 +99,7 @@ Install_lib()
 			echo "$LIB_DEPEND_DIR/lib/pkgconfig"
 		fi
 
-		if [ "$version" -ge "84" ] &&  [ "$sysName" == "Darwin" ];then
+		if [ "$version" -ge "84" ] &&  [ "$sysName" = "Darwin" ];then
 			BREW_DIR=`which brew`
 			BREW_DIR=${BREW_DIR/\/bin\/brew/}
 			LIB_DEPEND_DIR=`brew info openssl | grep ${BREW_DIR}/Cellar/openssl | cut -d \  -f 1 | awk 'END {print}'`

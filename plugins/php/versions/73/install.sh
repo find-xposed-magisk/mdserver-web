@@ -145,13 +145,13 @@ fi
 # ----- cpu end ------
 
 
-if [ "${OSNAME}" == "debian" ] && [ "${VERSION_ID}" == "13" ];then
+if [ "${OSNAME}" = "debian" ] && [ "${VERSION_ID}" = "13" ];then
 	# 修复arm64架构下安装
 	cat ${curPath}/versions/${PHP_VER}/src/reentrancy.c > $sourcePath/php/php${PHP_VER}/main/reentrancy.c
 	echo "cat ${curPath}/versions/${PHP_VER}/src/reentrancy.c > $sourcePath/php/php${PHP_VER}/main/reentrancy.c"
 fi
 
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	BREW_DIR=`which brew`
 	BREW_DIR=${BREW_DIR/\/bin\/brew/}
 

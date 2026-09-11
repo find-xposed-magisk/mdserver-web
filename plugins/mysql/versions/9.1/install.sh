@@ -107,7 +107,7 @@ Install_mysql()
 	md5_mysql_ok=eb2c6bbd20569d2690bc7e34312f5210
 	if [ -f ${mysqlDir}/mysql-${VERSION}.tar.gz ];then
 		md5_mysql=`md5sum ${mysqlDir}/mysql-${VERSION}.tar.gz  | awk '{print $1}'`
-		if [ "${md5_mysql_ok}" == "${md5_mysql}" ]; then
+		if [ "${md5_mysql_ok}" = "${md5_mysql}" ]; then
 			echo "mysql9.1 file check ok"
 		else
 			# 重新下载

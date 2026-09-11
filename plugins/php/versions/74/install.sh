@@ -27,7 +27,7 @@ cd ${rootPath}/plugins/php/lib && /bin/bash libzip.sh
 
 # redat ge 8
 which yum
-if [ "$?" == "0" ];then
+if [ "$?" = "0" ];then
 	cd ${rootPath}/plugins/php/lib && /bin/bash oniguruma.sh
 fi
 

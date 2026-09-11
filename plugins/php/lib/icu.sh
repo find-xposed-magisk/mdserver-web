@@ -25,7 +25,7 @@ if [ ! -d ${SERVER_ROOT}/icu ];then
 	
 	cd ${SOURCE_ROOT}
 
-	if [ "$LOCAL_ADDR" == 'cn' ];then
+	if [ "$LOCAL_ADDR" = 'cn' ];then
         if [ ! -f ${SOURCE_ROOT}/icu4c-52_2-src.tgz  ];then
             wget --no-check-certificate -O ${SOURCE_ROOT}/icu4c-52_2-src.tgz https://dl.midoks.icu/lib/icu4c-52_2-src.tgz -T 20
         fi 

@@ -26,7 +26,7 @@ fi
 if [ ! -d ${SERVER_ROOT}/libiconv ];then
     cd $SOURCE_ROOT
 
-    if [ "$LOCAL_ADDR" == 'cn' ];then
+    if [ "$LOCAL_ADDR" = 'cn' ];then
         if [ ! -f ${SOURCE_ROOT}/libiconv-1.15.tar.gz  ];then
             wget --no-check-certificate -O ${SOURCE_ROOT}/libiconv-1.15.tar.gz  https://dl.midoks.icu/lib/libiconv-1.15.tar.gz -T 20
         fi 

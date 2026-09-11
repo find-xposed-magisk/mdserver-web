@@ -110,7 +110,7 @@ fi
 # OPTIONS="${OPTIONS} --enable-debug"
 # OPTIONS="${OPTIONS} --enable-dtrace"
 
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	BREW_DIR=`which brew`
 	BREW_DIR=${BREW_DIR/\/bin\/brew/}
 

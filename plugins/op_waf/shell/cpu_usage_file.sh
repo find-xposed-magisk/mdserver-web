@@ -8,7 +8,7 @@ function GetCpuUsage(){
 	idle_cpu=`echo $cpu_info|awk '{print $2}'`
 	cpu_total_time=0
 	for ci in ${cpu_info[@]}; do
-		if [ "$ci" == "cpu" ];then
+		if [ "$ci" = "cpu" ];then
 			continue
 		else
 			#echo $ci

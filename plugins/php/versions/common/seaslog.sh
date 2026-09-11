@@ -49,7 +49,7 @@ Install_lib()
 	if [ ! -f "$extFile" ];then
 
 		OPTIONS=''
-		if [ $sysName == 'Darwin' ]; then
+		if [ $sysName = 'Darwin' ]; then
 			OPTIONS="${OPTIONS} --with-curl=${serverPath}/lib/curl"
 		fi
 
@@ -61,7 +61,7 @@ Install_lib()
 		fi
 		cd $php_lib/${LIBNAME}-${LIBV}
 
-		if [ "${SYS_ARCH}" == "aarch64" ] && [ "$version" -lt "56" ];then
+		if [ "${SYS_ARCH}" = "aarch64" ] && [ "$version" -lt "56" ];then
 			OPTIONS="$OPTIONS --build=aarch64-unknown-linux-gnu --host=aarch64-unknown-linux-gnu"
 		fi
 

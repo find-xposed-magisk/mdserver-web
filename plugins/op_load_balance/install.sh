@@ -16,7 +16,7 @@ if [ -f ${rootPath}/bin/activate ];then
 	. ${rootPath}/bin/activate
 fi
 
-if [ "$sys_os" == "Darwin" ];then
+if [ "$sys_os" = "Darwin" ];then
 	BAK='_bak'
 else
 	BAK=''
