@@ -101,7 +101,7 @@ action=$1
 type=$2
 
 echo $action $type
-if [ "${action}" == 'install' ];then
+if [ "${action}" = 'install' ];then
 	Install_App
 else
 	Uninstall_App

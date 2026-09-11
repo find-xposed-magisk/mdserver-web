@@ -23,9 +23,9 @@ SYS_VERSION_ID=`cat /etc/*-release | grep VERSION_ID | awk -F = '{print $2}' | a
 Install_app_mac()
 {
 	mkdir -p $serverPath/mongodb
-	if [ "$VERSION" == "5.0" ];then
+	if [ "$VERSION" = "5.0" ];then
 		G_VERSION="5.0.11"
-	elif [[ "$VERSION" == "4.4" ]]; then
+	elif [[ "$VERSION" = "4.4" ]]; then
 		G_VERSION="4.4.11"
 	fi
 
@@ -52,11 +52,11 @@ fi
 echo $SYS_VERSION_ID
 
 SOURCE_NAME=bionic
-if [ "$SYS_VERSION_ID" == "18.04" ];then
+if [ "$SYS_VERSION_ID" = "18.04" ];then
 	SOURCE_NAME=bionic
-elif [ "$SYS_VERSION_ID" == "16.04" ];then
+elif [ "$SYS_VERSION_ID" = "16.04" ];then
 	SOURCE_NAME=xenial
-elif [ "$SYS_VERSION_ID" == "20.04" ];then
+elif [ "$SYS_VERSION_ID" = "20.04" ];then
 	SOURCE_NAME=focal
 fi
 
@@ -210,13 +210,13 @@ rm -rf /etc/yum.repos.d/mongodb-org-${VERSION}.repo
 
 Install_app_linux()
 {
-	if [ "$OSNAME" == "ubuntu" ];then
+	if [ "$OSNAME" = "ubuntu" ];then
 		Install_Linux_Ubuntu
-	elif [ "$OSNAME" == "debian" ];then
+	elif [ "$OSNAME" = "debian" ];then
 		Install_Linux_Debian
-	elif [ "$OSNAME" == "centos" ];then
+	elif [ "$OSNAME" = "centos" ];then
 		Install_Linux_CentOS
-	elif [ "$OSNAME" == "opensuse" ];then
+	elif [ "$OSNAME" = "opensuse" ];then
 		Install_Linux_Opensuse
 	else 
 		echo "Not yet supported"
@@ -252,13 +252,13 @@ Install_app()
 Uninstall_app_linux()
 {
 ##################
-if [ "$OSNAME" == "ubuntu" ];then
+if [ "$OSNAME" = "ubuntu" ];then
 	Uninstall_Linux_Ubuntu
-elif [ "$OSNAME" == "debian" ];then
+elif [ "$OSNAME" = "debian" ];then
 	Uninstall_Linux_Debian
-elif [ "$OSNAME" == "centos" ];then
+elif [ "$OSNAME" = "centos" ];then
 	Uninstall_Linux_CentOS
-elif [ "$OSNAME" == "opensuse" ];then
+elif [ "$OSNAME" = "opensuse" ];then
 	Uninstall_Linux_Opensuse
 else 
 	echo "ok"
@@ -268,7 +268,7 @@ fi
 
 Uninstall_app()
 {
-	if [ "macos" == "$OSNAME" ];then
+	if [ "macos" = "$OSNAME" ];then
 		echo 'mac'
 	else
 		Uninstall_app_linux
@@ -279,7 +279,7 @@ Uninstall_app()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_app
 else
 	Uninstall_app

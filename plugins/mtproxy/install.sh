@@ -84,17 +84,17 @@ Install_app()
 	mkdir -p ${serverPath}/source/mtproxy
 	echo "${1}" > ${serverPath}/mtproxy/version.pl
 
-	if [ "$OSNAME" == "centos" ]; then
+	if [ "$OSNAME" = "centos" ]; then
     	yum install -y golang golang-src
-	elif [ "$OSNAME" == "amazon" ]; then
+	elif [ "$OSNAME" = "amazon" ]; then
 	    yum install -y golang golang-src
-	elif [ "$OSNAME" == "rocky" ]; then
+	elif [ "$OSNAME" = "rocky" ]; then
 	    yum install -y golang golang-src
-	elif [ "$OSNAME" == "rhel" ]; then
+	elif [ "$OSNAME" = "rhel" ]; then
 	    yum install -y golang golang-src
-	elif [ "$OSNAME" == "opensuse" ]; then
+	elif [ "$OSNAME" = "opensuse" ]; then
 	    zypper install -y golang golang-src
-	elif [ "$sysName" == "macos" ]; then
+	elif [ "$sysName" = "macos" ]; then
 	    echo "macos"
 	else
 		apt install -y golang golang-src
@@ -145,7 +145,7 @@ Uninstall_app()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_app $2
 else
 	Uninstall_app $2

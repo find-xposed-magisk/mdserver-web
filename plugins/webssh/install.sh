@@ -26,7 +26,7 @@ Uninstall_webssh()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_webssh
 else
 	Uninstall_webssh

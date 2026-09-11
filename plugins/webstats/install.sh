@@ -29,7 +29,7 @@ if [ "$LOCAL_ADDR" != "common" ];then
 fi
 
 
-if [ "$sys_os" == "Darwin" ];then
+if [ "$sys_os" = "Darwin" ];then
 	BAK='_bak'
 else
 	BAK=''
@@ -152,7 +152,7 @@ Uninstall_App()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_App
 else
 	Uninstall_App

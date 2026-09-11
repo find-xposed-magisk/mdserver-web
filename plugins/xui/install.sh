@@ -44,7 +44,7 @@ Uninstall_app()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_app $2
 else
 	Uninstall_app $2

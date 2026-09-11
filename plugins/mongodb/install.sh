@@ -50,26 +50,6 @@ Install_app()
 	echo '正在安装脚本文件...'
 	mkdir -p $serverPath/source
 
-	# if id mongodb &> /dev/null ;then 
-	#     echo "mongodb uid is `id -u mongodb`"
-	#     echo "mongodb shell is `grep "^mongodb:" /etc/passwd |cut -d':' -f7 `"
-	# else
-	#     groupadd mongodb
-	# 	useradd -g mongodb mongodb
-	# fi
-
-	# if [ "centos" == "$OSNAME" ];then
-	# 	OSNAME=rhel
-	# fi
-
-	# if [ "fedora" == "$OSNAME" ];then
-	# 	OSNAME=rhel
-	# fi
-
-	# if [ "rocky" == "$OSNAME" ];then
-	# 	OSNAME=rhel
-	# fi
-
 	cd ${rootPath}/plugins/php/lib && /bin/bash openssl_11.sh
 
 	shell_file=${curPath}/versions/${VERSION}/${OSNAME}.sh
@@ -86,7 +66,7 @@ Install_app()
 		exit 1
 	fi
 
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		mkdir -p $serverPath/mongodb
 		echo "${VERSION}" > $serverPath/mongodb/version.pl
 		echo 'mongodb安装完成'
@@ -96,7 +76,7 @@ Install_app()
 		cd ${rootPath} && python3 ${rootPath}/plugins/mongodb/index.py initd_install
 	fi
 
-	if [ "${VERSION}" == "3.0" ];then
+	if [ "${VERSION}" = "3.0" ];then
 		# 降低版本
 		pip install pymongo==3.12.0
 	else
@@ -122,7 +102,7 @@ Uninstall_app()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_app
 else
 	Uninstall_app

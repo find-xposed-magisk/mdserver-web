@@ -69,7 +69,7 @@ Uninstall_Docker()
 {
 	CMD=yum
 	which apt
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		CMD=apt
 	fi
 
@@ -97,7 +97,7 @@ Uninstall_Docker()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_Docker
 else
 	Uninstall_Docker

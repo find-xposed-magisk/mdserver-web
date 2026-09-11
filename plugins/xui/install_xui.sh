@@ -31,9 +31,9 @@ fi
 
 arch=$(arch)
 
-if [[ $arch == "x86_64" || $arch == "x64" || $arch == "s390x" || $arch == "amd64" ]]; then
+if [[ $arch = "x86_64" || $arch = "x64" || $arch = "s390x" || $arch = "amd64" ]]; then
     arch="amd64"
-elif [[ $arch == "aarch64" || $arch == "arm64" ]]; then
+elif [[ $arch = "aarch64" || $arch = "arm64" ]]; then
     arch="arm64"
 else
     arch="amd64"
@@ -57,22 +57,22 @@ if [[ -z "$os_version" && -f /etc/lsb-release ]]; then
     os_version=$(awk -F'[= ."]+' '/DISTRIB_RELEASE/{print $2}' /etc/lsb-release)
 fi
 
-if [[ x"${release}" == x"centos" ]]; then
+if [[ x"${release}" = x"centos" ]]; then
     if [[ ${os_version} -le 6 ]]; then
         echo -e "${red}请使用 CentOS 7 或更高版本的系统！${plain}\n" && exit 1
     fi
-elif [[ x"${release}" == x"ubuntu" ]]; then
+elif [[ x"${release}" = x"ubuntu" ]]; then
     if [[ ${os_version} -lt 16 ]]; then
         echo -e "${red}请使用 Ubuntu 16 或更高版本的系统！${plain}\n" && exit 1
     fi
-elif [[ x"${release}" == x"debian" ]]; then
+elif [[ x"${release}" = x"debian" ]]; then
     if [[ ${os_version} -lt 8 ]]; then
         echo -e "${red}请使用 Debian 8 或更高版本的系统！${plain}\n" && exit 1
     fi
 fi
 
 install_base() {
-    if [[ x"${release}" == x"centos" ]]; then
+    if [[ x"${release}" = x"centos" ]]; then
         yum install wget curl tar jq -y
     else
         apt install wget curl tar jq -y
@@ -104,7 +104,7 @@ install_x-ui() {
     systemctl stop x-ui
     cd /usr/local/
 
-    if [ $# == 0 ]; then
+    if [ $# = 0 ]; then
         last_version=$(curl -Lsk "https://api.github.com/repos/FranzKafkaYu/x-ui/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
         if [[ ! -n "$last_version" ]]; then
             echo -e "${red}检测 x-ui 版本失败，可能是超出 Github API 限制，请稍后再试，或手动指定 x-ui 版本安装${plain}"
