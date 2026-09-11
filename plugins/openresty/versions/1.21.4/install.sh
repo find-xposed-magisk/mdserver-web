@@ -150,7 +150,7 @@ Install_openresty()
 		fi
 
 		pkg-config --exists --print-errors libzstd
-		if [ "$?" == "0" ];then
+		if [ "$?" = "0" ];then
 			OPTIONS="${OPTIONS} --add-module=${openrestyDir}/zstd-nginx-module-master"
 		fi
 	fi

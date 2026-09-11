@@ -72,18 +72,18 @@ Install_lib()
 			if [ "$OSNAME" = 'centos' ];then
 				FILE_softmagic=$sourcePath/php${version}/ext/${LIBNAME}/libmagic/softmagic.c
 				FIND_UNDEF_STRNDUP=`cat $FILE_softmagic|grep '#undef strndup'`
-				if [ "$version" -gt "74" ] && [ "$FIND_UNDEF_STRNDUP" == "" ];then
+				if [ "$version" -gt "74" ] && [ "$FIND_UNDEF_STRNDUP" = "" ];then
 					sed -i $BAK "s/char \*strndup/#undef strndup\nchar \*strndup/g" $FILE_softmagic
 				fi
 			fi
 		fi
 
 		FIND_C99=`cat Makefile|grep c99`
-		if [ "$version" -gt "74" ] && [ "$FIND_C99" == "" ];then
+		if [ "$version" -gt "74" ] && [ "$FIND_C99" = "" ];then
 			sed -i $BAK 's/CFLAGS \=/CFLAGS \= -std=gnu99/g' Makefile
 		fi
 
-		if [ "$version" -gt "80" ] && [ "$OSNAME" == 'centos' ];then
+		if [ "$version" -gt "80" ] && [ "$OSNAME" = 'centos' ];then
 			sed -i $BAK "s#CFLAGS = -g -O2#CFLAGS = -std=c99 -g#g" $sourcePath/php${version}/ext/${LIBNAME}/Makefile
 		fi
 

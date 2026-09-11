@@ -58,7 +58,7 @@ Install_mysql()
 {
 	echo '正在安装脚本文件...'
 	COMMUNITY_INSTALL
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		mkdir -p $serverPath/mysql-community
 		echo '9.3' > $serverPath/mysql-community/version.pl
 		echo '安装完成'

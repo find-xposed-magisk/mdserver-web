@@ -32,7 +32,7 @@ fi
 
 sh -x $curPath/versions/$2/install.sh $1
 
-if [ "${action}" == "uninstall" ];then
+if [ "${action}" = "uninstall" ];then
 	if [ -f /usr/lib/systemd/system/nezha.service ] || [ -f /lib/systemd/system/nezha.service ] ;then
 		systemctl stop nezha
 		systemctl disable nezha

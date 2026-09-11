@@ -108,7 +108,7 @@ else
 fi
 # ----- cpu end ------
 
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	BREW_DIR=`which brew`
 	BREW_DIR=${BREW_DIR/\/bin\/brew/}
 

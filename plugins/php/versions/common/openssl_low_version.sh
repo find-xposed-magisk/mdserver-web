@@ -109,7 +109,7 @@ Install_lib()
 			export OPENSSL_LIBS="-L/${LIB_DEPEND_DIR}/lib -lssl -lcrypto -lz"
 		fi
 
-		# if [ "$version" -gt "82" ] && [ "$sysName" == "Darwin" ];then
+		# if [ "$version" -gt "82" ] && [ "$sysName" = "Darwin" ];then
 		# 	export PKG_CONFIG_PATH=$serverPath/lib/openssl/lib/pkgconfig
 		# fi
 

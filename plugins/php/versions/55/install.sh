@@ -33,7 +33,7 @@ if [ ! -d $sourcePath/php/php${PHP_VER} ];then
 		LOCAL_ADDR=cn
 	fi
 
-	if [ "$LOCAL_ADDR" == "cn" ];then
+	if [ "$LOCAL_ADDR" = "cn" ];then
 		if [ ! -f $sourcePath/php/php-${version}.tar.xz ];then
 			wget --no-check-certificate -O $sourcePath/php/php-${version}.tar.xz https://mirrors.nju.edu.cn/php/php-${version}.tar.xz
 		fi
@@ -94,13 +94,13 @@ else
 fi
 # ----- cpu end ------
 
-if [ "${SYS_ARCH}" == "aarch64" ];then
+if [ "${SYS_ARCH}" = "aarch64" ];then
 	# 修复aarch64架构下安装
 	# /www/server/mdserver-web/plugins/php/versions/56/src/zend_multiply.h > /www/server/source/php/php56/Zend/zend_multiply.h
 	cat ${curPath}/versions/${PHP_VER}/src/zend_multiply.h > $sourcePath/php/php${PHP_VER}/Zend/zend_multiply.h
 fi
 
-if [ "${SYS_ARCH}" == "arm64" ] && [ "$sysName" == "Darwin" ] ;then
+if [ "${SYS_ARCH}" = "arm64" ] && [ "$sysName" = "Darwin" ] ;then
 	# 修复mac arm64架构下php安装
 	# 修复不能识别到sys_icache_invalidate
 	cat ${curPath}/versions/${PHP_VER}/src/ext/pcre/sljitConfigInternal.h > $sourcePath/php/php${PHP_VER}/ext/pcre/pcrelib/sljit/sljitConfigInternal.h

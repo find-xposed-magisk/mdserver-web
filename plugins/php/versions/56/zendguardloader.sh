@@ -39,7 +39,7 @@ Install_lib()
 		php_lib=$sourcePath/php_lib
 		mkdir -p $php_lib
 
-		if [ $sysName == 'Darwin' ]; then
+		if [ $sysName = 'Darwin' ]; then
 			wget -O $php_lib/zend-loader-php5.6.tar.gz http://downloads.zend.com/guard/7.0.0/zend-loader-php5.6-darwin10.7-x86_64_update1.tar.gz
 		else
 			wget -O $php_lib/zend-loader-php5.6.tar.gz http://downloads.zend.com/guard/7.0.0/zend-loader-php5.6-linux-x86_64_update1.tar.gz

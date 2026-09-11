@@ -173,7 +173,7 @@ Install_openresty()
 	# 用于调式
 
 	CMD_MAKE=`which gmake`
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		gmake -j${cpuCore} && gmake install && gmake clean
 	else
 		make -j${cpuCore} && make install && make clean

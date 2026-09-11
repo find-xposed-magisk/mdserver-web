@@ -19,7 +19,7 @@ if [ "$SYS_NAME_LEN" = "1" ];then
 	SYS_NAME=${SYS_NAME}0	
 fi
 
-if [ "$SYS_ARCH" == "aarch64" ];then
+if [ "$SYS_ARCH" = "aarch64" ];then
 	if [ "$SYS_NAME" -gt "90" ];then
 		SYS_NAME="90"
 	fi

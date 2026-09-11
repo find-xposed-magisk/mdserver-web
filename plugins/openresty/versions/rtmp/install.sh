@@ -58,7 +58,7 @@ Install_openresty()
 	fi
 
 	DOWNLOAD_SIZE=`wc -c ${openrestyDir}/openresty-${VERSION}.tar.gz | awk '{print $1}'`
-	if [ "$DOWNLOAD_SIZE" == "0" ];then
+	if [ "$DOWNLOAD_SIZE" = "0" ];then
 		echo 'download failed, download again'
 		rm -rf ${openrestyDir}/openresty-${VERSION}.tar.gz
 	fi

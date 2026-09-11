@@ -34,7 +34,7 @@ if [ ! -d $sourcePath/php/php${PHP_VER} ];then
 	# 中国优化安装
 	cn=$(curl -fsSL -m 10 -s http://ipinfo.io/json | grep "\"country\": \"CN\"")
 	LOCAL_ADDR=common
-	if [ ! -z "$cn" ] || [ "$?" == "0" ] ;then
+	if [ ! -z "$cn" ] || [ "$?" = "0" ] ;then
 		LOCAL_ADDR=cn
 	fi
 
@@ -67,12 +67,12 @@ cd $sourcePath/php/php${PHP_VER}
 OPTIONS='--without-iconv'
 
 IS_64BIT=`getconf LONG_BIT`
-if [ "$IS_64BIT" == "64" ];then
+if [ "$IS_64BIT" = "64" ];then
 	OPTIONS="${OPTIONS} --with-libdir=lib64"
 fi
 
 argon_version=`pkg-config libargon2 --modversion`
-if [ "$?" == "0" ];then
+if [ "$?" = "0" ];then
 	OPTIONS="${OPTIONS} --with-password-argon2"
 fi
 

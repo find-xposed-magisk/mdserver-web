@@ -60,7 +60,7 @@ if [ ! -d $sourcePath/php/php${PHP_VER} ];then
 fi
 
 OPTIONS='--without-iconv'
-if [ $sysName == 'Darwin' ]; then
+if [ $sysName = 'Darwin' ]; then
 	OPTIONS="${OPTIONS} --with-freetype-dir=${serverPath}/lib/freetype"
 	OPTIONS="${OPTIONS} --with-zlib-dir=$(brew --prefix zlib)"
 else
@@ -68,7 +68,7 @@ else
 fi
 
 IS_64BIT=`getconf LONG_BIT`
-if [ "$IS_64BIT" == "64" ];then
+if [ "$IS_64BIT" = "64" ];then
 	OPTIONS="${OPTIONS} --with-libdir=lib64"
 fi
 

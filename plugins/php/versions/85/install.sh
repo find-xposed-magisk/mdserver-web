@@ -24,7 +24,7 @@ cd ${rootPath}/plugins/php/lib && /bin/bash zlib.sh
 
 # redat ge 8
 which yum
-if [ "$?" == "0" ];then
+if [ "$?" = "0" ];then
 	cd ${rootPath}/plugins/php/lib && /bin/bash oniguruma.sh
 fi
 
@@ -38,7 +38,7 @@ if [ ! -d $sourcePath/php/php${PHP_VER} ];then
 		LOCAL_ADDR=cn
 	fi
 
-	if [ "$LOCAL_ADDR" == "cn" ];then
+	if [ "$LOCAL_ADDR" = "cn" ];then
 		if [ ! -f $sourcePath/php/php-${version}.tar.xz ];then
 			wget --no-check-certificate -O $sourcePath/php/php-${version}.tar.xz https://mirrors.nju.edu.cn/php/php-${version}.tar.xz
 		fi
@@ -68,17 +68,17 @@ cd $sourcePath/php/php${PHP_VER}
 
 OPTIONS='--without-iconv'
 
-# if [ $sysName == 'Darwin' ]; then
+# if [ $sysName = 'Darwin' ]; then
 # 	OPTIONS="${OPTIONS} --with-curl"
 # fi
 
 argon_version=`pkg-config libargon2 --modversion`
-if [ "$?" == "0" ];then
+if [ "$?" = "0" ];then
 	OPTIONS="${OPTIONS} --with-password-argon2"
 fi
 
 IS_64BIT=`getconf LONG_BIT`
-if [ "$IS_64BIT" == "64" ];then
+if [ "$IS_64BIT" = "64" ];then
 	OPTIONS="${OPTIONS} --with-libdir=lib64"
 fi
 

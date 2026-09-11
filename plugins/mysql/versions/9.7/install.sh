@@ -144,7 +144,7 @@ Install_mysql()
 		echo $WHERE_DIR_GPP
 	fi
 
-	if [ "$OSNAME" == "ubuntu" ];then
+	if [ "$OSNAME" = "ubuntu" ];then
 		apt install -y libudev-dev
 		apt install -y libtirpc-dev
 		apt install -y libssl-dev
@@ -170,7 +170,7 @@ Install_mysql()
 	fi
 
 
-	if [ "$OSNAME" == "opensuse" ];then
+	if [ "$OSNAME" = "opensuse" ];then
 		zypper install -y gcc11
 		zypper install -y gcc11-c++
 

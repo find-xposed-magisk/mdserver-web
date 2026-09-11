@@ -19,7 +19,7 @@ openrestyDir=${serverPath}/source/openresty
 
 Install_openresty()
 {
-	if [ "${action}" == "install" ];then
+	if [ "${action}" = "install" ];then
 		if [ -d $serverPath/openresty ];then
 			exit 0
 		fi
@@ -144,13 +144,13 @@ Install_openresty()
 		cd ${openrestyDir} && wget -O $openrestyDir/zstd-nginx-module.tar.gz https://github.com/tokers/zstd-nginx-module/archive/refs/heads/master.tar.gz
 		cd ${openrestyDir} && tar -zxvf zstd-nginx-module.tar.gz
 
-		if [ "$sysName" == "Darwin" ];then
+		if [ "$sysName" = "Darwin" ];then
 			export ZSTD_INC=/opt/homebrew/include
 			export ZSTD_LIB=/opt/homebrew/lib
 		fi
 
 		pkg-config --exists --print-errors libzstd
-		if [ "$?" == "0" ];then
+		if [ "$?" = "0" ];then
 			OPTIONS="${OPTIONS} --add-module=${openrestyDir}/zstd-nginx-module-master"
 		fi
 	fi
@@ -171,7 +171,7 @@ Install_openresty()
 	# 用于调式
 
 	CMD_MAKE=`which gmake`
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		gmake -j${cpuCore} && gmake install && gmake clean
 	else
 		make -j${cpuCore} && make install && make clean

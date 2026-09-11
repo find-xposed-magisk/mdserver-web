@@ -58,7 +58,7 @@ Install_lib()
 		cd $sourcePath/php${version}/ext/${LIBNAME}
 		
 		OPTIONS=''
-		if [ "${SYS_ARCH}" == "aarch64" ] && [ "$version" -lt "56" ];then
+		if [ "${SYS_ARCH}" = "aarch64" ] && [ "$version" -lt "56" ];then
 			OPTIONS="$OPTIONS --build=aarch64-unknown-linux-gnu --host=aarch64-unknown-linux-gnu"
 		fi
 
@@ -66,7 +66,7 @@ Install_lib()
 		./configure --with-php-config=$serverPath/php/$version/bin/php-config $OPTIONS
 
 		FIND_C99=`cat Makefile|grep c99`
-		if [ "$FIND_C99" == "" ];then
+		if [ "$FIND_C99" = "" ];then
 			sed -i $BAK 's/CFLAGS \=/CFLAGS \= -std=c99/g' Makefile
 		fi
 

@@ -67,17 +67,17 @@ cd $sourcePath/php/php${PHP_VER}
 
 OPTIONS='--without-iconv'
 
-# if [ $sysName == 'Darwin' ]; then
+# if [ $sysName = 'Darwin' ]; then
 # 	OPTIONS="${OPTIONS} --with-curl"
 # fi
 
 argon_version=`pkg-config libargon2 --modversion`
-if [ "$?" == "0" ];then
+if [ "$?" = "0" ];then
 	OPTIONS="${OPTIONS} --with-password-argon2"
 fi
 
 IS_64BIT=`getconf LONG_BIT`
-if [ "$IS_64BIT" == "64" ];then
+if [ "$IS_64BIT" = "64" ];then
 	OPTIONS="${OPTIONS} --with-libdir=lib64"
 fi
 
