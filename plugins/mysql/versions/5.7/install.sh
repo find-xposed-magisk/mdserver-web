@@ -6,6 +6,8 @@ export PATH
 #https://dev.mysql.com/downloads/mysql/5.7.html
 #https://dev.mysql.com/downloads/file/?id=489855
 
+# cd /www/server/mdserver-web/plugins/mysql && bash install.sh install 5.7
+
 curPath=`pwd`
 rootPath=$(dirname "$curPath")
 rootPath=$(dirname "$rootPath")
@@ -18,7 +20,7 @@ VERSION=5.7.44
 
 _os=`uname`
 echo "use system: ${_os}"
-if [[ "${_os}" -eq "Darwin" ]]; then
+if [[ "${_os}" = "Darwin" ]]; then
 	OSNAME='macos'
 elif grep -Eq "openSUSE" /etc/*-release; then
 	OSNAME='opensuse'
@@ -243,7 +245,7 @@ Uninstall_mysql()
 }
 
 action=$1
-if [[ "${1}" -eq "install" ]];then
+if [[ "${1}" = "install" ]];then
 	Install_mysql
 else
 	Uninstall_mysql
