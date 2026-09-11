@@ -86,14 +86,14 @@ Install_App()
 	export PATH=$PATH:$serverPath/webstats/luarocks/bin
 
 	if [ ! -f $serverPath/webstats/lua/lsqlite3.so ];then
-		if [ "${sys_os}" == "Darwin" ];then
+		if [ "${sys_os}" = "Darwin" ];then
 			cd $serverPath/source/webstats/lsqlite3_fsl09y 
 			# SQLITE_DIR=/usr/local/Cellar/sqlite/3.36.0
 			BREW_DIR=`which brew`
 			BREW_DIR=${BREW_DIR/\/bin\/brew/}
 			echo "BREW_DIR:"${BREW_DIR}
 			find_cfg=`cat Makefile | grep 'SQLITE_DIR'`
-			if [ "$find_cfg" == "" ];then
+			if [ "$find_cfg" = "" ];then
 				LIB_SQLITE_DIR=`brew info sqlite | grep ${BREW_DIR}/Cellar/sqlite | cut -d \  -f 1 | awk 'END {print}'`
 				echo "LIB_SQLITE_DIR:"${LIB_SQLITE_DIR}
 				sed -i $BAK "s#\$(ROCKSPEC)#\$(ROCKSPEC) SQLITE_DIR=${LIB_SQLITE_DIR}#g"  Makefile

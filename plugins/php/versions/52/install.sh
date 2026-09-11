@@ -83,16 +83,16 @@ if [ -f $serverPath/php/${PHP_VER}/bin/php ];then
 fi
 
 OPTIONS='--without-iconv'
-if [ $sysName == 'Darwin' ]; then
+if [ $sysName = 'Darwin' ]; then
 	OPTIONS="${OPTIONS} --with-freetype-dir=${serverPath}/lib/freetype"
 fi
 
 IS_64BIT=`getconf LONG_BIT`
-if [ "$IS_64BIT" == "64" ];then
+if [ "$IS_64BIT" = "64" ];then
 	OPTIONS="${OPTIONS} --with-libdir=lib64"
 fi
 
-if [ "${SYS_ARCH}" == "aarch64" ];then
+if [ "${SYS_ARCH}" = "aarch64" ];then
 	OPTIONS="$OPTIONS --build=aarch64-unknown-linux-gnu --host=aarch64-unknown-linux-gnu"
 fi
 
@@ -156,7 +156,7 @@ Uninstall_php()
 }
 
 action=${1}
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_php
 else
 	Uninstall_php

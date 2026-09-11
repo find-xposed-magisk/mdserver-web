@@ -19,7 +19,7 @@ openrestyDir=${serverPath}/source/openresty
 
 Install_openresty()
 {
-	if [ "${action}" == "install" ];then
+	if [ "${action}" = "install" ];then
 		if [ -d $serverPath/openresty ];then
 			exit 0
 		fi
@@ -145,7 +145,7 @@ Install_openresty()
 		cd ${openrestyDir} && wget -O $openrestyDir/zstd-nginx-module.tar.gz https://github.com/tokers/zstd-nginx-module/archive/refs/heads/master.tar.gz
 		cd ${openrestyDir} && tar -zxvf zstd-nginx-module.tar.gz
 
-		if [ "$sysName" == "Darwin" ];then
+		if [ "$sysName" = "Darwin" ];then
 			export ZSTD_INC=/opt/homebrew/include
 			export ZSTD_LIB=/opt/homebrew/lib
 		fi
@@ -203,9 +203,9 @@ Uninstall_openresty()
 }
 
 action=$1
-if [ "${1}" == "install" ];then
+if [ "${1}" = "install" ];then
 	Install_openresty
-elif [ "${1}" == "upgrade" ];then
+elif [ "${1}" = "upgrade" ];then
 	Install_openresty
 else
 	Uninstall_openresty

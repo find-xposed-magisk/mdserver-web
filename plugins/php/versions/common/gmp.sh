@@ -19,7 +19,7 @@ version=$2
 LIBNAME=gmp
 LIBV=0
 
-if [ "$version" == "53" ];then
+if [ "$version" = "53" ];then
 	echo "i wont support it"
 	exit
 fi
@@ -115,8 +115,8 @@ Uninstall_lib()
 
 
 
-if [ "$actionType" == 'install' ];then
+if [ "$actionType" = 'install' ];then
 	Install_lib
-elif [ "$actionType" == 'uninstall' ];then
+elif [ "$actionType" = 'uninstall' ];then
 	Uninstall_lib
 fi

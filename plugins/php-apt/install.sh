@@ -19,7 +19,7 @@ else
 fi
 
 _os=`uname`
-if [ ${_os} == "Darwin" ]; then
+if [ ${_os} = "Darwin" ]; then
     OSNAME='macos'
 elif grep -Eqi "Debian" /etc/issue || grep -Eq "Debian" /etc/*-release; then
     OSNAME='debian'
@@ -33,7 +33,7 @@ action=$1
 type=$2
 apt_ver=${type:0:1}.${type:1:2}
 
-if [ "${2}" == "" ];then
+if [ "${2}" = "" ];then
 	echo '缺少安装脚本...'
 	exit 0
 fi 

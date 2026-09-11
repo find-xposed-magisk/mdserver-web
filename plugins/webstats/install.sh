@@ -18,7 +18,7 @@ sys_os=`uname`
 HTTP_PREFIX="https://"
 LOCAL_ADDR=common
 cn=$(curl -fsSL -m 10 -s http://ipinfo.io/json | grep "\"country\": \"CN\"")
-if [ ! -z "$cn" ] || [ "$?" == "0" ] ;then
+if [ ! -z "$cn" ] || [ "$?" = "0" ] ;then
     LOCAL_ADDR=cn
     HTTP_PREFIX="https://"
 fi
@@ -92,7 +92,7 @@ Install_App()
 			echo "BREW_DIR:"${BREW_DIR}
 			LIB_SQLITE_DIR=/opt/homebrew/opt/sqlite
 			find_cfg=`cat Makefile | grep 'SQLITE_DIR'`
-			if [ "$find_cfg" == "" ];then
+			if [ "$find_cfg" = "" ];then
 				# LIB_SQLITE_DIR=`brew info sqlite | grep /opt/homebrew/opt/sqlite | cut -d \  -f 1 | awk 'END {print}'`
 				echo "LIB_SQLITE_DIR:"${LIB_SQLITE_DIR}
 				sed -i $BAK "s#\$(ROCKSPEC)#\$(ROCKSPEC) SQLITE_DIR=${LIB_SQLITE_DIR}#g"  Makefile

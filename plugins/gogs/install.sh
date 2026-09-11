@@ -16,7 +16,7 @@ GOGS_DOWNLOAD='https://dl.gogs.io'
 
 getOs(){
 	os=`uname`
-	if [ "Darwin" == "$os" ];then
+	if [ "Darwin" = "$os" ];then
 		echo 'darwin'
 	else
 		echo 'linux'
@@ -100,7 +100,7 @@ Uninstall_gogs()
 
 action=$1
 version=$2
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_gogs $version
 else
 	Uninstall_gogs $version

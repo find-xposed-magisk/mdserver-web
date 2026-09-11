@@ -20,7 +20,7 @@ openrestyDir=${serverPath}/source/openresty
 
 Install_openresty()
 {
-	if [ "${action}" == "install" ];then
+	if [ "${action}" = "install" ];then
 		if [ -d $serverPath/openresty ];then
 			exit 0
 		fi
@@ -77,7 +77,7 @@ Install_openresty()
 	opensslVersion="3.5.5"
 	libresslVersion="3.9.1"
 	pcreVersion='8.45'
-	if [ "$sysName" == "Darwin" ];then
+	if [ "$sysName" = "Darwin" ];then
 
 		if [ ! -f ${openrestyDir}/pcre-${pcreVersion}.tar.gz ];then
 			wget --no-check-certificate -O ${openrestyDir}/pcre-${pcreVersion}.tar.gz https://netix.dl.sourceforge.net/project/pcre/pcre/${pcreVersion}/pcre-${pcreVersion}.tar.gz
@@ -219,9 +219,9 @@ Uninstall_openresty()
 }
 
 action=$1
-if [ "${1}" == "install" ];then
+if [ "${1}" = "install" ];then
 	Install_openresty
-elif [ "${1}" == "upgrade" ];then
+elif [ "${1}" = "upgrade" ];then
 	Install_openresty
 else
 	Uninstall_openresty

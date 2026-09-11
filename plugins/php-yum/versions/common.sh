@@ -35,7 +35,7 @@ if [ "$action" = 'install' ];then
 		yum install -y php${version}-php-pecl-${extName}
 	fi
 
-	# if [ "${extName}" == "mysql" ];then
+	# if [ "${extName}" = "mysql" ];then
 	# 	yum install -y php74-php-pecl-mysql
 	# fi
 fi

@@ -31,9 +31,9 @@ if [ -f ${rootPath}/data/osname.pl ];then
 	OSNAME=`cat ${rootPath}/data/osname.pl`	
 fi
 
-if [ "${OSNAME}" == "centos" ] || 
-	[ "${OSNAME}" == "fedora" ] ||
-	[ "${OSNAME}" == "alma" ]; then
+if [ "${OSNAME}" = "centos" ] || 
+	[ "${OSNAME}" = "fedora" ] ||
+	[ "${OSNAME}" = "alma" ]; then
 	yum install -y postgresql-libs unixODBC
 fi
 

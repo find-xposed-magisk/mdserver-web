@@ -32,7 +32,7 @@ extIni=${cfgDir}/10-${LIBNAME}.ini
 echo $extSoFile
 echo $extIni
 
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	BAK='_bak'
 else
 	BAK=''

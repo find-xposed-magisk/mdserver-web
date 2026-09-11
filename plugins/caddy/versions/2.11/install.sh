@@ -60,7 +60,7 @@ Install_App()
 
 	mkdir -p cd $serverPath/source/caddy/caddy
 	cd $serverPath/source/caddy/caddy && tar -zxvf ${caddyDir}/$FILE_NAME
-	if [ "$OSNAME" == "mac" ];then
+	if [ "$OSNAME" = "mac" ];then
 		xattr -cr caddy
 	fi
 

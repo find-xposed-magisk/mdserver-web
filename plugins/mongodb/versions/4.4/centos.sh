@@ -89,11 +89,11 @@ cd ${MG_DIR} && rm -rf ${MG_DIR}/${TOOL_FILE_NAME}
 #--------------- mongodb database install ------------------ #
 TOOL_VERSION=100.9.4
 TOOL_FILE_NAME=mongodb-database-tools-rhel${SYS_NAME}-x86_64-${TOOL_VERSION}
-if [ "aarch64" == ${SYS_ARCH} ];then
+if [ "aarch64" = ${SYS_ARCH} ];then
 	TOOL_FILE_NAME=mongodb-database-tools-rhel${SYS_NAME}-aarch64-${TOOL_VERSION}
 fi
 
-if [ "arm64" == ${SYS_ARCH} ];then
+if [ "arm64" = ${SYS_ARCH} ];then
 	TOOL_FILE_NAME=mongodb-database-tools-rhel${SYS_NAME}-arm64-${TOOL_VERSION}
 fi
 

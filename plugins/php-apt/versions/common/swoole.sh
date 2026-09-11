@@ -22,21 +22,21 @@ APT_INSTALL=0
 
 if [ `echo "$version < 7.0"|bc` -eq 1 ];then
 	LIBV=1.10.1
-elif [ "$version" == "7.1" ];then
+elif [ "$version" = "7.1" ];then
 	LIBV=4.5.2
-elif [ "$version" == "7.0" ];then
+elif [ "$version" = "7.0" ];then
 	LIBV=4.3.0
 elif [ `echo "$version < 8.0"|bc` -eq 1 ];then
 	LIBV=6.0.2
-elif [ "$version" == "8.1" ];then
+elif [ "$version" = "8.1" ];then
 	LIBV=6.1.7
-elif [ "$version" == "8.2" ];then
+elif [ "$version" = "8.2" ];then
 	LIBV=6.2.0
-elif [ "$version" == "8.3" ];then
+elif [ "$version" = "8.3" ];then
 	LIBV=6.2.0
-elif [ "$version" == "8.4" ];then
+elif [ "$version" = "8.4" ];then
 	LIBV=6.2.0
-elif [ "$version" == "8.5" ];then
+elif [ "$version" = "8.5" ];then
 	LIBV=6.2.0
 else
 	echo 'ok'
@@ -45,10 +45,10 @@ fi
 
 
 # to Apt
-if [ "$APT_INSTALL" == "1" ];then
-	if [ "$actionType" == 'install' ];then
+if [ "$APT_INSTALL" = "1" ];then
+	if [ "$actionType" = 'install' ];then
 		apt install -y php${version}-${LIBNAME}
-	elif [ "$actionType" == 'uninstall' ];then
+	elif [ "$actionType" = 'uninstall' ];then
 		apt remove -y php${version}-${LIBNAME}
 	fi
 	exit 0
@@ -60,7 +60,7 @@ extFile=/usr/lib/php/${extVer}/${LIBNAME}.so
 
 
 
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	BAK='_bak'
 else
 	BAK=''
@@ -127,8 +127,8 @@ Uninstall_lib()
 }
 
 
-if [ "$actionType" == 'install' ];then
+if [ "$actionType" = 'install' ];then
 	Install_lib
-elif [ "$actionType" == 'uninstall' ];then
+elif [ "$actionType" = 'uninstall' ];then
 	Uninstall_lib
 fi

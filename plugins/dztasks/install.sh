@@ -14,16 +14,16 @@ sysArch=`arch`
 sysName=`uname`
 
 DZ_ARCH_NAME=amd64
-if [ "$sysArch" == "arm64" ];then
+if [ "$sysArch" = "arm64" ];then
 	DZ_ARCH_NAME=arm64
-elif [ "$sysArch" == "x86_64" ]; then
+elif [ "$sysArch" = "x86_64" ]; then
 	DZ_ARCH_NAME=amd64
-elif [ "$sysArch" == "aarch64" ]; then
+elif [ "$sysArch" = "aarch64" ]; then
 	DZ_ARCH_NAME=aarch64
 fi
 
 DZ_NAME=linux
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	DZ_NAME=darwin
 fi
 Install_App()

@@ -27,7 +27,7 @@ ext_file=${ext_dir}/10-opcache.ini
 
 echo $ext_file
 
-if [ "$actionType" == 'install' ];then
+if [ "$actionType" = 'install' ];then
 	yum install -y php${version}-php-${LIBNAME}
 	echo "ls ${cfgDir}/php${version}/php.d | grep "${LIBNAME}.ini"| cut -d \  -f 1"
 	find_opcache=`ls ${cfgDir}/php${version}/php.d | grep "${LIBNAME}.ini"| cut -d \  -f 1`

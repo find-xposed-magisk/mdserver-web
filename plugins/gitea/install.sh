@@ -25,11 +25,11 @@ getBit(){
 }
 
 Install_Rsync(){
-	if [ "$OSNAME" == "debian" ] || [ "$OSNAME" == "ubuntu" ];then
+	if [ "$OSNAME" = "debian" ] || [ "$OSNAME" = "ubuntu" ];then
 		apt install -y rsync
-	elif [[ "$OSNAME" == "arch" ]]; then
+	elif [[ "$OSNAME" = "arch" ]]; then
 		echo y | pacman -Sy rsync
-	elif [[ "$OSNAME" == "macos" ]]; then
+	elif [[ "$OSNAME" = "macos" ]]; then
 		# brew install rsync
 		# brew install lsyncd
 		echo "ok"
@@ -119,7 +119,7 @@ Uninstall_App()
 
 action=$1
 version=$2
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_App $version
 else
 	Uninstall_App $version
