@@ -16,7 +16,7 @@ mysqlDir=${serverPath}/source/mysql
 
 _os=`uname`
 echo "use system: ${_os}"
-if [ ${_os} == "Darwin" ]; then
+if [ ${_os} =="Darwin" ]; then
 	OSNAME='macos'
 elif grep -Eq "openSUSE" /etc/*-release; then
 	OSNAME='opensuse'
