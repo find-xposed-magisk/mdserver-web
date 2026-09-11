@@ -41,7 +41,7 @@ Install_app_mac()
 Install_Linux_Ubuntu()
 {
 ##################### Ubuntu start #####################
-if [ "$SYS_VERSION_ID" == "22" ]; then
+if [ "$SYS_VERSION_ID" = "22" ]; then
 	echo "Not yet supported"
 	exit 1
 fi
@@ -230,13 +230,13 @@ Install_app()
 	echo '正在安装脚本文件...'
 	mkdir -p $serverPath/source
 	
-	if [ "macos" == "$OSNAME" ];then
+	if [ "macos" = "$OSNAME" ];then
 		Install_app_mac
 	else
 		Install_app_linux
 	fi
 
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		mkdir -p $serverPath/mongodb
 		echo "${VERSION}" > $serverPath/mongodb/version.pl
 		echo '安装完成'

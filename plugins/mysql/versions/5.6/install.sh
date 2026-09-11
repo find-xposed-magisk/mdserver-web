@@ -110,7 +110,7 @@ Install_mysql()
 		WHERE_DIR_GPP=`which g++`
 	fi
 
-	if [ "$OSNAME" == "ubuntu" ];then
+	if [ "$OSNAME" = "ubuntu" ];then
 		apt install -y libudev-dev
 		apt install -y libtirpc-dev
 		apt install -y libssl-dev

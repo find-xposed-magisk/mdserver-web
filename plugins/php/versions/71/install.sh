@@ -98,7 +98,7 @@ fi
 # ----- cpu end ------
 
 
-if [ "${SYS_ARCH}" == "arm64" ] && [ "$sysName" == "Darwin" ] ;then
+if [ "${SYS_ARCH}" = "arm64" ] && [ "$sysName" = "Darwin" ] ;then
 	# 修复mac arm64架构下php安装
 	# 修复不能识别到sys_icache_invalidate
 	cat ${curPath}/versions/${PHP_VER}/src/ext/pcre/sljitConfigInternal.h > $sourcePath/php/php${PHP_VER}/ext/pcre/pcrelib/sljit/sljitConfigInternal.h
@@ -106,7 +106,7 @@ if [ "${SYS_ARCH}" == "arm64" ] && [ "$sysName" == "Darwin" ] ;then
 	cat ${curPath}/versions/${PHP_VER}/src/mkstemp.c > $sourcePath/php/php${PHP_VER}/ext/zip/lib/mkstemp.c
 fi
 
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	BREW_DIR=`which brew`
 	BREW_DIR=${BREW_DIR/\/bin\/brew/}
 
@@ -159,7 +159,7 @@ Uninstall_php()
 }
 
 action=${1}
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_php
 else
 	Uninstall_php

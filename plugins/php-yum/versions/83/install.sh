@@ -17,7 +17,7 @@ Install_php()
 {
 #------------------------ install start ------------------------------------#
 yum install -y php83 php83-php-fpm
-if [ "$?" == "0" ];then
+if [ "$?" = "0" ];then
 	mkdir -p $serverPath/php-yum/${PHP_VER}
 fi
 
@@ -32,7 +32,7 @@ Uninstall_php()
 }
 
 action=${1}
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_php
 else
 	Uninstall_php

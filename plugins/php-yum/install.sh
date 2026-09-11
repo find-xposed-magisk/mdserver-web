@@ -57,7 +57,7 @@ fi
 
 
 
-if [ "${action}" == "uninstall" ] && [ -d ${serverPath}/php-yum/${type} ];then
+if [ "${action}" = "uninstall" ] && [ -d ${serverPath}/php-yum/${type} ];then
 	#初始化 
 	cd ${rootPath} && python3 ${rootPath}/plugins/php-yum/index.py stop ${type}
 	cd ${rootPath} && python3 ${rootPath}/plugins/php-yum/index.py initd_uninstall ${type}

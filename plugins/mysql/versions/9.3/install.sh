@@ -16,7 +16,7 @@ mysqlDir=${serverPath}/source/mysql
 
 _os=`uname`
 echo "use system: ${_os}"
-if [ ${_os} =="Darwin" ]; then
+if [ ${_os} = "Darwin" ]; then
 	OSNAME='macos'
 elif grep -Eq "openSUSE" /etc/*-release; then
 	OSNAME='opensuse'
@@ -132,7 +132,7 @@ Install_mysql()
 
 	WHERE_DIR_GCC=/usr/bin/gcc
 	WHERE_DIR_GPP=/usr/bin/g++
-	if [ "$OSNAME" == "centos" ] && [ "$VERSION_ID" == "7" ];then
+	if [ "$OSNAME" = "centos" ] && [ "$VERSION_ID" = "7" ];then
 		yum install -y libudev-devel
 		yum install -y centos-release-scl
         yum install -y devtoolset-11-gcc devtoolset-11-gcc-c++ devtoolset-11-binutils
@@ -144,7 +144,7 @@ Install_mysql()
 		echo $WHERE_DIR_GPP
 	fi
 
-	if [ "$OSNAME" == "ubuntu" ];then
+	if [ "$OSNAME" = "ubuntu" ];then
 		apt install -y libudev-dev
 		apt install -y libtirpc-dev
 		apt install -y libssl-dev
@@ -170,7 +170,7 @@ Install_mysql()
 	fi
 
 
-	if [ "$OSNAME" == "opensuse" ];then
+	if [ "$OSNAME" = "opensuse" ];then
 		zypper install -y gcc11
 		zypper install -y gcc11-c++
 

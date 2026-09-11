@@ -71,7 +71,7 @@ Install_app()
 
 	INSTALL_CMD=cmake
 	CMAKE3=`which cmake3`
-	if [ "$?" == "0" ];then
+	if [ "$?" = "0" ];then
 		INSTALL_CMD=cmake3
 	fi
 
@@ -116,7 +116,7 @@ Uninstall_app()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_app
 else
 	Uninstall_app

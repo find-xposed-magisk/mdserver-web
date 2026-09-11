@@ -21,9 +21,9 @@ ARCH="amd64"
 
 get_arch() {
 	TMP_ARCH=`arch`
-	if [ "$TMP_ARCH" == "x86_64" ];then
+	if [ "$TMP_ARCH" = "x86_64" ];then
 		ARCH="amd64"
-	elif [ "$TMP_ARCH" == "aarch64" ];then
+	elif [ "$TMP_ARCH" = "aarch64" ];then
 		ARCH="arm64"
 	else
 		echo $ARCH
@@ -104,7 +104,7 @@ Uninstall_App()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_App
 else
 	Uninstall_App

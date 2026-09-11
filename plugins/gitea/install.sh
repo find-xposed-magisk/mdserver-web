@@ -66,7 +66,7 @@ Install_App()
 
 	git config --global push.default simple
 
-	if [ "macos" == "$OSNAME" ];then
+	if [ "macos" = "$OSNAME" ];then
 		file=gitea-${version}-darwin-10.12-amd64
 	else
 		file=gitea-${version}-linux-amd64

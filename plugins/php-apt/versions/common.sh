@@ -28,7 +28,7 @@ FILE=${curPath}/${version}/${extName}.sh
 FILE_COMMON=${curPath}/common/${extName}.sh
 
 # apt install -y php81-php-yar
-if [ "$action" == 'install' ];then
+if [ "$action" = 'install' ];then
 	
 	if [ -f $FILE ];then
 		bash ${curPath}/${version}/${extName}.sh install $version
@@ -40,7 +40,7 @@ if [ "$action" == 'install' ];then
 fi
 
 # apt remove -y php81-php-yar
-if [ "$action" == 'uninstall' ];then
+if [ "$action" = 'uninstall' ];then
 	if [ -f $FILE ];then
 		bash ${curPath}/${version}/${extName}.sh uninstall $version
 	elif [ -f $FILE_COMMON ];then
@@ -55,6 +55,6 @@ echo "apt remove -y php${version}-${extName}"
 
 php_status=`systemctl status php${version}-fpm | grep inactive`
 echo "status:$php_status"
-if [ "$php_status" == "" ];then
+if [ "$php_status" = "" ];then
 	systemctl restart php${version}-fpm
 fi

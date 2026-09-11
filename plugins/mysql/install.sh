@@ -33,7 +33,7 @@ else
 	useradd -g mysql -s /usr/sbin/nologin mysql
 fi
 
-if [ "${2}" == "" ];then
+if [ "${2}" = "" ];then
 	echo '缺少安装脚本...'
 	exit 0
 fi 

@@ -23,11 +23,11 @@ if [ "$SYS_NAME" -lt "2004" ];then
 	SYS_NAME="2004"
 fi
 
-if [ "$SYS_NAME" == "2204" ];then
+if [ "$SYS_NAME" = "2204" ];then
 	SYS_NAME="2204"
 fi
 
-if [ "$SYS_NAME" == "2404" ];then
+if [ "$SYS_NAME" = "2404" ];then
 	SYS_NAME="2404"
 fi
 

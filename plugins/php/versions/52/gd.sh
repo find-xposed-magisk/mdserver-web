@@ -31,7 +31,7 @@ fi
 sysName=`uname`
 echo "use system: ${sysName}"
 
-if [ ${sysName} == "Darwin" ]; then
+if [ ${sysName} = "Darwin" ]; then
 	OSNAME='macos'
 elif grep -Eqi "CentOS" /etc/issue || grep -Eq "CentOS" /etc/*-release; then
 	OSNAME='centos'
@@ -130,8 +130,8 @@ Uninstall_lib()
 
 
 
-if [ "$actionType" == 'install' ];then
+if [ "$actionType" = 'install' ];then
 	Install_lib
-elif [ "$actionType" == 'uninstall' ];then
+elif [ "$actionType" = 'uninstall' ];then
 	Uninstall_lib
 fi

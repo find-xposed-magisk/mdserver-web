@@ -37,7 +37,7 @@ if [ "$actionType" = 'install' ];then
 	fi
 	echo $ext_file
 
-	if [ "$version" == "8.5" ];then
+	if [ "$version" = "8.5" ];then
 		echo "no zend_extension"
 	else
 		echo "zend_extension=${LIBNAME}.so" >> $ext_file

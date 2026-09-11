@@ -31,7 +31,7 @@ Install_App()
     fi
 
 
-    if [ "${LOCAL_ADDR}" == "cn" ];then
+    if [ "${LOCAL_ADDR}" = "cn" ];then
     	if [ ! -f ${APP_DIR}/haproxy-${VERSION}.tar.gz ];then
 			wget -O ${APP_DIR}/haproxy-${VERSION}.tar.gz https://dl.midoks.icu/soft/haproxy/haproxy-${VERSION}.tar.gz
 		fi
@@ -39,7 +39,7 @@ Install_App()
 
 	
 	if [ ! -f ${APP_DIR}/haproxy-${VERSION}.tar.gz ];then
-		if [ $sysName == 'Darwin' ]; then
+		if [ $sysName = 'Darwin' ]; then
 			wget --no-check-certificate -O ${APP_DIR}/haproxy-${VERSION}.tar.gz https://www.haproxy.org/download/${MIN_VERSION}/src/haproxy-${VERSION}.tar.gz
 		else
 			curl -sSLo ${APP_DIR}/haproxy-${VERSION}.tar.gz https://www.haproxy.org/download/${MIN_VERSION}/src/haproxy-${VERSION}.tar.gz
@@ -94,7 +94,7 @@ Uninstall_App()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_App
 else
 	Uninstall_App

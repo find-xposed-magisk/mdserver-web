@@ -34,7 +34,7 @@ NON_ZTS_FILENAME=`ls $serverPath/php/${version}/${LIB_PATH_NAME}/extensions | gr
 extFile=$serverPath/php/${version}/${LIB_PATH_NAME}/extensions/${NON_ZTS_FILENAME}/${LIBNAME}.so
 
 sysName=`uname`
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	BAK='_bak'
 else
 	BAK=''
@@ -61,11 +61,11 @@ Install_lib()
 		./configure --with-php-config=$serverPath/php/$version/bin/php-config
 
 		# FIND_C99=`cat Makefile|grep c99`
-		# if [ "$FIND_C99" == "" ];then
+		# if [ "$FIND_C99" = "" ];then
 		# 	sed -i $BAK 's/CFLAGS \=/CFLAGS \= -std=c99/g' Makefile
 		# fi
 
-		if [ "$sysName" == "Darwin" ];then
+		if [ "$sysName" = "Darwin" ];then
 			OPTIONS="$OPTIONS --with-gmp=$(brew --prefix gmp)"
 		fi
 

@@ -26,7 +26,7 @@ NON_ZTS_FILENAME=`ls $serverPath/php/${version}/${LIB_PATH_NAME}/extensions | gr
 extFile=$serverPath/php/${version}/${LIB_PATH_NAME}/extensions/${NON_ZTS_FILENAME}/${LIBNAME}.so
 
 sysName=`uname`
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	BAK='_bak'
 else
 	BAK=''
@@ -50,11 +50,11 @@ Install_lib()
 		cd $sourcePath/php${version}/ext/${LIBNAME}
 
 		OPTIONS=""
-		if [ "${SYS_ARCH}" == "aarch64" ] && [ "$version" -lt "56" ];then
+		if [ "${SYS_ARCH}" = "aarch64" ] && [ "$version" -lt "56" ];then
 			OPTIONS="$OPTIONS --build=aarch64-unknown-linux-gnu --host=aarch64-unknown-linux-gnu"
 		fi
 
-		if [ "$sysName" == "Darwin" ];then
+		if [ "$sysName" = "Darwin" ];then
 			OPTIONS="$OPTIONS --with-gettext=$(brew --prefix gettext)"
 		fi
 
@@ -64,7 +64,7 @@ Install_lib()
 
 		# PHP52需要,因为52关闭。所有注释掉
 		# FIND_C99=`cat Makefile|grep c99`
-		# if [ "$FIND_C99" == "" ];then
+		# if [ "$FIND_C99" = "" ];then
 		# 	sed -i $BAK 's/CFLAGS \=/CFLAGS \= -std=c99/g' Makefile
 		# fi
 
@@ -115,8 +115,8 @@ Uninstall_lib()
 
 
 
-if [ "$actionType" == 'install' ];then
+if [ "$actionType" = 'install' ];then
 	Install_lib
-elif [ "$actionType" == 'uninstall' ];then
+elif [ "$actionType" = 'uninstall' ];then
 	Uninstall_lib
 fi

@@ -132,7 +132,7 @@ Install_mysql()
 
 	WHERE_DIR_GCC=/usr/bin/gcc
 	WHERE_DIR_GPP=/usr/bin/g++
-	if [ "$OSNAME" == "centos" ] && [ "$VERSION_ID" == "7" ];then
+	if [ "$OSNAME" = "centos" ] && [ "$VERSION_ID" = "7" ];then
 		yum install -y libudev-devel
 		yum install -y centos-release-scl
         yum install -y devtoolset-11-gcc devtoolset-11-gcc-c++ devtoolset-11-binutils
@@ -170,7 +170,7 @@ Install_mysql()
 	fi
 
 
-	if [ "$OSNAME" == "opensuse" ];then
+	if [ "$OSNAME" = "opensuse" ];then
 		zypper install -y gcc11
 		zypper install -y gcc11-c++
 

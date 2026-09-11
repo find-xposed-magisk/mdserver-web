@@ -9,7 +9,7 @@ cmd_ext=$(ls -l $DIR/versions/$PHP_VER/ |awk '{print $9}')
 cd $DIR && /bin/bash install.sh install $PHP_VER
 for ii in $cmd_ext
 do
-	if [ "install.sh" == "$ii" ];then
+	if [ "install.sh" = "$ii" ];then
 		echo '' > /tmp/t.log
 	else
 		cd $DIR/versions/$PHP_VER &&  /bin/bash $ii install $PHP_VER
@@ -18,7 +18,7 @@ done
 echo "php${PHP_VER} -- end"
 
 
-PHP_VER_LIST=(53 54 55 56 70 71 72 73 74 80 81 82 83)
+PHP_VER_LIST=(53 54 55 56 70 71 72 73 74 80 81 82 83 84 85)
 # PHP_VER_LIST=(81)
 for PHP_VER in ${PHP_VER_LIST[@]}; do
 	echo "php${PHP_VER} -- start"
@@ -27,7 +27,7 @@ for PHP_VER in ${PHP_VER_LIST[@]}; do
 		for ii in $cmd_ext
 		do
 			echo "${ii}"
-			if [ "install.sh" == "$ii" ];then
+			if [ "install.sh" = "$ii" ];then
 				echo '' > /tmp/t.log
 			else
 				cd $DIR/versions/$PHP_VER/ && bash $ii install ${PHP_VER}

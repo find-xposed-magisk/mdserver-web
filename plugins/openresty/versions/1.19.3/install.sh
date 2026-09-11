@@ -77,7 +77,7 @@ Install_openresty()
 	opensslVersion="1.1.1p"
 	libresslVersion="3.9.1"
 	pcreVersion='8.38'
-	if [ "$sysName" == "Darwin" ];then
+	if [ "$sysName" = "Darwin" ];then
 
 		if [ ! -f ${openrestyDir}/pcre-${pcreVersion}.tar.gz ];then
 			wget --no-check-certificate -O ${openrestyDir}/pcre-${pcreVersion}.tar.gz https://netix.dl.sourceforge.net/project/pcre/pcre/${pcreVersion}/pcre-${pcreVersion}.tar.gz
@@ -151,7 +151,7 @@ Install_openresty()
 		fi
 
 		pkg-config --exists --print-errors libzstd
-		if [ "$?" == "0" ];then
+		if [ "$?" = "0" ];then
 			OPTIONS="${OPTIONS} --add-module=${openrestyDir}/zstd-nginx-module-master"
 		fi
 	fi

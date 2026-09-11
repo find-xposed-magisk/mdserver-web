@@ -26,7 +26,7 @@ else
 	useradd -g mysql -s /usr/sbin/nologin mysql
 fi
 
-if [ "${2}" == "" ];then
+if [ "${2}" = "" ];then
 	echo '缺少安装脚本...'
 	exit 0
 fi 
@@ -36,7 +36,7 @@ if [ ! -d $curPath/versions/$2 ];then
 	exit 0
 fi
 
-if [ "${action}" == "uninstall" ];then
+if [ "${action}" = "uninstall" ];then
 	
 	if [ -f /usr/lib/systemd/system/mariadb.service ] || [ -f /lib/systemd/system/mariadb.service ];then
 		systemctl stop mariadb
@@ -49,7 +49,7 @@ fi
 
 sh -x $curPath/versions/$2/install.sh $1
 
-if [ "${action}" == "install" ] && [ -d $serverPath/mariadb ];then
+if [ "${action}" = "install" ] && [ -d $serverPath/mariadb ];then
 	#初始化 
 	cd ${rootPath} && python3 ${rootPath}/plugins/mariadb/index.py start ${type}
 	cd ${rootPath} && python3 ${rootPath}/plugins/mariadb/index.py initd_install ${type}
