@@ -60,7 +60,7 @@ fi
 
 bash -x $curPath/versions/$2/install.sh $1
 
-if [ "${action}" -eq "install" ] && [ -d $serverPath/mysql ];then
+if [[ "${action}" -eq "install" ]] && [[ -d $serverPath/mysql ]]; then
 	#初始化 
 	cd ${rootPath} && python3 ${rootPath}/plugins/mysql/index.py start ${type}
 	cd ${rootPath} && python3 ${rootPath}/plugins/mysql/index.py initd_install ${type}
