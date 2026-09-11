@@ -50,7 +50,7 @@ $PKGMGR install -y brotli-devel
 $PKGMGR install -y vim-common
 
 echo "install remi source"
-if [ "$VERSION_ID" == "9" ];then
+if [ "$VERSION_ID" = "9" ];then
     # dnf upgrade --refresh -y
     dnf config-manager --set-enabled crb
     
@@ -70,7 +70,7 @@ fi
 
 
 SSH_PORT=`netstat -ntpl|grep sshd|grep -v grep | sed -n "1,1p" | awk '{print $4}' | awk -F : '{print $2}'`
-if [ "$SSH_PORT" == "" ];then
+if [ "$SSH_PORT" = "" ];then
     SSH_PORT_LINE=`cat /etc/ssh/sshd_config | grep "Port \d*" | tail -1`
     SSH_PORT=${SSH_PORT_LINE/"Port "/""}
 fi
@@ -182,7 +182,7 @@ if [ "$VERSION_ID" -ge "8" ];then
         fi
     done
 
-    if [ "$REPOS" == "--enablerepo=" ];then
+    if [ "$REPOS" = "--enablerepo=" ];then
         # if not find, reset emtpy
         REPOS=''
     fi

@@ -26,7 +26,7 @@ yum install -y brotli-devel
 yum install -y vim-common
 
 SSH_PORT=`netstat -ntpl|grep sshd|grep -v grep | sed -n "1,1p" | awk '{print $4}' | awk -F : '{print $2}'`
-if [ "$SSH_PORT" == "" ];then
+if [ "$SSH_PORT" = "" ];then
 	SSH_PORT_LINE=`cat /etc/ssh/sshd_config | grep "Port \d*" | tail -1`
 	SSH_PORT=${SSH_PORT_LINE/"Port "/""}
 fi
@@ -41,7 +41,7 @@ echo "SSH PORT:${SSH_PORT}"
 # 	service iptables save
 
 # 	iptables_status=`service iptables status | grep 'not running'`
-# 	if [ "${iptables_status}" == '' ];then
+# 	if [ "${iptables_status}" = '' ];then
 # 		service iptables restart
 # 	fi
 

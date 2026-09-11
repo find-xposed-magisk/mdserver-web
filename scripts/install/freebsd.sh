@@ -81,7 +81,7 @@ echo "SSH PORT:${SSH_PORT}"
 
 # 检测防火墙是否开启
 FW_ENABLE=`cat /etc/rc.conf | grep firewall_enable`
-if [ "$FW_ENABLE" == "" ];then
+if [ "$FW_ENABLE" = "" ];then
 	sysrc firewall_enable="YES"
 	sysrc firewall_type="open"
 	sysrc firewall_script="/etc/ipfw.rules"

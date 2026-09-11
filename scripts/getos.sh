@@ -4,7 +4,7 @@ export PATH
 
 #获取信息和版本
 _os=`uname`
-if [ ${_os} == "Darwin" ]; then
+if [ ${_os} = "Darwin" ]; then
     OSNAME='macos'
 elif grep -Eq "openSUSE" /etc/*-release; then
     OSNAME='opensuse'
@@ -44,6 +44,6 @@ if [ -d /www/server/mdserver-web ];then
     echo "$OSNAME" > /www/server/mdserver-web/data/osname.pl
 fi
 
-if [ "$OSNAME" == "macos" ];then
+if [ "$OSNAME" = "macos" ];then
     echo "$OSNAME"
 fi

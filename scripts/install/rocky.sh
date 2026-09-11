@@ -45,7 +45,7 @@ if [ -f /usr/sbin/iptables ];then
 	service iptables save
 
 	iptables_status=`service iptables status | grep 'not running'`
-	if [ "${iptables_status}" == '' ];then
+	if [ "${iptables_status}" = '' ];then
 		service iptables restart
 	fi
 
