@@ -40,7 +40,7 @@ fi
 #--------------- mongosh tool install ------------------ #
 TOOL_VERSION=2.2.5
 TOOL_FILE_NAME=mongosh-${TOOL_VERSION}-darwin-x64
-if [ "aarch64" == ${SYS_ARCH} ];then
+if [ "aarch64" = ${SYS_ARCH} ];then
 	TOOL_FILE_NAME=mongosh-${TOOL_VERSION}-darwin-arm64
 fi
 
@@ -65,11 +65,11 @@ cd ${MG_DIR} && rm -rf ${MG_DIR}/${TOOL_FILE_NAME}
 # https://fastdl.mongodb.org/tools/db/mongodb-database-tools-macos-arm64-100.9.4.zip
 TOOL_VERSION=100.9.4
 TOOL_FILE_NAME=mongodb-database-tools-macos-x86_64-${TOOL_VERSION}
-if [ "aarch64" == ${SYS_ARCH} ];then
+if [ "aarch64" = ${SYS_ARCH} ];then
 	TOOL_FILE_NAME=mongodb-database-tools-macos-arm64-${TOOL_VERSION}
 fi
 
-if [ "arm64" == ${SYS_ARCH} ];then
+if [ "arm64" = ${SYS_ARCH} ];then
 	TOOL_FILE_NAME=mongodb-database-tools-macos-arm64-${TOOL_VERSION}
 fi
 

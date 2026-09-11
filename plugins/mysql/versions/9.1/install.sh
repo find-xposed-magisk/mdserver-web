@@ -144,7 +144,7 @@ Install_mysql()
 		echo $WHERE_DIR_GPP
 	fi
 
-	if [ "$OSNAME" == "ubuntu" ];then
+	if [ "$OSNAME" = "ubuntu" ];then
 		apt install -y libudev-dev
 		apt install -y libtirpc-dev
 		apt install -y libssl-dev

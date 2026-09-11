@@ -66,12 +66,12 @@ fi
 # OPTIONS="${OPTIONS} --with-jpeg --with-jpeg-dir=/usr/lib"
 OPTIONS='--without-iconv'
 
-if [ $sysName == 'Darwin' ]; then
+if [ $sysName = 'Darwin' ]; then
 	OPTIONS="${OPTIONS} --with-freetype-dir=${serverPath}/lib/freetype"
 fi
 
 IS_64BIT=`getconf LONG_BIT`
-if [ "$IS_64BIT" == "64" ];then
+if [ "$IS_64BIT" = "64" ];then
 	OPTIONS="${OPTIONS} --with-libdir=lib64"
 fi
 
@@ -165,7 +165,7 @@ Uninstall_php()
 }
 
 action=${1}
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_php
 else
 	Uninstall_php

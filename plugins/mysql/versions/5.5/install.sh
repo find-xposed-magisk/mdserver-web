@@ -152,13 +152,13 @@ Install_mysql()
 		cd ${mysqlDir}/mysql-5.5.62 && patch -p1 < ${rootPath}/plugins/mysql/patch/mysql-5.5-fix-arm-client_plugin.patch
 	fi
 
-	if [ "$OSNAME" == "ubuntu" ];then
+	if [ "$OSNAME" = "ubuntu" ];then
 		Install_dep
 	fi
 
 	OPTIONS=''
 
-	if [ "$OSNAME" == "debian" ] && [ "$VERSION_ID" == "13" ];then
+	if [ "$OSNAME" = "debian" ] && [ "$VERSION_ID" = "13" ];then
 		Install_dep_debain13
 		# export CFLAGS="-D__s64=long long -D__u64='unsigned long long' -D__s32=int -D__u32='unsigned int' -D__u16='unsigned short'"
 		# export CXXFLAGS="$CFLAGS"

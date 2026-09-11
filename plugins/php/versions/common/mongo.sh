@@ -48,7 +48,7 @@ Install_lib()
 	if [ ! -f "$extFile" ];then
 
 		OPTIONS=''
-		if [ $sysName == 'Darwin' ]; then
+		if [ $sysName = 'Darwin' ]; then
 			LIB_DEPEND_DIR=`brew info openssl | grep /usr/local/Cellar/openssl | cut -d \  -f 1 | awk 'END {print}'`
 			OPTIONS="--with-openssl-dir=${LIB_DEPEND_DIR}"
 		fi

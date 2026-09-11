@@ -17,7 +17,7 @@ version=$2
 LIBNAME=fileinfo
 LIBV=0
 
-if [ "$version" == "53" ];then
+if [ "$version" = "53" ];then
 	echo "i wont support it"
 	exit
 fi
@@ -31,7 +31,7 @@ NON_ZTS_FILENAME=`ls $serverPath/php/${version}/${LIB_PATH_NAME}/extensions | gr
 extFile=$serverPath/php/${version}/${LIB_PATH_NAME}/extensions/${NON_ZTS_FILENAME}/${LIBNAME}.so
 
 sysName=`uname`
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	BAK='_bak'
 else
 	BAK=''
@@ -135,8 +135,8 @@ Uninstall_lib()
 
 
 
-if [ "$actionType" == 'install' ];then
+if [ "$actionType" = 'install' ];then
 	Install_lib
-elif [ "$actionType" == 'uninstall' ];then
+elif [ "$actionType" = 'uninstall' ];then
 	Uninstall_lib
 fi

@@ -22,7 +22,7 @@ FILE=${curPath}/${version}/${extName}.sh
 FILE_COMMON=${curPath}/common/${extName}.sh
 
 
-if [ "$action" == 'install' ];then
+if [ "$action" = 'install' ];then
 	
 	if [ -f $FILE ];then
 		cd ${curPath}/${version} && bash ${extName}.sh install ${version}
@@ -34,7 +34,7 @@ if [ "$action" == 'install' ];then
 fi
 
 
-if [ "$action" == 'uninstall' ];then
+if [ "$action" = 'uninstall' ];then
 		if [ -f $FILE ];then
 		cd ${curPath}/${version} && bash ${extName}.sh uninstall ${version}
 	elif [ -f $FILE_COMMON ];then

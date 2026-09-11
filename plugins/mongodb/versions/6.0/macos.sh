@@ -34,7 +34,7 @@ if [ "aarch64" = ${SYS_ARCH} ];then
 	TOOL_FILE_NAME=mongosh-${TOOL_VERSION}-darwin-arm64
 fi
 
-if [ "arm64" == ${SYS_ARCH} ];then
+if [ "arm64" = ${SYS_ARCH} ];then
 	TOOL_FILE_NAME=mongosh-${TOOL_VERSION}-darwin-arm64
 fi
 TOOL_FILE_NAME_TGZ=${TOOL_FILE_NAME}.zip

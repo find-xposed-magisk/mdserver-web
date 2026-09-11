@@ -206,7 +206,7 @@ Uninstall_php()
 }
 
 action=${1}
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_php
 else
 	Uninstall_php

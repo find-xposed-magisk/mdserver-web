@@ -46,7 +46,7 @@ Install_lib()
 		cd $php_lib/zendopcache-7.0.5
 
 		OPTIONS=''
-		if [ "${SYS_ARCH}" == "aarch64" ] && [ "$version" -lt "56" ];then
+		if [ "${SYS_ARCH}" = "aarch64" ] && [ "$version" -lt "56" ];then
 			OPTIONS="$OPTIONS --build=aarch64-unknown-linux-gnu --host=aarch64-unknown-linux-gnu"
 		fi
 
@@ -107,8 +107,8 @@ Uninstall_lib()
 }
 
 
-if [ "$actionType" == 'install' ];then
+if [ "$actionType" = 'install' ];then
 	Install_lib
-elif [ "$actionType" == 'uninstall' ];then
+elif [ "$actionType" = 'uninstall' ];then
 	Uninstall_lib
 fi

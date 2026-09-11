@@ -14,7 +14,7 @@ sourcePath=${serverPath}/source/php
 LIBNAME=ZendGuardLoader
 
 sysName=`uname`
-if [ "$sysName" == "Darwin" ];then
+if [ "$sysName" = "Darwin" ];then
 	BAK='_bak'
 else
 	BAK=''
@@ -89,8 +89,8 @@ Uninstall_lib()
 
 actionType=$1
 version=$2
-if [ "$actionType" == 'install' ];then
+if [ "$actionType" = 'install' ];then
 	Install_lib
-elif [ "$actionType" == 'uninstall' ];then
+elif [ "$actionType" = 'uninstall' ];then
 	Uninstall_lib
 fi

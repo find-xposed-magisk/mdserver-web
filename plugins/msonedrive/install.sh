@@ -33,9 +33,9 @@ Uninstall_App()
 	rm -rf $serverPath/msonedrive
 }
 
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_App
-elif [ "${1}" == 'uninstall' ];then
+elif [ "${1}" = 'uninstall' ];then
 	Uninstall_App
 else
 	echo 'Error!';

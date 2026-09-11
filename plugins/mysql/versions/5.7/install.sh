@@ -174,11 +174,11 @@ Install_mysql()
 		WHERE_DIR_GPP=`which g++`
 	fi
 
-	if [ "$OSNAME" == "ubuntu" ];then
+	if [ "$OSNAME" = "ubuntu" ];then
 		Install_dep
 	fi
 
-	if [ "$OSNAME" == "debian" ] && [ "$VERSION_ID" == "13" ];then
+	if [ "$OSNAME" = "debian" ] && [ "$VERSION_ID" = "13" ];then
 		Install_dep_debain13
 	fi
 

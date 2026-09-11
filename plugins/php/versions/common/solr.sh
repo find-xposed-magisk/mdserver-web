@@ -63,7 +63,7 @@ Install_lib()
 			OPTIONS="$OPTIONS --build=aarch64-unknown-linux-gnu --host=aarch64-unknown-linux-gnu"
 		fi
 
-		if [ $sysName == 'Darwin' ]; then
+		if [ $sysName = 'Darwin' ]; then
 			BREW_DIR=`which brew`
 			BREW_DIR=${BREW_DIR/\/bin\/brew/}
 			LIB_DEPEND_DIR=`brew info curl | grep ${BREW_DIR}/Cellar/curl | cut -d \  -f 1 | awk 'END {print}'`

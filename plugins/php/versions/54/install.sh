@@ -29,7 +29,7 @@ if [ ! -d $sourcePath/php/php${PHP_VER} ];then
 	# 中国优化安装
 	cn=$(curl -fsSL -m 10 -s http://ipinfo.io/json | grep "\"country\": \"CN\"")
 	LOCAL_ADDR=common
-	if [ ! -z "$cn" ] || [ "$?" == "0" ] ;then
+	if [ ! -z "$cn" ] || [ "$?" = "0" ] ;then
 		LOCAL_ADDR=cn
 	fi
 
@@ -96,11 +96,11 @@ else
 fi
 # ----- cpu end ------
 
-if [ "${SYS_ARCH}" == "aarch64" ];then
+if [ "${SYS_ARCH}" = "aarch64" ];then
 	OPTIONS="$OPTIONS --build=aarch64-unknown-linux-gnu --host=aarch64-unknown-linux-gnu"
 fi
 
-if [ "${SYS_ARCH}" == "arm64" ] && [ "$sysName" == "Darwin" ] ;then
+if [ "${SYS_ARCH}" = "arm64" ] && [ "$sysName" = "Darwin" ] ;then
 	# 修复mac arm64架构下php安装
 	# 修复不能识别到sys_icache_invalidate
 	cat ${curPath}/versions/${PHP_VER}/src/ext/pcre/sljitConfigInternal.h > $sourcePath/php/php${PHP_VER}/ext/pcre/pcrelib/sljit/sljitConfigInternal.h
@@ -173,7 +173,7 @@ Uninstall_php()
 }
 
 action=${1}
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_php
 else
 	Uninstall_php

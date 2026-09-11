@@ -170,7 +170,7 @@ Install_mysql()
 	fi
 
 
-	if [ "$OSNAME" == "opensuse" ];then
+	if [ "$OSNAME" = "opensuse" ];then
 		zypper install -y gcc11
 		zypper install -y gcc11-c++
 

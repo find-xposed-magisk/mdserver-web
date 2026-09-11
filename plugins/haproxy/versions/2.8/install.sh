@@ -53,7 +53,7 @@ Install_App()
 
 	cd ${APP_DIR} && tar -zxvf haproxy-${VERSION}.tar.gz
 
-	if [ "$OSNAME" == "macos" ];then
+	if [ "$OSNAME" = "macos" ];then
 		cd ${APP_DIR}/haproxy-${VERSION} && make TARGET=osx && make install PREFIX=$serverPath/haproxy
 	else
 		cd ${APP_DIR}/haproxy-${VERSION} && make TARGET=linux-glibc && make install PREFIX=$serverPath/haproxy

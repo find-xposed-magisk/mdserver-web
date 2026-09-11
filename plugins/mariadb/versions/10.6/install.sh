@@ -65,7 +65,7 @@ Install_app()
 	fi
 	
 	OPTIONS=''
-	if [ "$sysName" == "Darwin" ];then
+	if [ "$sysName" = "Darwin" ];then
 		OPTIONS='-DPLUGIN_TOKUDB=NO'
 	fi
 

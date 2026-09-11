@@ -43,7 +43,7 @@ fi
 
 _os=`uname`
 echo "use system: ${_os}"
-if [ ${_os} == "Darwin" ]; then
+if [ ${_os} = "Darwin" ]; then
 	OSNAME='macos'
 elif grep -Eq "openSUSE" /etc/*-release; then
 	OSNAME='opensuse'
@@ -111,7 +111,7 @@ if [[ "$OSNAME" == "debian" ]] && [[ "$VERSION_ID" =~ "13" ]]; then
 	cd $cur_dir
 fi
 
-if [ "${2}" == "" ];then
+if [ "${2}" = "" ];then
 	echo '缺少安装脚本...'
 	exit 0
 fi 
@@ -121,7 +121,7 @@ if [ ! -d $curPath/versions/$2 ];then
 	exit 0
 fi
 
-if [ "${action}" == "uninstall" ];then
+if [ "${action}" = "uninstall" ];then
 	
 	cd ${rootPath} && python3 ${rootPath}/plugins/mysql-community/index.py stop ${type}
 	cd ${rootPath} && python3 ${rootPath}/plugins/mysql-community/index.py initd_uninstall ${type}
@@ -139,7 +139,7 @@ fi
 
 sh -x $curPath/versions/$2/install_generic.sh $1
 
-if [ "${action}" == "install" ];then
+if [ "${action}" = "install" ];then
 	#初始化
 
 	if [ "$?" != "0" ];then

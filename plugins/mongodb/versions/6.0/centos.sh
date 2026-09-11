@@ -15,11 +15,11 @@ SYS_VERSION_ID=`cat /etc/*-release | grep VERSION_ID | awk -F = '{print $2}' | a
 SYS_NAME=${SYS_VERSION_ID/./}
 SYS_NAME_LEN=`echo "$SYS_NAME" | wc -L`
 
-if [ "$SYS_NAME_LEN" == "1" ];then
+if [ "$SYS_NAME_LEN" = "1" ];then
 	SYS_NAME=${SYS_NAME}0	
 fi
 
-if [ "$SYS_ARCH" == "aarch64" ];then
+if [ "$SYS_ARCH" = "aarch64" ];then
 	if [ "$SYS_NAME" -gt "90" ];then
 		SYS_NAME="90"
 	fi
@@ -64,7 +64,7 @@ rm -rf ${MG_DIR}/${FILE_NAME}
 #--------------- mongosh tool install ------------------ #
 TOOL_VERSION=2.2.5
 TOOL_FILE_NAME=mongosh-${TOOL_VERSION}-linux-x64
-if [ "aarch64" == ${SYS_ARCH} ];then
+if [ "aarch64" = ${SYS_ARCH} ];then
 	TOOL_FILE_NAME=mongosh-${TOOL_VERSION}-linux-arm64
 fi
 TOOL_FILE_NAME_TGZ=${TOOL_FILE_NAME}.tgz
@@ -84,11 +84,11 @@ cd ${MG_DIR} && rm -rf ${MG_DIR}/${TOOL_FILE_NAME}
 #--------------- mongodb database install ------------------ #
 TOOL_VERSION=100.9.4
 TOOL_FILE_NAME=mongodb-database-tools-rhel${SYS_NAME}-x86_64-${TOOL_VERSION}
-if [ "aarch64" == ${SYS_ARCH} ];then
+if [ "aarch64" = ${SYS_ARCH} ];then
 	TOOL_FILE_NAME=mongodb-database-tools-rhel${SYS_NAME}-aarch64-${TOOL_VERSION}
 fi
 
-if [ "arm64" == ${SYS_ARCH} ];then
+if [ "arm64" = ${SYS_ARCH} ];then
 	TOOL_FILE_NAME=mongodb-database-tools-rhel${SYS_NAME}-arm64-${TOOL_VERSION}
 fi
 

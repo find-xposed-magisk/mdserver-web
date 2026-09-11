@@ -65,12 +65,12 @@ fi
 cd $sourcePath/php/php${PHP_VER}
 
 OPTIONS='--without-iconv'
-# if [ $sysName == 'Darwin' ]; then
+# if [ $sysName = 'Darwin' ]; then
 # 	OPTIONS="${OPTIONS} --with-curl"
 # fi
 
 argon_version=`pkg-config libargon2 --modversion`
-if [ "$?" == "0" ];then
+if [ "$?" = "0" ];then
 	OPTIONS="${OPTIONS} --with-password-argon2"
 fi
 
@@ -154,7 +154,7 @@ Uninstall_php()
 }
 
 action=${1}
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_php
 else
 	Uninstall_php

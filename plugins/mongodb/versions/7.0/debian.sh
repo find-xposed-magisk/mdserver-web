@@ -22,7 +22,7 @@ if [ "$SYS_NAME" -lt "11" ];then
 	SYS_NAME="11"
 fi
 
-if [ "$SYS_NAME" == "" ];then
+if [ "$SYS_NAME" = "" ];then
 	SYS_NAME="11"
 fi
 
@@ -73,7 +73,7 @@ cd ${MG_DIR} && rm -rf ${MG_DIR}/${TOOL_FILE_NAME}
 #--------------- mongodb database install ------------------ #
 TOOL_VERSION=100.9.4
 TOOL_FILE_NAME=mongodb-database-tools-debian${SYS_NAME}-x86_64-${TOOL_VERSION}
-if [ "aarch64" == ${SYS_ARCH} ];then
+if [ "aarch64" = ${SYS_ARCH} ];then
 	TOOL_FILE_NAME=mongodb-database-tools-debian${SYS_NAME}-arm64-${TOOL_VERSION}
 fi
 

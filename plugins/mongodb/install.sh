@@ -34,7 +34,7 @@ echo "use system: ${sysName}"
 
 OSNAME=`bash ${rootPath}/scripts/getos.sh`
 
-if [ "" == "$OSNAME" ];then
+if [ "" = "$OSNAME" ];then
 	OSNAME=`cat ${rootPath}/data/osname.pl`
 fi
 

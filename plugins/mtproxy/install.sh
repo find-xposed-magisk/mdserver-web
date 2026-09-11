@@ -100,7 +100,7 @@ Install_app()
 		apt install -y golang golang-src
 	fi
 
-	if [ "$sysName" == "darwin" ]; then
+	if [ "$sysName" = "darwin" ]; then
 		ARCH=arm64
 		DOWNLOAD_URL="https://github.com/9seconds/mtg/releases/download/$VERSION/mtg-${VERSION_MIN}-${sysName}-arm64.tar.gz"
 	elif [ "$sysName" != "macos" ]; then

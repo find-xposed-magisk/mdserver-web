@@ -39,7 +39,7 @@ Install_App()
 
 	
 	if [ ! -f ${APP_DIR}/haproxy-${VERSION}.tar.gz ];then
-		if [ $sysName == 'Darwin' ]; then
+		if [ $sysName = 'Darwin' ]; then
 			wget --no-check-certificate -O ${APP_DIR}/haproxy-${VERSION}.tar.gz https://www.haproxy.org/download/${MIN_VERSION}/src/haproxy-${VERSION}.tar.gz
 		else
 			curl -sSLo ${APP_DIR}/haproxy-${VERSION}.tar.gz https://www.haproxy.org/download/${MIN_VERSION}/src/haproxy-${VERSION}.tar.gz
@@ -53,7 +53,7 @@ Install_App()
 
 	cd ${APP_DIR} && tar -zxvf haproxy-${VERSION}.tar.gz
 
-	if [ "$OSNAME" == "macos" ];then
+	if [ "$OSNAME" = "macos" ];then
 		cd ${APP_DIR}/haproxy-${VERSION} && make TARGET=osx && make install PREFIX=$serverPath/haproxy
 	else
 		cd ${APP_DIR}/haproxy-${VERSION} && make TARGET=linux-glibc && make install PREFIX=$serverPath/haproxy
