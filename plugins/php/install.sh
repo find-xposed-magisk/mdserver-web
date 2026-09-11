@@ -24,7 +24,7 @@ fi
 action=$1
 type=$2
 
-if [ "${2}" == "" ];then
+if [ "${2}" = "" ];then
 	echo '缺少安装脚本...'
 	exit 0
 fi 
@@ -53,7 +53,7 @@ fi
 cd ${curPath} && sh -x $curPath/versions/$2/install.sh $1
 
 
-if [ "${action}" == "install" ] && [ -d ${serverPath}/php/${type} ];then
+if [ "${action}" = "install" ] && [ -d ${serverPath}/php/${type} ];then
 
 	#初始化 
 	cd ${rootPath} && python3 ${rootPath}/plugins/php/index.py start ${type}

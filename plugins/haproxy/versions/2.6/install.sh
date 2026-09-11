@@ -26,12 +26,12 @@ Install_App()
 
 	LOCAL_ADDR=common
     cn=$(curl -fsSL -m 10 -s http://ipinfo.io/json | grep "\"country\": \"CN\"")
-    if [ ! -z "$cn" ] || [ "$?" == "0" ] ;then
+    if [ ! -z "$cn" ] || [ "$?" = "0" ] ;then
         LOCAL_ADDR=cn
     fi
 
 
-    if [ "${LOCAL_ADDR}" == "cn" ];then
+    if [ "${LOCAL_ADDR}" = "cn" ];then
     	if [ ! -f ${APP_DIR}/haproxy-${VERSION}.tar.gz ];then
 			wget -O ${APP_DIR}/haproxy-${VERSION}.tar.gz https://dl.midoks.icu/soft/haproxy/haproxy-${VERSION}.tar.gz
 		fi
@@ -94,7 +94,7 @@ Uninstall_App()
 }
 
 action=$1
-if [ "${1}" == 'install' ];then
+if [ "${1}" = 'install' ];then
 	Install_App
 else
 	Uninstall_App

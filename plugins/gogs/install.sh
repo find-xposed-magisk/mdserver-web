@@ -48,7 +48,7 @@ Install_gogs()
 
 	git config --global push.default simple
 
-	if [ "darwin" == "$os" ];then
+	if [ "darwin" = "$os" ];then
 		file=gogs_${version}_darwin_amd64.zip
 	else
 		file=gogs_${version}_linux_amd64.zip

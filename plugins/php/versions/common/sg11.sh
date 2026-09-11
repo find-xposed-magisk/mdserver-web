@@ -87,7 +87,7 @@ Install_lib()
 			exit
 		fi
 
-		if [ "$OSNAME" == 'macos' ];then
+		if [ "$OSNAME" = 'macos' ];then
 			xattr -c * $extFile
 		fi
 	fi

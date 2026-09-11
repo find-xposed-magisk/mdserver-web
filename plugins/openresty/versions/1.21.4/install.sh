@@ -144,7 +144,7 @@ Install_openresty()
 		cd ${openrestyDir} && wget -O $openrestyDir/zstd-nginx-module.tar.gz https://github.com/tokers/zstd-nginx-module/archive/refs/heads/master.tar.gz
 		cd ${openrestyDir} && tar -zxvf zstd-nginx-module.tar.gz
 
-		if [ "$sysName" == "Darwin" ];then
+		if [ "$sysName" = "Darwin" ];then
 			export ZSTD_INC=/opt/homebrew/include
 			export ZSTD_LIB=/opt/homebrew/lib
 		fi
