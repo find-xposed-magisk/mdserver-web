@@ -1106,7 +1106,7 @@ def importDbExternalProgress():
     file = args['file']
     name = args['name']
 
-    cmd = 'cd '+mw.getServerDir()+'/mdserver-web && source bin/activate && '
+    cmd = 'cd '+mw.getServerDir()+'/mdserver-web && . bin/activate && '
     cmd += 'python3 '+mw.getServerDir()+'/mdserver-web/plugins/mysql/index.py import_db_external_progress_bar  {"file":"'+file+'","name":"'+name+'"}'
     return mw.returnJson(True, 'ok',cmd)
 
@@ -1218,7 +1218,7 @@ def importDbBackupProgress():
     file = args['file']
     name = args['name']
 
-    cmd = 'cd '+mw.getServerDir()+'/mdserver-web && source bin/activate && '
+    cmd = 'cd '+mw.getServerDir()+'/mdserver-web && . bin/activate && '
     cmd += 'python3 '+mw.getServerDir()+'/mdserver-web/plugins/mysql/index.py import_db_backup_progress_bar  {"file":"'+file+'","name":"'+name+'"}'
     return mw.returnJson(True, 'ok',cmd)
 
@@ -3021,7 +3021,7 @@ def initSlaveStatusSSH(version=''):
                         username='root', pkey=key)
 
             db_user = data['db_user']
-            cmd = 'cd /www/server/mdserver-web && source bin/activate && python3 ' + \
+            cmd = 'cd /www/server/mdserver-web && . bin/activate && python3 ' + \
                 getSPluginDir() + \
                 '/index.py get_master_rep_slave_user_cmd {"username":"' + \
                 db_user + '","db":""}'
@@ -3181,7 +3181,7 @@ def syncDatabaseRepairLog(version=''):
     sync_args_sign = args['sign']
     op = args['op']
     tmp_log = syncDatabaseRepairTempFile()
-    cmd = 'cd '+mw.getServerDir()+'/mdserver-web && source bin/activate && python3 plugins/mysql/index.py sync_database_repair  {"db":"'+sync_args_db+'","sign":"'+sync_args_sign+'"}'
+    cmd = 'cd '+mw.getServerDir()+'/mdserver-web && . bin/activate && python3 plugins/mysql/index.py sync_database_repair  {"db":"'+sync_args_db+'","sign":"'+sync_args_sign+'"}'
     # print(cmd)
 
     if op == 'get':
@@ -3454,7 +3454,7 @@ def fullSyncCmd():
     db = args['db']
     sign = args['sign']
 
-    cmd = 'cd '+mw.getServerDir()+'/mdserver-web && source bin/activate && python3 plugins/mysql/index.py do_full_sync  {"db":"'+db+'","sign":"'+sign+'"}'
+    cmd = 'cd '+mw.getServerDir()+'/mdserver-web && . bin/activate && python3 plugins/mysql/index.py do_full_sync  {"db":"'+db+'","sign":"'+sign+'"}'
     return mw.returnJson(True,'ok',cmd)
 
 def doFullSync(version=''):
@@ -3745,7 +3745,7 @@ def doFullSyncSSH(version=''):
     writeDbSyncStatus({'code': 0, 'msg': '登录Master成功...', 'progress': 5})
 
     dbname = args['db']
-    cmd = "cd /www/server/mdserver-web && source bin/activate && python3 " + \
+    cmd = "cd /www/server/mdserver-web && . bin/activate && python3 " + \
         getSPluginDir() + "/index.py dump_mysql_data {\"db\":'" + dbname + "'}"
     print(cmd)
     stdin, stdout, stderr = ssh.exec_command(cmd)
@@ -3769,7 +3769,7 @@ def doFullSyncSSH(version=''):
     if copy_status == None:
         writeDbSyncStatus({'code': 2, 'msg': '数据同步本地完成...', 'progress': 40})
 
-    cmd = 'cd /www/server/mdserver-web && source bin/activate && python3 ' + \
+    cmd = 'cd /www/server/mdserver-web && . bin/activate && python3 ' + \
         getSPluginDir() + \
         '/index.py get_master_rep_slave_user_cmd {"username":"' + \
         db_user + '","db":""}'
