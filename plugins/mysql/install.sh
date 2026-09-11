@@ -47,7 +47,7 @@ if [ -d $serverPath/mysql ];then
 	exit 0
 fi
 
-if [ "${action}" == "uninstall" ];then
+if [ "${action}" -eq "uninstall" ];then
 	
 	if [ -f /usr/lib/systemd/system/mysql.service ] || [ -f /lib/systemd/system/mysql.service ];then
 		systemctl stop mysql
@@ -60,7 +60,7 @@ fi
 
 bash -x $curPath/versions/$2/install.sh $1
 
-if [ "${action}" == "install" ] && [ -d $serverPath/mysql ];then
+if [ "${action}" -eq "install" ] && [ -d $serverPath/mysql ];then
 	#初始化 
 	cd ${rootPath} && python3 ${rootPath}/plugins/mysql/index.py start ${type}
 	cd ${rootPath} && python3 ${rootPath}/plugins/mysql/index.py initd_install ${type}
