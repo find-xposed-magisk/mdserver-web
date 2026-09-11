@@ -24,7 +24,7 @@ FILE_COMMON=${curPath}/common/${extName}.sh
 # yum install -y php74-php-pecl-mysql
 
 
-if [ "$action" == 'install' ];then
+if [ "$action" = 'install' ];then
 	
 	if [ -f $FILE ];then
 		bash ${curPath}/${version}/${extName}.sh install
@@ -41,7 +41,7 @@ if [ "$action" == 'install' ];then
 fi
 
 # yum remove -y php81-php-yar
-if [ "$action" == 'uninstall' ];then
+if [ "$action" = 'uninstall' ];then
 
 	if [ -f $FILE ];then
 		bash ${curPath}/${version}/${extName}.sh uninstall
@@ -63,7 +63,7 @@ echo "yum remove -y php${version}-php-pecl-${extName}"
 echo "systemctl restart php${version}-php-fpm"
 php_status=`systemctl status php${version}-php-fpm | grep inactive`
 echo "php_status:${php_status}"
-if [ "$php_status" == "" ];then
+if [ "$php_status" = "" ];then
 	systemctl restart php${version}-php-fpm
 fi
 

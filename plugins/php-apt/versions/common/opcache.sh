@@ -26,7 +26,7 @@ if [ ! -f $OP_BL ];then
 	touch $OP_BL
 fi
 
-if [ "$actionType" == 'install' ];then
+if [ "$actionType" = 'install' ];then
 	apt install -y php${version}-${LIBNAME}
 
 	echo "ls ${ext_dir} | grep "${LIBNAME}.ini"| cut -d \  -f 1"
@@ -54,7 +54,7 @@ if [ "$actionType" == 'install' ];then
 	echo "opcache.save_comments=0" >> $ext_file
 	echo "opcache.blacklist_filename=${OP_BL}" >> $ext_file
 
-elif [ "$actionType" == 'uninstall' ];then
+elif [ "$actionType" = 'uninstall' ];then
 	rm -rf $ext_file
 	echo 'cannot uninstall'
 fi

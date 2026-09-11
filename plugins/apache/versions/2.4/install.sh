@@ -90,7 +90,7 @@ Install_App()
 		cd ${apacheDir} && tar -jxf apr-util-${APR_UTIL_VERSION}.tar.bz2
 		cd ${apacheDir}/apr-util-${APR_UTIL_VERSION} && ./configure --prefix=${serverPath}/apache/apr-util --with-apr=${serverPath}/apache/apr
 		make -j${cpuCore} && make install
-		if [ "$?" == "0" ];then
+		if [ "$?" = "0" ];then
 					# 检查 APR-util 配置文件
 					APU_CONFIG=$(find ${serverPath}/apache/apr-util -name "apu-*config" | head -1)
 					if [ -z "$APU_CONFIG" ];then

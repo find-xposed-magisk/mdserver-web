@@ -66,9 +66,10 @@ def getArgs():
         if t.strip() == '':
             tmp = []
         else:
-            t = t.split(':',1)
-            tmp[t[0]] = t[1]
-        tmp[t[0]] = t[1]
+            arg_t = t.split(',')
+            for i in range(len(arg_t)):
+                t = arg_t[i].split(':',1)
+                tmp[t[0]] = t[1]
     elif args_len > 1:
         for i in range(len(args)):
             t = args[i].split(':',1)

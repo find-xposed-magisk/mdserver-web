@@ -24,33 +24,33 @@ LIBV=0
 # fi
 
 CMD='apt '
-if [ "$actionType" == 'install' ];then
+if [ "$actionType" = 'install' ];then
 	CMD="$CMD install -y php${version}-"
-elif [ "$actionType" == 'uninstall' ];then
+elif [ "$actionType" = 'uninstall' ];then
 	CMD="$CMD uninstall -y php${version}-"
 fi
 
-if [ "$version" == '5.6' ];then
+if [ "$version" = '5.6' ];then
 	CMD="${CMD}phalcon3"
-elif [[ "$version" == '7.0' ]]; then
+elif [[ "$version" = '7.0' ]]; then
 	CMD="${CMD}phalcon3"
-elif [[ "$version" == '7.1' ]]; then
+elif [[ "$version" = '7.1' ]]; then
 	CMD="${CMD}phalcon3"
-elif [[ "$version" == '7.2' ]]; then
+elif [[ "$version" = '7.2' ]]; then
 	CMD="${CMD}phalcon4"
-elif [[ "$version" == '7.3' ]]; then
+elif [[ "$version" = '7.3' ]]; then
 	CMD="${CMD}phalcon3"
-elif [[ "$version" == '7.4' ]]; then
+elif [[ "$version" = '7.4' ]]; then
 	CMD="${CMD}phalcon4"
-elif [[ "$version" == '8.0' ]]; then
+elif [[ "$version" = '8.0' ]]; then
 	CMD="${CMD}phalcon5"
-elif [[ "$version" == '8.1' ]]; then
+elif [[ "$version" = '8.1' ]]; then
 	CMD="${CMD}phalcon5"
-elif [[ "$version" == '8.2' ]]; then
+elif [[ "$version" = '8.2' ]]; then
 	CMD="${CMD}phalcon5"
-elif [[ "$version" == '8.3' ]]; then
+elif [[ "$version" = '8.3' ]]; then
 	CMD="${CMD}phalcon5"
-elif [[ "$version" == '8.4' ]]; then
+elif [[ "$version" = '8.4' ]]; then
 	CMD="${CMD}phalcon5"
 fi
 

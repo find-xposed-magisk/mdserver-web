@@ -40,7 +40,7 @@ fi
 Install_Docker()
 {
 	# which docker
-	# if [ "$?" == "0" ];then
+	# if [ "$?" = "0" ];then
 	# 	echo '安装已经完成docker'
 	# 	exit 0
 	# fi

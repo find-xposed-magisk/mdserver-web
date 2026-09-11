@@ -19,7 +19,7 @@ fi
 action=$1
 type=$2
 
-if [ "${2}" == "" ];then
+if [ "${2}" = "" ];then
 	echo '缺少安装脚本...'
 	exit 0
 fi 
@@ -37,21 +37,21 @@ bash ${rootPath}/scripts/getos.sh
 OSNAME=`cat ${rootPath}/data/osname.pl`
 VERSION_ID=`cat /etc/*-release | grep VERSION_ID | awk -F = '{print $2}' | awk -F "\"" '{print $2}'`
 
-if [ "$OSNAME" == "alma" ];then
+if [ "$OSNAME" = "alma" ];then
 	rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-${VERSION_ID}.rpm
 fi
 
-if [ "$OSNAME" == "rocky" ];then
+if [ "$OSNAME" = "rocky" ];then
 	rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-${VERSION_ID}.rpm
 fi
 
-if [ "$OSNAME" == "centos" ];then
+if [ "$OSNAME" = "centos" ];then
 	rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-${VERSION_ID}.rpm
 fi
 
 
 # rpm -Uvh http://rpms.remirepo.net/fedora/remi-release-31.rpm
-if [ "$OSNAME" == "fedora" ];then
+if [ "$OSNAME" = "fedora" ];then
 	rpm -Uvh http://rpms.remirepo.net/fedora/remi-release-${VERSION_ID}.rpm
 fi
 
@@ -75,7 +75,7 @@ fi
 
 cd ${curPath} && sh -x $curPath/versions/$2/install.sh $1
 
-if [ "${action}" == "install" ] && [ -d ${serverPath}/php-yum/${type} ];then
+if [ "${action}" = "install" ] && [ -d ${serverPath}/php-yum/${type} ];then
 
 	# 安装通用扩展
 	echo "install PHP-YUM[${type}] extend start"
